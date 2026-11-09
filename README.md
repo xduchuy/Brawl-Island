@@ -101,6 +101,8 @@ python3 tools/generate-vfx.py
 node tools/build.cjs
 ```
 
+Vercel uses the committed `vercel.json`: no framework preset, a dependency-free build, and `public` as the output directory. `node tools/build.cjs --out-dir public` publishes the same self-contained game as `public/index.html`; the default build still writes the downloadable root `index.html`. The generated `public/` directory is ignored by Git. Run `node tests/deployment.cjs` to verify the host build in an isolated directory and smoke-test the served output with Chromium.
+
 The deterministic generator draws eight-frame, 96px RGBA tiles with four-pixel transparent gutters. Nearest filtering, clamped atlas UVs, no mipmaps, depth-write disabled and per-asset blending prevent rectangular borders and bleeding. Assets are used by live effects or explicitly available in the gallery. Render effects recycle a fixed pool of 96 meshes/materials; IK reuses solver vectors and quaternions.
 
 ## Verification
