@@ -15,7 +15,7 @@ class EffectPooling {
    this.items.push({mesh,active:false,age:0,duration:1,base:1,ground:false,owner:null,projectile:null,velocity:null});
   }
  }
- take(){for(let n=0;n<this.items.length;n++){const i=(this.cursor+n)%this.items.length;if(!this.items[i].active){this.cursor=(i+1)%this.items.length;return this.items[i];}}const item=this.items[this.cursor];this.cursor=(this.cursor+1)%this.items.length;return item;}
+ take(decorative=false){if(decorative&&this.items.filter(i=>i.active).length>=this.items.length-24)return null;for(let n=0;n<this.items.length;n++){const i=(this.cursor+n)%this.items.length;if(!this.items[i].active){this.cursor=(i+1)%this.items.length;return this.items[i];}}if(decorative)return null;const item=this.items.find(i=>i.decorative)||this.items[this.cursor];this.cursor=(this.cursor+1)%this.items.length;return item;}
  clear(){for(const i of this.items){i.active=false;i.mesh.visible=false;}}
 }
 class ImpactEffect {static spawn(v,key,x,y,z,scale=1){return v.spawn(key,x,y,z,{scale,duration:.35});}}
@@ -26,7 +26,7 @@ class ProjectileVFX {static spawn(v,key,p){return v.spawn(key,p.x,1,p.z,{scale:1
 class ParticleEmitter {
  static emit(v,key,f,count=4){
   const total=Math.ceil(count*v.density);
-  for(let i=0;i<total;i++){const a=i*2.39996;v.spawn(key,f.x,.15,f.z,{scale:.35+(i%3)*.15,duration:.45+(i%3)*.1,velocity:[Math.cos(a)*1.5,1+i%2,Math.sin(a)*1.5]});}
+  for(let i=0;i<total;i++){const a=i*2.39996;v.spawn(key,f.x,.15,f.z,{scale:.35+(i%3)*.15,duration:.45+(i%3)*.1,decorative:true,velocity:[Math.cos(a)*1.5,1+i%2,Math.sin(a)*1.5]});}
  }
 }
 class VFXManager {
@@ -37,7 +37,7 @@ class VFXManager {
  }
  spawn(key,x,y,z,opts={}){
   const asset=this.manifest.assets[key],texture=this.textures[key];if(!asset||!texture)return null;
-  const i=this.pool.take();Object.assign(i,{active:true,age:0,duration:opts.duration||.55,base:opts.scale||1,ground:!!opts.ground,owner:opts.owner??null,projectile:opts.projectile??null,velocity:opts.velocity||null,asset,line:opts.line||false,angle:opts.angle||0,width:opts.width||1});
+  if(opts.decorative&&this.pool.items.filter(i=>i.active&&i.decorative).length>=(this.decorativeLimit??48))return null;const i=this.pool.take(!!opts.decorative);if(!i)return null;Object.assign(i,{active:true,decorative:!!opts.decorative,age:0,duration:opts.duration||.55,base:opts.scale||1,ground:!!opts.ground,owner:opts.owner??null,projectile:opts.projectile??null,velocity:opts.velocity||null,asset,line:opts.line||false,angle:opts.angle||0,width:opts.width||1});
   i.mesh.visible=true;i.mesh.position.set(x,y,z);i.mesh.scale.setScalar(i.base);i.mesh.material.uniforms.atlas.value=texture;i.mesh.material.uniforms.frame.value=0;i.mesh.material.uniforms.columns.value=asset.columns;i.mesh.material.uniforms.opacity.value=this.intensity;
   i.mesh.material.blending=asset.blend==='normal'?THREE.NormalBlending:THREE.AdditiveBlending;
   i.mesh.material.uniforms.tint.value.set(opts.tint||'#ffffff');return i;

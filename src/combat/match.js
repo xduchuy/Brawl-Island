@@ -80,6 +80,7 @@ class BrawlMatch {
    const input=f.controller==='ai'?this.ai(f):(inputs[f.controller]||{});
    if(input.action){f.buffer={action:input.action,expires:this.tick+12};if(f.controller==='ai')f.aiInput.action=null;}
    if(f.state==='charge'){
+    const length=Math.max(1,Math.hypot(input.x||0,input.z||0));f.x+=(input.x||0)/length*f.stats.speed/60*.22;f.z+=(input.z||0)/length*f.stats.speed/60*.22;
     f.charge=Math.min(45,f.charge+1);
     if(!input.heavyHeld||f.charge===45){const charge=f.charge/45;if(!this.attack(f,'heavy',charge)){f.state='idle';f.charge=0;}}
    }else if(f.state==='attack'){

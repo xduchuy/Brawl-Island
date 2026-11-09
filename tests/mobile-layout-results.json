@@ -1,6 +1,136 @@
 {
-  "width": 390,
-  "navigationOverlap": false,
-  "touchActions": 7,
+  "layouts": [
+    {
+      "width": 844,
+      "height": 390,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 816,
+        "top": 76,
+        "bottom": 220
+      }
+    },
+    {
+      "width": 932,
+      "height": 430,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 904,
+        "top": 76,
+        "bottom": 256
+      }
+    },
+    {
+      "width": 740,
+      "height": 360,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 712,
+        "top": 76,
+        "bottom": 190
+      }
+    },
+    {
+      "width": 667,
+      "height": 375,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 639,
+        "top": 76,
+        "bottom": 205
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 996,
+        "top": 76,
+        "bottom": 594
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 816,
+        "top": 76,
+        "bottom": 220
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "targets": 8,
+      "safe": {
+        "left": 72,
+        "right": 782,
+        "top": 84,
+        "bottom": 200
+      }
+    },
+    {
+      "width": 667,
+      "height": 375,
+      "targets": 8,
+      "safe": {
+        "left": 28,
+        "right": 639,
+        "top": 76,
+        "bottom": 205
+      }
+    }
+  ],
+  "portrait": [
+    390,
+    430
+  ],
+  "multitouch": true,
+  "chargeRelease": true,
+  "pointerCancel": true,
+  "preferences": true,
+  "pause": true,
+  "rotationPreservesState": true,
+  "criticalVFX": true,
+  "qualityDeterminism": true,
+  "memory": [
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    },
+    {
+      "geometries": 26,
+      "textures": 30
+    }
+  ],
+  "network": [],
   "errors": []
 }

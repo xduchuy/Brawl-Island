@@ -22,6 +22,16 @@ Choose **Play**, **Fighters**, **Training** or **Settings** in the main menu. Th
 
 Enter starts/rematches; P pauses; M mutes. Touch provides a stick and all eight combat actions, including hold-to-charge. Gamepad labels follow the standard browser mapping. Physical controller feel still needs hands-on testing.
 
+## Mobile Landscape Edition
+
+On phones, choose fighters and settings in portrait, then start a match and rotate to landscape. Combat fills the available screen with a compact HUD, safe-area-aware joystick and eight circular action targets. Fullscreen/orientation lock are attempted when supported; the rotate prompt provides a fallback. Use the top-center pause button to resume, restart, change controls or return to the menu.
+
+Mobile Controls stores joystick/button sizing, spacing, opacity, handedness, floating joystick, shake, VFX intensity, FPS and graphics preferences locally. Low, Medium, High and Auto change rendering budgets while combat stays at 60 Hz. Two-finger movement plus attacks, guard or heavy charge share one pointer ownership system.
+
+![Landscape combat](docs/screenshots/mobile/03-landscape-combat.png)
+
+See [mobile implementation and device-testing limits](docs/mobile-landscape.md). Run `node tests/mobile-layout.cjs` for all five landscape sizes, both portrait sizes, simultaneous touch actions, rotation, settings and rematch resource checks. These are desktop-emulated tests; physical phone rotation and hardware FPS still require real-device review.
+
 ## Combat rules
 
 - Simulation remains deterministic at **60 Hz**, independent of textures, particles, camera, audio and rendering frame rate.
@@ -79,6 +89,7 @@ The generated `index.html` is the distributable; edit `src/`, not generated HTML
 ```
 src/fighters/   roster, normalized skill registry, procedural models
 src/combat/     fixed-tick state machine, contacts, resources, AI
+src/input/      pointer ownership, joystick and multi-touch controls
 src/animation/  keyed poses, foot anchors, cached IK
 src/vfx/        manifest loader, sprite animator, fixed-capacity pool,
                projectile/trail/particle/impact/ground/ultimate effects
