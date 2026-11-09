@@ -74,7 +74,7 @@ function updateReforged(dt){
  ocean.material.uniforms.time.value=worldTime;feedback.update(dt);vfx.update(dt,match,camera);updateHitboxes();
  for(let i=0;i<4;i++){const f=match.fighters[i],s=contactShadows[i];s.visible=!!f&&!f.fall;if(f)s.position.set(f.x,rf.arena==='sanctum'?.09:.025,f.z);}
  ward.material.opacity=.12+feedback.shake*.5;
- if(rf.quality==='auto'){
+ if(rf.quality==='auto'&&!mobile.device){
   rf.slowFrames=fps<42?rf.slowFrames+dt:Math.max(0,rf.slowFrames-dt);
   if(rf.slowFrames>4&&pixelSize<3){pixelSize=3;renderer.shadowMap.enabled=false;vfx.density=.4;resize();rf.slowFrames=0;}
  }
@@ -117,7 +117,7 @@ $('resetTraining').onclick=()=>{match.resetFighters();match.phase='fight';buildA
 $('endTraining').onclick=()=>{match.phase='over';match.emit('matchend',{winner:-1,score:[0,0],training:true});events();updateHUD();};
 const settings=document.createElement('div');settings.className='reforge-settings';settings.innerHTML='<h3>Combat & accessibility</h3><label>Quality <select id="qualityPreset"><option value="high">High</option><option value="low">Low</option><option value="auto">Adaptive</option></select></label><label>Camera shake <input id="shakeAmount" type="range" min="0" max="100" value="60"></label><label>Impact flashes <input id="flashAmount" type="range" min="0" max="100" value="35"></label><label>Particle density <input id="particleAmount" type="range" min="0" max="100" value="75"></label><h3>Audio mix</h3>'+['music','sfx','ui'].map((k,i)=>'<label>'+k.toUpperCase()+' <input data-volume="'+k+'" type="range" min="0" max="100" value="'+[18,65,35][i]+'"></label>').join('');$('tab-world').prepend(settings);
 feedback.settings.shake=.6;feedback.settings.flashes=.35;vfx.density=.75;
-$('qualityPreset').onchange=e=>{rf.quality=e.target.value;const low=rf.quality==='low';pixelSize=low?3:1.5;renderer.shadowMap.enabled=!low;vfx.density=low?.35:.75;$('particleAmount').value=vfx.density*100;resize();};
+$('qualityPreset').onchange=e=>{if(mobile.device){mobile.quality(e.target.value);applyMobilePrefs();return;}rf.quality=e.target.value;const low=rf.quality==='low';pixelSize=low?3:1.5;renderer.shadowMap.enabled=!low;vfx.density=low?.35:.75;$('particleAmount').value=vfx.density*100;resize();};
 $('shakeAmount').oninput=e=>feedback.settings.shake=Number(e.target.value)/100;$('flashAmount').oninput=e=>feedback.settings.flashes=Number(e.target.value)/100;$('particleAmount').oninput=e=>vfx.density=Number(e.target.value)/100;
 document.querySelectorAll('[data-volume]').forEach(e=>e.oninput=()=>feedback.volumes[e.dataset.volume]=Number(e.value)/100);
 // Gallery uses the very same shipped atlas manifest and animator as live combat.
@@ -131,14 +131,14 @@ $('galleryButton').onclick=()=>{galleryWasPaused=paused;if(match.phase==='fight'
 $('closeGallery').onclick=()=>gallery.close();gallery.addEventListener('close',()=>{if(!galleryWasPaused&&paused)pause();});
 $('replayEffect').onclick=()=>galleryAge=0;
 $('previewEffect').onclick=()=>{gallery.close();const f=match.fighters[0];vfx.intensity=Number($('galleryIntensity').value)/100;vfx.spawn(galleryKey,f.x,1,f.z,{scale:4,duration:1.4});};
-// Touch and pad get the same actions as keyboard; no decorative skill buttons.
-for(const [action,label]of [['skill2','SKILL 2'],['ultimate','ULT'],['dash','DASH']]){const b=document.createElement('button');b.dataset.action=action;b.textContent=label;document.querySelector('.touch-actions').append(b);b.onpointerdown=e=>{e.preventDefault();queued.p1.push(action);initAudio();};}
-const heavyTouch=document.querySelector('[data-action="heavy"]');heavyTouch.addEventListener('pointerdown',()=>touch.heavy=true);for(const ev of ['pointerup','pointercancel','lostpointercapture'])heavyTouch.addEventListener(ev,()=>touch.heavy=false);
+// All eight buttons are owned by one pointer controller initialized in mobile.js.
+for(const [action,label]of [['skill2','SKILL 2'],['ultimate','ULT'],['dash','DASH']]){const b=document.createElement('button');b.dataset.action=action;b.textContent=label;document.querySelector('.touch-actions').append(b);}
 document.querySelector('.key-cluster').innerHTML='<span><kbd>WASD</kbd> Move</span><span><kbd>J</kbd> Combo</span><span><kbd>K</kbd> Hold heavy</span><span><kbd>I / O</kbd> Skills</span><span><kbd>H</kbd> Ultimate</span><span><kbd>L</kbd> Guard / parry</span><span><kbd>SPACE</kbd> Dodge</span><span><kbd>SHIFT</kbd> Dash</span>';
 $('helpButton').onclick=()=>openPanel('guide');
 const help=document.createElement('div');help.innerHTML='<h3>Combat Reforged controls</h3><p>Tap guard just before impact for a 5-frame parry and 40-frame counter window. Hold K to charge heavy. Confirm a light hit, then cancel its recovery into I / O or dodge (30 stamina). Dodge grants invulnerability; dash does not. Ultimates require 100 energy and 25 stamina. Combo damage scales to 40%, and long chains force knockdown.</p><p>P1: O skill 2, H ultimate, left Shift dash. P2: quote skill 2, right bracket ultimate, right Control dash; hold period or numpad 2 to charge. Gamepad: right trigger skill 2, left trigger ultimate, left stick click dash. Hold Y to charge. Touch heavy supports holding.</p>';$('tab-guide').prepend(help);
 // Defaults showcase the validated vertical slice without hiding any roster entries.
 document.querySelector('[data-slot="0"] .fighter-select').value='yuji';document.querySelector('[data-slot="1"] .fighter-select').value='gojo';showFighterDetails();
+const mediumOption=document.createElement('option');mediumOption.value='medium';mediumOption.textContent='Medium';$('qualityPreset').append(mediumOption);
 pixelSize=matchMedia('(pointer:coarse)').matches?2.5:1.5;setView('fight');viewTilt=.48;postMaterial.uniforms.dither.value=.25;
 
 const ocean=new THREE.Mesh(new THREE.PlaneGeometry(420,420,1,1),new THREE.ShaderMaterial({uniforms:{time:{value:0}},vertexShader:'varying vec2 p;void main(){p=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 p;uniform float time;void main(){vec2 q=p*90.;float w=sin(q.x*.7+sin(q.y*.9)+time*.7)*sin(q.y*.6-time*.4);float foam=smoothstep(.86,.96,w);vec3 c=mix(vec3(.12,.27,.31),vec3(.22,.40,.42),w*.5+.5);c+=foam*.09;gl_FragColor=vec4(c,1.);}'}));ocean.rotation.x=-Math.PI/2;ocean.position.y=-18;scene.add(ocean);
