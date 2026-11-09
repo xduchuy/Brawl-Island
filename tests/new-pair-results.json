@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "nobara",
+    "enemy": "goblin",
+    "matches": 50,
+    "wins": 27
+  },
+  {
+    "kind": "nobara",
+    "enemy": "skeleton",
+    "matches": 50,
+    "wins": 27
+  },
+  {
+    "kind": "nobara",
+    "enemy": "yuji",
+    "matches": 50,
+    "wins": 28
+  },
+  {
+    "kind": "nobara",
+    "enemy": "gojo",
+    "matches": 50,
+    "wins": 36
+  },
+  {
+    "kind": "nobara",
+    "enemy": "megumi",
+    "matches": 50,
+    "wins": 20
+  },
+  {
+    "kind": "megumi",
+    "enemy": "goblin",
+    "matches": 50,
+    "wins": 28
+  },
+  {
+    "kind": "megumi",
+    "enemy": "skeleton",
+    "matches": 50,
+    "wins": 22
+  },
+  {
+    "kind": "megumi",
+    "enemy": "yuji",
+    "matches": 50,
+    "wins": 19
+  },
+  {
+    "kind": "megumi",
+    "enemy": "gojo",
+    "matches": 50,
+    "wins": 26
+  },
+  {
+    "kind": "megumi",
+    "enemy": "nobara",
+    "matches": 50,
+    "wins": 20
+  }
+]

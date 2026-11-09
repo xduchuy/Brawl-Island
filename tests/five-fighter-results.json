@@ -1,0 +1,307 @@
+{
+  "matches": 500,
+  "stuck": 0,
+  "specialsHit": true,
+  "rows": [
+    {
+      "kind": "sukuna",
+      "enemy": "goblin",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "skeleton",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "yuji",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "gojo",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "nobara",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "megumi",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "kenjaku",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "geto",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "mahito",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "toji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "goblin",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "skeleton",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "yuji",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "gojo",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "nobara",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "megumi",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "sukuna",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "geto",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "mahito",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "toji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "goblin",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "skeleton",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "yuji",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "gojo",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "geto",
+      "enemy": "nobara",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "megumi",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "sukuna",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "kenjaku",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "mahito",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "geto",
+      "enemy": "toji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "goblin",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "skeleton",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "mahito",
+      "enemy": "yuji",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "gojo",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "mahito",
+      "enemy": "nobara",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "megumi",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "mahito",
+      "enemy": "sukuna",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "kenjaku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "geto",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "toji",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "toji",
+      "enemy": "goblin",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "toji",
+      "enemy": "skeleton",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "toji",
+      "enemy": "yuji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "gojo",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "nobara",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "toji",
+      "enemy": "megumi",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "sukuna",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "kenjaku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "toji",
+      "enemy": "geto",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "mahito",
+      "matches": 10,
+      "wins": 6
+    }
+  ]
+}

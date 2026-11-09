@@ -1,0 +1,13 @@
+[
+  "Light attack damages once per active window",
+  "Facing guard consumes stamina and only takes chip damage",
+  "Special breaks a facing guard",
+  "Dodge invulnerability prevents contact damage",
+  "Heavy knocks down; opponent gets back up",
+  "Leaving the ring loses the match",
+  "Timer awards the round by remaining normalized health",
+  "Buffered light input chains the combo",
+  "Pause does not advance the simulation",
+  "Ring-out fall continues after the final round",
+  "Final knockout continues its collapse animation"
+]

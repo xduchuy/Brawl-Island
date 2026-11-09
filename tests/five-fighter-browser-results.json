@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "roster": 11,
+  "modelsChecked": 11,
+  "finiteIK": true,
+  "match": {
+    "phase": "over",
+    "kinds": [
+      "sukuna",
+      "kenjaku",
+      "geto",
+      "toji"
+    ]
+  },
+  "phoneWidth": 390
+}

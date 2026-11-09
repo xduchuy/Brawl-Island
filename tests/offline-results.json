@@ -1,0 +1,8 @@
+{
+  "offline": true,
+  "method": "HTML loaded with network disabled; direct file URL navigation is blocked by managed browser policy",
+  "errors": [],
+  "phase": "between",
+  "fallY": -3.8999999999999977,
+  "renderer": "128"
+}

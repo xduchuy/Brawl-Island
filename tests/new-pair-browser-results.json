@@ -1,0 +1,25 @@
+{
+  "errors": [],
+  "matches": [
+    {
+      "phase": "over",
+      "kinds": [
+        "nobara",
+        "megumi"
+      ]
+    },
+    {
+      "phase": "over",
+      "kinds": [
+        "nobara",
+        "megumi",
+        "yuji",
+        "gojo"
+      ]
+    }
+  ],
+  "roster": 6,
+  "phoneWidth": 390,
+  "finiteIK": true,
+  "summonVisible": true
+}

@@ -1,0 +1,8 @@
+{
+  "touchDefault": true,
+  "stickMovement": true,
+  "touchLight": true,
+  "gamepadMovement": true,
+  "gamepadLight": true,
+  "pageErrors": []
+}

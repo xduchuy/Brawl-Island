@@ -1,0 +1,80 @@
+[
+  {
+    "mode": 1,
+    "difficulty": "easy",
+    "matches": 200,
+    "wins": {
+      "goblin": 107,
+      "skeleton": 93
+    },
+    "goblinRate": 0.535,
+    "meanSeconds": 14,
+    "timeouts": 0,
+    "stuck": 0
+  },
+  {
+    "mode": 1,
+    "difficulty": "normal",
+    "matches": 200,
+    "wins": {
+      "goblin": 105,
+      "skeleton": 95
+    },
+    "goblinRate": 0.525,
+    "meanSeconds": 16,
+    "timeouts": 0,
+    "stuck": 0
+  },
+  {
+    "mode": 1,
+    "difficulty": "hard",
+    "matches": 200,
+    "wins": {
+      "goblin": 106,
+      "skeleton": 94
+    },
+    "goblinRate": 0.53,
+    "meanSeconds": 17,
+    "timeouts": 0,
+    "stuck": 0
+  },
+  {
+    "mode": 2,
+    "difficulty": "easy",
+    "matches": 200,
+    "wins": {
+      "goblin": 96,
+      "skeleton": 104
+    },
+    "goblinRate": 0.48,
+    "meanSeconds": 15,
+    "timeouts": 0,
+    "stuck": 0
+  },
+  {
+    "mode": 2,
+    "difficulty": "normal",
+    "matches": 200,
+    "wins": {
+      "goblin": 97,
+      "skeleton": 103
+    },
+    "goblinRate": 0.485,
+    "meanSeconds": 16,
+    "timeouts": 0,
+    "stuck": 0
+  },
+  {
+    "mode": 2,
+    "difficulty": "hard",
+    "matches": 200,
+    "wins": {
+      "goblin": 107,
+      "skeleton": 93
+    },
+    "goblinRate": 0.535,
+    "meanSeconds": 16,
+    "timeouts": 0,
+    "stuck": 0
+  }
+]

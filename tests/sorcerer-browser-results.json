@@ -1,0 +1,52 @@
+{
+  "pageErrors": [],
+  "externalRequests": [],
+  "allSlotsHaveFourFighters": true,
+  "bonesPerFighter": 18,
+  "finiteIK": true,
+  "energyEffects": true,
+  "phoneWidth": 390,
+  "horizontalOverflow": false,
+  "matches": [
+    {
+      "phase": "over",
+      "kinds": [
+        "yuji",
+        "gojo"
+      ],
+      "result": {
+        "type": "matchend",
+        "tick": 3037,
+        "winner": 0,
+        "score": [
+          2,
+          1
+        ],
+        "ticks": 3037,
+        "seed": 3493,
+        "round": 3
+      }
+    },
+    {
+      "phase": "over",
+      "kinds": [
+        "yuji",
+        "gojo",
+        "skeleton",
+        "goblin"
+      ],
+      "result": {
+        "type": "matchend",
+        "tick": 2628,
+        "winner": 1,
+        "score": [
+          1,
+          2
+        ],
+        "ticks": 2628,
+        "seed": 3494,
+        "round": 3
+      }
+    }
+  ]
+}

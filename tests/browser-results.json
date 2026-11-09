@@ -1,0 +1,44 @@
+{
+  "pageErrors": [],
+  "externalRequests": [],
+  "matches": [
+    {
+      "mode": 1,
+      "result": {
+        "type": "matchend",
+        "tick": 3033,
+        "winner": 0,
+        "score": [
+          2,
+          1
+        ],
+        "ticks": 3033,
+        "seed": 42,
+        "round": 3
+      }
+    },
+    {
+      "mode": 2,
+      "result": {
+        "type": "matchend",
+        "tick": 2973,
+        "winner": 1,
+        "score": [
+          1,
+          2
+        ],
+        "ticks": 2973,
+        "seed": 42,
+        "round": 3
+      }
+    }
+  ],
+  "phoneWidth": 390,
+  "horizontalOverflow": false,
+  "keyboard": true,
+  "pause": true,
+  "views": 3,
+  "times": 3,
+  "poses": 8,
+  "settings": true
+}

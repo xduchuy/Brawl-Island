@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const code=fs.readFileSync(__dirname+'/../index.html','utf8').match(/<script id="combat-engine">([\s\S]*?)<\/script>/)[1];let ctx={};vm.createContext(ctx);vm.runInContext(code+';this.B=BrawlMatch;this.moves=IB_MOVES;',ctx);function ready(){let m=new ctx.B({rounds:1,slots:[{kind:'goblin',controller:'p1'},{kind:'skeleton',controller:'p2'}]});m.start();for(let i=0;i<151;i++)m.step();m.fighters[0].x=-.5;m.fighters[1].x=.5;m.fighters.forEach(f=>f.z=0);return m;}let checks=[];
+let m=ready(),[a,b]=m.fighters;m.attack(a,'light');for(let i=0;i<18;i++)m.step();assert(b.hp<112);assert.equal(b.hp,98);checks.push('Light attack damages once per active window');
+m=ready();[a,b]=m.fighters;m.attack(a,'light');for(let i=0;i<18;i++)m.step({p2:{block:true}});assert(b.hp===111);assert(b.stamina<100);checks.push('Facing guard consumes stamina and only takes chip damage');
+m=ready();[a,b]=m.fighters;m.attack(a,'special');for(let i=0;i<42;i++)m.step({p2:{block:true}});assert(m.events.some(e=>e.type==='guardbreak'));checks.push('Special breaks a facing guard');
+m=ready();[a,b]=m.fighters;m.attack(a,'light');for(let i=0;i<9;i++)m.step();m.step({p2:{action:'dodge',x:0,z:1}});for(let i=0;i<8;i++)m.step();assert.equal(b.hp,112);checks.push('Dodge invulnerability prevents contact damage');
+m=ready();[a,b]=m.fighters;m.attack(a,'heavy');for(let i=0;i<40;i++)m.step();assert.equal(b.state,'down');for(let i=0;i<90;i++)m.step();assert(['idle','walk'].includes(b.state));checks.push('Heavy knocks down; opponent gets back up');
+m=ready();a=m.fighters[0];a.x=10.2;m.step();assert(a.dead&&a.fall);assert.equal(m.results[0].winner,1);checks.push('Leaving the ring loses the match');
+m=ready();m.time=1;m.fighters[0].hp=50;m.step();assert.equal(m.results[0].winner,1);checks.push('Timer awards the round by remaining normalized health');
+m=ready();a=m.fighters[0];m.attack(a,'light');for(let i=0;i<19;i++)m.step();m.step({p1:{action:'light'}});for(let i=0;i<4;i++)m.step();assert.equal(a.combo,1);checks.push('Buffered light input chains the combo');
+m=ready();m.paused=true;let tick=m.tick;m.step();assert.equal(m.tick,tick);checks.push('Pause does not advance the simulation');
+m=ready();a=m.fighters[0];a.x=10.2;m.step();for(let i=0;i<20;i++)m.step();assert(a.y<-2);assert(a.frame>=20);checks.push('Ring-out fall continues after the final round');
+m=ready();[a,b]=m.fighters;b.hp=1;m.attack(a,'light');for(let i=0;i<40;i++)m.step();assert.equal(m.phase,'over');assert(b.dead&&b.frame>10);checks.push('Final knockout continues its collapse animation');
+console.log(JSON.stringify(checks,null,2));fs.writeFileSync(__dirname+'/mechanics-results.json',JSON.stringify(checks,null,2));

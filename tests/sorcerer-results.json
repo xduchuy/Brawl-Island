@@ -1,0 +1,197 @@
+{
+  "mechanics": [
+    "Blue pulls",
+    "Red pushes",
+    "Black Flash breaks guard"
+  ],
+  "rows": [
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "goblin",
+      "b": "skeleton",
+      "matches": 100,
+      "aWins": 53,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "goblin",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 51,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "goblin",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 61,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "skeleton",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 53,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "skeleton",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 56,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "easy",
+      "a": "yuji",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 56,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "goblin",
+      "b": "skeleton",
+      "matches": 100,
+      "aWins": 63,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "goblin",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 43,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "goblin",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 57,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "skeleton",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 53,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "skeleton",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 50,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "yuji",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 53,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "skeleton",
+      "matches": 100,
+      "aWins": 56,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 46,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 58,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "skeleton",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 39,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "skeleton",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 53,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "yuji",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 69,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 2,
+      "composition": "Yuji + Bonewarden vs Gojo + Grinsk",
+      "matches": 200,
+      "crimsonWins": 79,
+      "stuck": 0,
+      "timeouts": 0
+    }
+  ]
+}
