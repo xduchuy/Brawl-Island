@@ -4,11 +4,11 @@
     "difficulty": "easy",
     "matches": 200,
     "wins": {
-      "goblin": 107,
-      "skeleton": 93
+      "goblin": 113,
+      "skeleton": 87
     },
-    "goblinRate": 0.535,
-    "meanSeconds": 14,
+    "goblinRate": 0.565,
+    "meanSeconds": 16,
     "timeouts": 0,
     "stuck": 0
   },
@@ -17,11 +17,11 @@
     "difficulty": "normal",
     "matches": 200,
     "wins": {
-      "goblin": 105,
-      "skeleton": 95
+      "goblin": 111,
+      "skeleton": 89
     },
-    "goblinRate": 0.525,
-    "meanSeconds": 16,
+    "goblinRate": 0.555,
+    "meanSeconds": 18,
     "timeouts": 0,
     "stuck": 0
   },
@@ -30,11 +30,11 @@
     "difficulty": "hard",
     "matches": 200,
     "wins": {
-      "goblin": 106,
-      "skeleton": 94
+      "goblin": 118,
+      "skeleton": 82
     },
-    "goblinRate": 0.53,
-    "meanSeconds": 17,
+    "goblinRate": 0.59,
+    "meanSeconds": 24,
     "timeouts": 0,
     "stuck": 0
   },
@@ -43,11 +43,11 @@
     "difficulty": "easy",
     "matches": 200,
     "wins": {
-      "goblin": 96,
-      "skeleton": 104
+      "goblin": 114,
+      "skeleton": 86
     },
-    "goblinRate": 0.48,
-    "meanSeconds": 15,
+    "goblinRate": 0.57,
+    "meanSeconds": 16,
     "timeouts": 0,
     "stuck": 0
   },
@@ -56,11 +56,11 @@
     "difficulty": "normal",
     "matches": 200,
     "wins": {
-      "goblin": 97,
-      "skeleton": 103
+      "goblin": 105,
+      "skeleton": 95
     },
-    "goblinRate": 0.485,
-    "meanSeconds": 16,
+    "goblinRate": 0.525,
+    "meanSeconds": 18,
     "timeouts": 0,
     "stuck": 0
   },
@@ -69,11 +69,11 @@
     "difficulty": "hard",
     "matches": 200,
     "wins": {
-      "goblin": 107,
-      "skeleton": 93
+      "goblin": 98,
+      "skeleton": 102
     },
-    "goblinRate": 0.535,
-    "meanSeconds": 16,
+    "goblinRate": 0.49,
+    "meanSeconds": 23,
     "timeouts": 0,
     "stuck": 0
   }

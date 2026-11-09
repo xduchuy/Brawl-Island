@@ -1,0 +1,243 @@
+{
+  "checks": [
+    "55 base attacks: startup safety, collision, one contact per pulse, no recovery damage",
+    "22 light combo follow-ups execute; all 77 registry entries exercised",
+    "Ultimate requires meter and stamina, consumes once, never refunds its damage",
+    "Cooldown and stamina gates independently reject recasts",
+    "Timed parry prevents damage, staggers attacker and opens counter window",
+    "Light-to-special cancel requires confirmed contact; whiffs stay punishable",
+    "Held heavy charges, release enters startup with increased damage",
+    "Combo scaling and forced knockdown bound extended strings",
+    "Nails travel before collision and mark targets; beam has a narrow directional hitbox",
+    "Sealed arena bounces; training resets KO and supports unlimited resources",
+    "32 seeded AI matches complete across both arenas and 1v1/2v2",
+    "Identical seed produces identical fixed-step state",
+    "All 77 skills resolve their startup, release and impact asset files"
+  ],
+  "matches": [
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 1,
+      "winner": 1,
+      "ticks": 1414
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 2,
+      "winner": 1,
+      "ticks": 924
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 3,
+      "winner": 1,
+      "ticks": 967
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 4,
+      "winner": 0,
+      "ticks": 789
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 5,
+      "winner": 1,
+      "ticks": 972
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 6,
+      "winner": 1,
+      "ticks": 686
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 7,
+      "winner": 0,
+      "ticks": 1005
+    },
+    {
+      "arena": "skyreach",
+      "mode": 1,
+      "seed": 8,
+      "winner": 0,
+      "ticks": 1421
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 1,
+      "winner": 0,
+      "ticks": 907
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 2,
+      "winner": 0,
+      "ticks": 1000
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 3,
+      "winner": 0,
+      "ticks": 947
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 4,
+      "winner": 1,
+      "ticks": 1119
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 5,
+      "winner": 0,
+      "ticks": 1071
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 6,
+      "winner": 0,
+      "ticks": 1170
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 7,
+      "winner": 1,
+      "ticks": 1259
+    },
+    {
+      "arena": "skyreach",
+      "mode": 2,
+      "seed": 8,
+      "winner": 0,
+      "ticks": 853
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 1,
+      "winner": 1,
+      "ticks": 1414
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 2,
+      "winner": 1,
+      "ticks": 924
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 3,
+      "winner": 1,
+      "ticks": 967
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 4,
+      "winner": 0,
+      "ticks": 789
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 5,
+      "winner": 1,
+      "ticks": 972
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 6,
+      "winner": 1,
+      "ticks": 686
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 7,
+      "winner": 0,
+      "ticks": 1005
+    },
+    {
+      "arena": "sanctum",
+      "mode": 1,
+      "seed": 8,
+      "winner": 0,
+      "ticks": 1421
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 1,
+      "winner": 0,
+      "ticks": 907
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 2,
+      "winner": 0,
+      "ticks": 1000
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 3,
+      "winner": 0,
+      "ticks": 947
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 4,
+      "winner": 1,
+      "ticks": 1119
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 5,
+      "winner": 0,
+      "ticks": 1071
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 6,
+      "winner": 0,
+      "ticks": 1170
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 7,
+      "winner": 1,
+      "ticks": 1259
+    },
+    {
+      "arena": "sanctum",
+      "mode": 2,
+      "seed": 8,
+      "winner": 0,
+      "ticks": 853
+    }
+  ]
+}

@@ -13,12 +13,12 @@
       "kinds": [
         "nobara",
         "megumi",
-        "yuji",
-        "gojo"
+        "kenjaku",
+        "geto"
       ]
     }
   ],
-  "roster": 6,
+  "roster": 11,
   "phoneWidth": 390,
   "finiteIK": true,
   "summonVisible": true

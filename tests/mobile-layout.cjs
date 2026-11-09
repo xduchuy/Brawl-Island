@@ -1,0 +1,11 @@
+const{chromium}=require('playwright'),fs=require('fs'),assert=require('assert');
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});const p=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.setContent(fs.readFileSync(__dirname+'/../index.html','utf8'));await p.waitForFunction(()=>window.__ib);await p.evaluate(()=>__ib.vfx.ready);
+await p.evaluate(()=>{__ib.configureMode('training');__ib.start();__ib.step(151);__ib.match.fighters[1].x=6;__ib.pause();});await p.addStyleTag({content:'.pause-screen{visibility:hidden!important;pointer-events:none!important}'});
+for(const action of ['light','heavy','special','skill2','ultimate','dodge','dash']){
+ await p.evaluate(()=>Object.assign(__ib.match.fighters[0],{state:'idle',stamina:100,ultimate:100,cooldowns:{}}));await p.locator('[data-action="'+action+'"]').tap();
+ const state=await p.evaluate(()=>{__ib.match.paused=false;__ib.step(1);__ib.match.paused=true;return{state:__ib.match.fighters[0].state,move:__ib.match.fighters[0].moveName};});
+ assert(['dodge','dash'].includes(action)?state.state===action:state.move===action,action);
+}
+// Inspect screen geometry, not just overflow: wrapped navigation must clear the toolbar.
+const layout=await p.evaluate(()=>({nav:document.querySelector('.topbar').getBoundingClientRect().bottom,toolbar:document.querySelector('.reforge-toolbar').getBoundingClientRect().top,width:document.documentElement.scrollWidth,viewport:innerWidth}));assert(layout.toolbar>=layout.nav-1);assert.equal(layout.width,layout.viewport);
+await p.evaluate(()=>{__ib.match.fighters.forEach((f,i)=>Object.assign(f,{x:i?1:-1,z:0,state:'idle',hp:f.stats.hp,stamina:100,ultimate:i?65:80}));__ib.updateHUD();__ib.visualStep(3);});await p.screenshot({path:__dirname+'/../docs/screenshots/09-mobile-combat.png',fullPage:true});assert.deepEqual(errors,[]);const result={width:390,navigationOverlap:false,touchActions:7,errors};fs.writeFileSync(__dirname+'/mobile-layout-results.json',JSON.stringify(result,null,2));console.log(result);await browser.close()})().catch(e=>{console.error(e);process.exit(1)});

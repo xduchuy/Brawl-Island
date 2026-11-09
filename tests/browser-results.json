@@ -6,13 +6,13 @@
       "mode": 1,
       "result": {
         "type": "matchend",
-        "tick": 3033,
+        "tick": 3062,
         "winner": 0,
         "score": [
           2,
           1
         ],
-        "ticks": 3033,
+        "ticks": 3062,
         "seed": 42,
         "round": 3
       }
@@ -21,15 +21,15 @@
       "mode": 2,
       "result": {
         "type": "matchend",
-        "tick": 2973,
+        "tick": 1875,
         "winner": 1,
         "score": [
-          1,
+          0,
           2
         ],
-        "ticks": 2973,
+        "ticks": 1875,
         "seed": 42,
-        "round": 3
+        "round": 2
       }
     }
   ],

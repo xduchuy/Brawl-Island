@@ -1,0 +1,1113 @@
+{
+  "version": 1,
+  "assets": {
+    "common/slash_arc": {
+      "path": "assets/vfx/common/slash_arc.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "slash",
+      "color": "#e9f5e1",
+      "blend": "normal"
+    },
+    "common/hit_spark": {
+      "path": "assets/vfx/common/hit_spark.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spark",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/impact_burst": {
+      "path": "assets/vfx/common/impact_burst.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/shockwave": {
+      "path": "assets/vfx/common/shockwave.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "ring",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/dash_trail": {
+      "path": "assets/vfx/common/dash_trail.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "trail",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/dust_sheet": {
+      "path": "assets/vfx/common/dust_sheet.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "dust",
+      "color": "#e9f5e1",
+      "blend": "normal"
+    },
+    "common/block_impact": {
+      "path": "assets/vfx/common/block_impact.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "shield",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/parry_flash": {
+      "path": "assets/vfx/common/parry_flash.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "parry",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/lightning": {
+      "path": "assets/vfx/common/lightning.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#e9f5e1",
+      "blend": "normal"
+    },
+    "common/smoke_sheet": {
+      "path": "assets/vfx/common/smoke_sheet.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "smoke",
+      "color": "#e9f5e1",
+      "blend": "normal"
+    },
+    "common/magic_particle": {
+      "path": "assets/vfx/common/magic_particle.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "aura",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/ground_cracks": {
+      "path": "assets/vfx/common/ground_cracks.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "cracks",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/explosion_sheet": {
+      "path": "assets/vfx/common/explosion_sheet.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/summon": {
+      "path": "assets/vfx/common/summon.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spirit",
+      "color": "#e9f5e1",
+      "blend": "normal"
+    },
+    "common/aura": {
+      "path": "assets/vfx/common/aura.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "aura",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "common/domain_field": {
+      "path": "assets/vfx/common/domain_field.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#e9f5e1",
+      "blend": "additive"
+    },
+    "yuji/special": {
+      "path": "assets/vfx/yuji/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "echo",
+      "color": "#ff496b",
+      "blend": "normal"
+    },
+    "yuji/skill2": {
+      "path": "assets/vfx/yuji/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#ff496b",
+      "blend": "normal"
+    },
+    "yuji/ultimate": {
+      "path": "assets/vfx/yuji/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#ff496b",
+      "blend": "normal"
+    },
+    "gojo/special": {
+      "path": "assets/vfx/gojo/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "ring",
+      "color": "#ff5264",
+      "blend": "additive"
+    },
+    "gojo/skill2": {
+      "path": "assets/vfx/gojo/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "gravity",
+      "color": "#8cbbff",
+      "blend": "additive"
+    },
+    "gojo/ultimate": {
+      "path": "assets/vfx/gojo/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "beam",
+      "color": "#c28aff",
+      "blend": "normal"
+    },
+    "sukuna/special": {
+      "path": "assets/vfx/sukuna/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "slash",
+      "color": "#ef6377",
+      "blend": "normal"
+    },
+    "sukuna/skill2": {
+      "path": "assets/vfx/sukuna/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "slash",
+      "color": "#ef6377",
+      "blend": "normal"
+    },
+    "sukuna/ultimate": {
+      "path": "assets/vfx/sukuna/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#ef6377",
+      "blend": "additive"
+    },
+    "megumi/special": {
+      "path": "assets/vfx/megumi/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "dog",
+      "color": "#8d9de2",
+      "blend": "normal"
+    },
+    "megumi/skill2": {
+      "path": "assets/vfx/megumi/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#8d9de2",
+      "blend": "additive"
+    },
+    "megumi/ultimate": {
+      "path": "assets/vfx/megumi/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#8d9de2",
+      "blend": "additive"
+    },
+    "nobara/special": {
+      "path": "assets/vfx/nobara/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spark",
+      "color": "#ffb36c",
+      "blend": "additive"
+    },
+    "nobara/skill2": {
+      "path": "assets/vfx/nobara/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "nail",
+      "color": "#ffb36c",
+      "blend": "additive"
+    },
+    "nobara/ultimate": {
+      "path": "assets/vfx/nobara/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#ffb36c",
+      "blend": "additive"
+    },
+    "toji/special": {
+      "path": "assets/vfx/toji/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "blade",
+      "color": "#cce6d2",
+      "blend": "normal"
+    },
+    "toji/skill2": {
+      "path": "assets/vfx/toji/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "line",
+      "color": "#cce6d2",
+      "blend": "additive"
+    },
+    "toji/ultimate": {
+      "path": "assets/vfx/toji/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "blade",
+      "color": "#cce6d2",
+      "blend": "normal"
+    },
+    "kenjaku/special": {
+      "path": "assets/vfx/kenjaku/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spirit",
+      "color": "#c89bef",
+      "blend": "normal"
+    },
+    "kenjaku/skill2": {
+      "path": "assets/vfx/kenjaku/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "gravity",
+      "color": "#c89bef",
+      "blend": "additive"
+    },
+    "kenjaku/ultimate": {
+      "path": "assets/vfx/kenjaku/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#c89bef",
+      "blend": "additive"
+    },
+    "geto/special": {
+      "path": "assets/vfx/geto/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "gravity",
+      "color": "#b29bfc",
+      "blend": "additive"
+    },
+    "geto/skill2": {
+      "path": "assets/vfx/geto/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spirit",
+      "color": "#b29bfc",
+      "blend": "normal"
+    },
+    "geto/ultimate": {
+      "path": "assets/vfx/geto/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "beam",
+      "color": "#b29bfc",
+      "blend": "normal"
+    },
+    "mahito/special": {
+      "path": "assets/vfx/mahito/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "soul",
+      "color": "#90ded3",
+      "blend": "normal"
+    },
+    "mahito/skill2": {
+      "path": "assets/vfx/mahito/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "soul",
+      "color": "#90ded3",
+      "blend": "normal"
+    },
+    "mahito/ultimate": {
+      "path": "assets/vfx/mahito/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#90ded3",
+      "blend": "additive"
+    },
+    "grinsk/special": {
+      "path": "assets/vfx/grinsk/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#b0e978",
+      "blend": "additive"
+    },
+    "grinsk/skill2": {
+      "path": "assets/vfx/grinsk/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "trail",
+      "color": "#b0e978",
+      "blend": "additive"
+    },
+    "grinsk/ultimate": {
+      "path": "assets/vfx/grinsk/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#b0e978",
+      "blend": "additive"
+    },
+    "bonewarden/special": {
+      "path": "assets/vfx/bonewarden/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "shield",
+      "color": "#b3d6e5",
+      "blend": "additive"
+    },
+    "bonewarden/skill2": {
+      "path": "assets/vfx/bonewarden/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "blade",
+      "color": "#b3d6e5",
+      "blend": "normal"
+    },
+    "bonewarden/ultimate": {
+      "path": "assets/vfx/bonewarden/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#b3d6e5",
+      "blend": "additive"
+    }
+  },
+  "skills": {
+    "yuji_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_special": {
+      "asset": "yuji/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_skill2": {
+      "asset": "yuji/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "yuji_ultimate": {
+      "asset": "yuji/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "gojo_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "gojo_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "gojo_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "gojo_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "gojo_special": {
+      "asset": "gojo/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "gojo_skill2": {
+      "asset": "gojo/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "gojo_ultimate": {
+      "asset": "gojo/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "goblin_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_special": {
+      "asset": "grinsk/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_skill2": {
+      "asset": "grinsk/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "goblin_ultimate": {
+      "asset": "grinsk/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "skeleton_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_special": {
+      "asset": "bonewarden/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_skill2": {
+      "asset": "bonewarden/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "skeleton_ultimate": {
+      "asset": "bonewarden/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "nobara_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_special": {
+      "asset": "nobara/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_skill2": {
+      "asset": "nobara/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nobara_ultimate": {
+      "asset": "nobara/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "megumi_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "megumi_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "megumi_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "megumi_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "megumi_special": {
+      "asset": "megumi/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "megumi_skill2": {
+      "asset": "megumi/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "megumi_ultimate": {
+      "asset": "megumi/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "sukuna_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_special": {
+      "asset": "sukuna/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_skill2": {
+      "asset": "sukuna/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sukuna_ultimate": {
+      "asset": "sukuna/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "kenjaku_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "kenjaku_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "kenjaku_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "kenjaku_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "kenjaku_special": {
+      "asset": "kenjaku/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "kenjaku_skill2": {
+      "asset": "kenjaku/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "kenjaku_ultimate": {
+      "asset": "kenjaku/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "geto_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_special": {
+      "asset": "geto/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_skill2": {
+      "asset": "geto/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "geto_ultimate": {
+      "asset": "geto/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "mahito_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_special": {
+      "asset": "mahito/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_skill2": {
+      "asset": "mahito/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "mahito_ultimate": {
+      "asset": "mahito/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "toji_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_special": {
+      "asset": "toji/special",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_skill2": {
+      "asset": "toji/skill2",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "toji_ultimate": {
+      "asset": "toji/ultimate",
+      "startup": "common/aura",
+      "impact": "common/impact_burst",
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    }
+  }
+}
