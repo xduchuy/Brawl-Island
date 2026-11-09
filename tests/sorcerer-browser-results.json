@@ -1,7 +1,7 @@
 {
   "pageErrors": [],
   "externalRequests": [],
-  "allSlotsHaveFourFighters": true,
+  "allSlotsHaveElevenFighters": true,
   "bonesPerFighter": 18,
   "finiteIK": true,
   "energyEffects": true,
@@ -16,15 +16,15 @@
       ],
       "result": {
         "type": "matchend",
-        "tick": 3037,
+        "tick": 2170,
         "winner": 0,
         "score": [
           2,
-          1
+          0
         ],
-        "ticks": 3037,
+        "ticks": 2170,
         "seed": 3493,
-        "round": 3
+        "round": 2
       }
     },
     {
@@ -32,20 +32,20 @@
       "kinds": [
         "yuji",
         "gojo",
-        "skeleton",
-        "goblin"
+        "kenjaku",
+        "geto"
       ],
       "result": {
         "type": "matchend",
-        "tick": 2628,
+        "tick": 1853,
         "winner": 1,
         "score": [
-          1,
+          0,
           2
         ],
-        "ticks": 2628,
+        "ticks": 1853,
         "seed": 3494,
-        "round": 3
+        "round": 2
       }
     }
   ]

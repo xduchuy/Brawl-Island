@@ -3,13 +3,13 @@
     "kind": "nobara",
     "enemy": "goblin",
     "matches": 50,
-    "wins": 27
+    "wins": 29
   },
   {
     "kind": "nobara",
     "enemy": "skeleton",
     "matches": 50,
-    "wins": 27
+    "wins": 31
   },
   {
     "kind": "nobara",
@@ -21,37 +21,37 @@
     "kind": "nobara",
     "enemy": "gojo",
     "matches": 50,
-    "wins": 36
+    "wins": 22
   },
   {
     "kind": "nobara",
     "enemy": "megumi",
     "matches": 50,
-    "wins": 20
+    "wins": 26
   },
   {
     "kind": "megumi",
     "enemy": "goblin",
     "matches": 50,
-    "wins": 28
+    "wins": 32
   },
   {
     "kind": "megumi",
     "enemy": "skeleton",
     "matches": 50,
-    "wins": 22
+    "wins": 26
   },
   {
     "kind": "megumi",
     "enemy": "yuji",
     "matches": 50,
-    "wins": 19
+    "wins": 23
   },
   {
     "kind": "megumi",
     "enemy": "gojo",
     "matches": 50,
-    "wins": 26
+    "wins": 17
   },
   {
     "kind": "megumi",

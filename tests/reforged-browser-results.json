@@ -1,0 +1,33 @@
+{
+  "fighters": 11,
+  "poses": 55,
+  "textures": 49,
+  "modes": [
+    {
+      "mode": "versus",
+      "phase": "over",
+      "advance": false
+    },
+    {
+      "mode": "local",
+      "phase": "over",
+      "advance": false
+    },
+    {
+      "mode": "arcade",
+      "phase": "over",
+      "advance": true
+    },
+    {
+      "mode": "survival",
+      "phase": "over",
+      "advance": false
+    }
+  ],
+  "team": "over",
+  "offline": true,
+  "externalRequests": [],
+  "errors": [],
+  "mobileWidth": 390,
+  "screenshots": 9
+}

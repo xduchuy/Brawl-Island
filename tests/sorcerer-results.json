@@ -21,7 +21,7 @@
       "a": "goblin",
       "b": "yuji",
       "matches": 100,
-      "aWins": 51,
+      "aWins": 32,
       "stuck": 0,
       "timeouts": 0
     },
@@ -31,7 +31,7 @@
       "a": "goblin",
       "b": "gojo",
       "matches": 100,
-      "aWins": 61,
+      "aWins": 36,
       "stuck": 0,
       "timeouts": 0
     },
@@ -41,7 +41,7 @@
       "a": "skeleton",
       "b": "yuji",
       "matches": 100,
-      "aWins": 53,
+      "aWins": 38,
       "stuck": 0,
       "timeouts": 0
     },
@@ -51,7 +51,7 @@
       "a": "skeleton",
       "b": "gojo",
       "matches": 100,
-      "aWins": 56,
+      "aWins": 48,
       "stuck": 0,
       "timeouts": 0
     },
@@ -61,7 +61,7 @@
       "a": "yuji",
       "b": "gojo",
       "matches": 100,
-      "aWins": 56,
+      "aWins": 55,
       "stuck": 0,
       "timeouts": 0
     },
@@ -71,36 +71,6 @@
       "a": "goblin",
       "b": "skeleton",
       "matches": 100,
-      "aWins": 63,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "normal",
-      "a": "goblin",
-      "b": "yuji",
-      "matches": 100,
-      "aWins": 43,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "normal",
-      "a": "goblin",
-      "b": "gojo",
-      "matches": 100,
-      "aWins": 57,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "normal",
-      "a": "skeleton",
-      "b": "yuji",
-      "matches": 100,
       "aWins": 53,
       "stuck": 0,
       "timeouts": 0
@@ -108,57 +78,7 @@
     {
       "mode": 1,
       "difficulty": "normal",
-      "a": "skeleton",
-      "b": "gojo",
-      "matches": 100,
-      "aWins": 50,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "normal",
-      "a": "yuji",
-      "b": "gojo",
-      "matches": 100,
-      "aWins": 53,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "hard",
       "a": "goblin",
-      "b": "skeleton",
-      "matches": 100,
-      "aWins": 56,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "hard",
-      "a": "goblin",
-      "b": "yuji",
-      "matches": 100,
-      "aWins": 46,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "hard",
-      "a": "goblin",
-      "b": "gojo",
-      "matches": 100,
-      "aWins": 58,
-      "stuck": 0,
-      "timeouts": 0
-    },
-    {
-      "mode": 1,
-      "difficulty": "hard",
-      "a": "skeleton",
       "b": "yuji",
       "matches": 100,
       "aWins": 39,
@@ -167,11 +87,91 @@
     },
     {
       "mode": 1,
+      "difficulty": "normal",
+      "a": "goblin",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 49,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "skeleton",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 36,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "skeleton",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 48,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "normal",
+      "a": "yuji",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 55,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "skeleton",
+      "matches": 100,
+      "aWins": 45,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 58,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "goblin",
+      "b": "gojo",
+      "matches": 100,
+      "aWins": 66,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
+      "difficulty": "hard",
+      "a": "skeleton",
+      "b": "yuji",
+      "matches": 100,
+      "aWins": 49,
+      "stuck": 0,
+      "timeouts": 0
+    },
+    {
+      "mode": 1,
       "difficulty": "hard",
       "a": "skeleton",
       "b": "gojo",
       "matches": 100,
-      "aWins": 53,
+      "aWins": 57,
       "stuck": 0,
       "timeouts": 0
     },
@@ -181,7 +181,7 @@
       "a": "yuji",
       "b": "gojo",
       "matches": 100,
-      "aWins": 69,
+      "aWins": 50,
       "stuck": 0,
       "timeouts": 0
     },
@@ -189,7 +189,7 @@
       "mode": 2,
       "composition": "Yuji + Bonewarden vs Gojo + Grinsk",
       "matches": 200,
-      "crimsonWins": 79,
+      "crimsonWins": 70,
       "stuck": 0,
       "timeouts": 0
     }
