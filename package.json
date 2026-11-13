@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "build": "node tools/build.cjs",
-    "assets": "python3 tools/generate-vfx.py",
+    "assets": "python3 tools/generate-skill-icons.py && python3 tools/generate-vfx.py",
     "test": "node tests/mechanics.cjs && node tests/reforged.cjs && node tests/five-fighters.cjs",
     "test:browser": "node tests/reforged-browser.cjs",
-    "serve": "python3 -m http.server 3180"
+    "serve": "python3 -m http.server 3180",
+    "test:moba": "node tests/moba.cjs && python3 tests/skill-assets.py && node tests/moba-browser.cjs"
   },
-  "devDependencies": { "playwright": "1.62.1" }
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
 }

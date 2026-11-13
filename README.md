@@ -142,3 +142,7 @@ Browser results and review screenshots live in `tests/reforged-browser-results.j
 - Cosmetics, persistent unlocks and online systems are not included. Core play and offline operation take priority.
 
 See [implementation audit and plan](docs/implementation-plan.md) for the baseline decisions.
+
+### MOBA skill controls
+
+Mobile signature abilities now support hold/drag/release aiming and drag-to-cancel, with 38 original illustrated icons and a packed offline atlas. Open **Explore abilities** from Fighter Selection or **Fighter abilities** in Training for live 3D previews. See [control semantics, assets and validation](docs/moba-skill-interface.md). Run `npm run assets` to regenerate artwork and `npm run test:moba` for the new asset/input checks.

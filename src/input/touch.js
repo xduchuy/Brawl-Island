@@ -20,16 +20,18 @@ class TouchInput {
    if(this.floating){const pad=this.surface.getBoundingClientRect();this.stick.style.left=(e.clientX-pad.left)+'px';this.stick.style.top=(e.clientY-pad.top)+'px';}
    this.move(e);
   }else if(action==='block')this.state.block=true;
+  else if(this.aim?.begin(action,e,element)){}
   else{if(action==='heavy')this.state.heavy=true;if(this.queue.length<8)this.queue.push(action);this.onPress?.(action);}
  }
  move(e){
-  const p=this.pointers.get(e.pointerId);if(!p||p.action!=='stick'||!this.origin)return;e.preventDefault();
+  const p=this.pointers.get(e.pointerId);if(!p)return;if(p.action!=='stick'){this.aim?.move(e);e.preventDefault();return;}if(!this.origin)return;e.preventDefault();
   const radius=this.stick.clientWidth*.34,dx=(e.clientX-this.origin.x)/radius,dz=(e.clientY-this.origin.y)/radius,length=Math.hypot(dx,dz),power=length<this.deadZone?0:Math.min(1,(length-this.deadZone)/(1-this.deadZone));
   this.state.x=length?dx/length*power:0;this.state.z=length?dz/length*power:0;
   this.stick.querySelector('i').style.transform=`translate(${this.state.x*radius}px,${this.state.z*radius}px)`;
  }
  up(e,cancel=false){
   const p=this.pointers.get(e.pointerId);if(!p)return;e.preventDefault();e.stopPropagation();this.pointers.delete(e.pointerId);this.owners.delete(p.action);
+  const command=this.aim?.end(e,cancel);if(command&&this.queue.length<8){this.queue.push(command);this.onPress?.(p.action);}
   p.element.classList.remove('pressed');p.element.setAttribute('aria-pressed','false');
   if(p.action==='stick'){this.state.x=this.state.z=0;this.origin=null;this.stick.querySelector('i').style.transform='';this.stick.style.left=this.stick.style.top='';}
   if(p.action==='block')this.state.block=false;

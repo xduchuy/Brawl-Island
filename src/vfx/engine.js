@@ -37,7 +37,7 @@ class VFXManager {
  }
  spawn(key,x,y,z,opts={}){
   const asset=this.manifest.assets[key],texture=this.textures[key];if(!asset||!texture)return null;
-  if(opts.decorative&&this.pool.items.filter(i=>i.active&&i.decorative).length>=(this.decorativeLimit??48))return null;const i=this.pool.take(!!opts.decorative);if(!i)return null;Object.assign(i,{active:true,decorative:!!opts.decorative,age:0,duration:opts.duration||.55,base:opts.scale||1,ground:!!opts.ground,owner:opts.owner??null,projectile:opts.projectile??null,velocity:opts.velocity||null,asset,line:opts.line||false,angle:opts.angle||0,width:opts.width||1});
+  if(opts.decorative&&this.pool.items.filter(i=>i.active&&i.decorative).length>=(this.decorativeLimit??48))return null;const i=this.pool.take(!!opts.decorative);if(!i)return null;Object.assign(i,{active:true,decorative:!!opts.decorative,age:0,duration:opts.duration||.55,base:opts.scale||1,ground:!!opts.ground,owner:opts.owner??null,projectile:opts.projectile??null,velocity:opts.velocity||null,asset,line:opts.line||false,angle:opts.angle||0,width:opts.width||1,fade:!!opts.fade});
   i.mesh.visible=true;i.mesh.position.set(x,y,z);i.mesh.scale.setScalar(i.base);i.mesh.material.uniforms.atlas.value=texture;i.mesh.material.uniforms.frame.value=0;i.mesh.material.uniforms.columns.value=asset.columns;i.mesh.material.uniforms.opacity.value=this.intensity;
   i.mesh.material.blending=asset.blend==='normal'?THREE.NormalBlending:THREE.AdditiveBlending;
   i.mesh.material.uniforms.tint.value.set(opts.tint||'#ffffff');return i;
@@ -54,6 +54,7 @@ class VFXManager {
    }
    if(skill.category==='ultimate')GroundEffect.spawn(this,'common/ground_cracks',f.x,f.z,7,1.2);
   }
+  if(e.type==='recovery'&&['special','skill2','ultimate'].includes(skill.category))this.spawn(binding.recovery,f.x,.3,f.z,{scale:binding.scale*.7,duration:Math.min(.5,binding.recoveryDuration),ground:binding.ground,decorative:true,fade:true});
   if(e.type==='projectile'){const p=m.projectiles.find(p=>p.id===e.projectile);if(p)ProjectileVFX.spawn(this,binding.asset,p);}
   if(e.type==='hit'){
    ImpactEffect.spawn(this,binding?.impact||'common/hit_spark',f.x,.9,f.z,e.heavy?2:1.2);
@@ -74,7 +75,7 @@ class VFXManager {
    if(i.velocity){i.mesh.position.x+=i.velocity[0]*dt;i.mesh.position.y+=i.velocity[1]*dt;i.mesh.position.z+=i.velocity[2]*dt;}
    if(i.line)i.mesh.rotation.set(-Math.PI/2,0,i.angle-Math.PI/2);else if(i.ground)i.mesh.rotation.set(-Math.PI/2,0,0);else i.mesh.quaternion.copy(camera.quaternion);
    i.mesh.material.uniforms.frame.value=SpriteSheetAnimator.frame(i.asset,i.age,i.duration);
-   i.mesh.material.uniforms.opacity.value=Math.min(1,this.intensity)*(1-i.age/i.duration*.25);
+   i.mesh.material.uniforms.opacity.value=Math.min(1,this.intensity)*(1-i.age/i.duration*(i.fade?1:.6));
    if(i.line)i.mesh.scale.set(i.base,i.width,1);else i.mesh.scale.setScalar(i.base*(1+i.age/i.duration*.25));
   }
  }

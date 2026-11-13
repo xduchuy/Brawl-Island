@@ -1,0 +1,844 @@
+{
+  "version": 1,
+  "width": 1088,
+  "height": 680,
+  "gutter": 4,
+  "icons": [
+    {
+      "fighter": "yuji",
+      "slot": "special",
+      "skillId": "yuji_special",
+      "label": "BLACK FLASH",
+      "icon": "assets/ui/skills/yuji/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 35,
+      "aimType": "directional",
+      "rect": [
+        4,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "yuji",
+      "slot": "skill2",
+      "skillId": "yuji_skill2",
+      "label": "DIVERGENT FIST",
+      "icon": "assets/ui/skills/yuji/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 24,
+      "aimType": "directional",
+      "rect": [
+        140,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "yuji",
+      "slot": "ultimate",
+      "skillId": "yuji_ultimate",
+      "label": "BLACK FLASH RUSH",
+      "icon": "assets/ui/skills/yuji/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        276,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "gojo",
+      "slot": "special",
+      "skillId": "gojo_special",
+      "label": "RED",
+      "icon": "assets/ui/skills/gojo/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 36,
+      "aimType": "directional",
+      "rect": [
+        412,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "gojo",
+      "slot": "skill2",
+      "skillId": "gojo_skill2",
+      "label": "BLUE",
+      "icon": "assets/ui/skills/gojo/skill2.png",
+      "cooldown": 270,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        548,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "gojo",
+      "slot": "ultimate",
+      "skillId": "gojo_ultimate",
+      "label": "HOLLOW PURPLE",
+      "icon": "assets/ui/skills/gojo/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        684,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "sukuna",
+      "slot": "special",
+      "skillId": "sukuna_special",
+      "label": "DISMANTLE",
+      "icon": "assets/ui/skills/sukuna/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 36,
+      "aimType": "directional",
+      "rect": [
+        820,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "sukuna",
+      "slot": "skill2",
+      "skillId": "sukuna_skill2",
+      "label": "CLEAVE",
+      "icon": "assets/ui/skills/sukuna/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        4,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.0058823529411764705,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "sukuna",
+      "slot": "ultimate",
+      "skillId": "sukuna_ultimate",
+      "label": "MALEVOLENT SHRINE",
+      "icon": "assets/ui/skills/sukuna/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        4,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "megumi",
+      "slot": "special",
+      "skillId": "megumi_special",
+      "label": "DIVINE DOG",
+      "icon": "assets/ui/skills/megumi/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 36,
+      "aimType": "directional",
+      "rect": [
+        140,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "megumi",
+      "slot": "skill2",
+      "skillId": "megumi_skill2",
+      "label": "SHADOW SNARE",
+      "icon": "assets/ui/skills/megumi/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        276,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "megumi",
+      "slot": "ultimate",
+      "skillId": "megumi_ultimate",
+      "label": "CHIMERA SHADOW GARDEN",
+      "icon": "assets/ui/skills/megumi/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        412,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "nobara",
+      "slot": "special",
+      "skillId": "nobara_special",
+      "label": "RESONANCE",
+      "icon": "assets/ui/skills/nobara/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 35,
+      "aimType": "directional",
+      "rect": [
+        548,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "nobara",
+      "slot": "skill2",
+      "skillId": "nobara_skill2",
+      "label": "NAIL VOLLEY",
+      "icon": "assets/ui/skills/nobara/skill2.png",
+      "cooldown": 170,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        684,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "nobara",
+      "slot": "ultimate",
+      "skillId": "nobara_ultimate",
+      "label": "STRAW DOLL RESONANCE",
+      "icon": "assets/ui/skills/nobara/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        820,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "toji",
+      "slot": "special",
+      "skillId": "toji_special",
+      "label": "HEAVENLY RUSH",
+      "icon": "assets/ui/skills/toji/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 34,
+      "aimType": "directional",
+      "rect": [
+        956,
+        140,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.20588235294117646,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "toji",
+      "slot": "skill2",
+      "skillId": "toji_skill2",
+      "label": "CHAIN OF A THOUSAND MILES",
+      "icon": "assets/ui/skills/toji/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        4,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "toji",
+      "slot": "ultimate",
+      "skillId": "toji_ultimate",
+      "label": "HEAVENLY EXECUTION",
+      "icon": "assets/ui/skills/toji/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        140,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "kenjaku",
+      "slot": "special",
+      "skillId": "kenjaku_special",
+      "label": "CURSED SWARM",
+      "icon": "assets/ui/skills/kenjaku/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 36,
+      "aimType": "directional",
+      "rect": [
+        276,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "kenjaku",
+      "slot": "skill2",
+      "skillId": "kenjaku_skill2",
+      "label": "GRAVITY WELL",
+      "icon": "assets/ui/skills/kenjaku/skill2.png",
+      "cooldown": 270,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        412,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "kenjaku",
+      "slot": "ultimate",
+      "skillId": "kenjaku_ultimate",
+      "label": "WOMB PROFUSION",
+      "icon": "assets/ui/skills/kenjaku/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        548,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "geto",
+      "slot": "special",
+      "skillId": "geto_special",
+      "label": "UZUMAKI",
+      "icon": "assets/ui/skills/geto/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 37,
+      "aimType": "directional",
+      "rect": [
+        684,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "geto",
+      "slot": "skill2",
+      "skillId": "geto_skill2",
+      "label": "CURSED SPIRIT",
+      "icon": "assets/ui/skills/geto/skill2.png",
+      "cooldown": 260,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        820,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "geto",
+      "slot": "ultimate",
+      "skillId": "geto_ultimate",
+      "label": "MAXIMUM UZUMAKI",
+      "icon": "assets/ui/skills/geto/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        956,
+        276,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.40588235294117647,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "mahito",
+      "slot": "special",
+      "skillId": "mahito_special",
+      "label": "SOUL TOUCH",
+      "icon": "assets/ui/skills/mahito/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 35,
+      "aimType": "directional",
+      "rect": [
+        4,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "mahito",
+      "slot": "skill2",
+      "skillId": "mahito_skill2",
+      "label": "TRANSFIGURATION",
+      "icon": "assets/ui/skills/mahito/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        140,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "mahito",
+      "slot": "ultimate",
+      "skillId": "mahito_ultimate",
+      "label": "SELF EMBODIMENT",
+      "icon": "assets/ui/skills/mahito/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        276,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "goblin",
+      "slot": "special",
+      "skillId": "goblin_special",
+      "label": "LEAP SMASH",
+      "icon": "assets/ui/skills/goblin/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 34,
+      "aimType": "directional",
+      "rect": [
+        412,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "goblin",
+      "slot": "skill2",
+      "skillId": "goblin_skill2",
+      "label": "MISCHIEF RUSH",
+      "icon": "assets/ui/skills/goblin/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        548,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "goblin",
+      "slot": "ultimate",
+      "skillId": "goblin_ultimate",
+      "label": "EMERALD MAYHEM",
+      "icon": "assets/ui/skills/goblin/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        684,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "skeleton",
+      "slot": "special",
+      "skillId": "skeleton_special",
+      "label": "SHIELD BASH",
+      "icon": "assets/ui/skills/skeleton/skill1.png",
+      "cooldown": 210,
+      "staminaCost": 34,
+      "aimType": "directional",
+      "rect": [
+        820,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "skeleton",
+      "slot": "skill2",
+      "skillId": "skeleton_skill2",
+      "label": "SPECTRAL EDGE",
+      "icon": "assets/ui/skills/skeleton/skill2.png",
+      "cooldown": 260,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        412,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.6058823529411764,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "skeleton",
+      "slot": "ultimate",
+      "skillId": "skeleton_ultimate",
+      "label": "LAST WATCH",
+      "icon": "assets/ui/skills/skeleton/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        4,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "common",
+      "slot": "attack",
+      "skillId": null,
+      "label": "ATTACK",
+      "icon": "assets/ui/skills/common/attack.png",
+      "cooldown": 0,
+      "staminaCost": 0,
+      "aimType": "instant",
+      "rect": [
+        140,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "common",
+      "slot": "heavy",
+      "skillId": null,
+      "label": "HEAVY",
+      "icon": "assets/ui/skills/common/heavy.png",
+      "cooldown": 0,
+      "staminaCost": 0,
+      "aimType": "instant",
+      "rect": [
+        276,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "common",
+      "slot": "guard",
+      "skillId": null,
+      "label": "GUARD",
+      "icon": "assets/ui/skills/common/guard.png",
+      "cooldown": 0,
+      "staminaCost": 0,
+      "aimType": "instant",
+      "rect": [
+        412,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "common",
+      "slot": "dodge",
+      "skillId": null,
+      "label": "DODGE",
+      "icon": "assets/ui/skills/common/dodge.png",
+      "cooldown": 0,
+      "staminaCost": 0,
+      "aimType": "instant",
+      "rect": [
+        548,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    },
+    {
+      "fighter": "common",
+      "slot": "dash",
+      "skillId": null,
+      "label": "DASH",
+      "icon": "assets/ui/skills/common/dash.png",
+      "cooldown": 0,
+      "staminaCost": 0,
+      "aimType": "instant",
+      "rect": [
+        684,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.8058823529411765,
+        0.11764705882352941,
+        0.18823529411764706
+      ]
+    }
+  ]
+}

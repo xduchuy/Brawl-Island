@@ -2,6 +2,8 @@
 from pathlib import Path
 import json, random, math, subprocess
 from PIL import Image, ImageDraw
+import importlib.util
+spec=importlib.util.spec_from_file_location("skill_art",Path(__file__).with_name("generate-skill-icons.py"));art=importlib.util.module_from_spec(spec);spec.loader.exec_module(art)
 ROOT=Path(__file__).resolve().parents[1]
 code="const fs=require('fs'),vm=require('vm'),c={};vm.createContext(c);vm.runInContext(['src/fighters/roster.js','src/fighters/skills.js'].map(p=>fs.readFileSync(p,'utf8')).join('\\n')+';this.skills=SKILLS;this.profiles=FIGHTER_PROFILES;',c);console.log(JSON.stringify({skills:c.skills,profiles:c.profiles}));"
 data=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
@@ -10,6 +12,9 @@ manifest={'version':1,'assets':{},'skills':{}}
 def rgba(c,a=255):return tuple(int(c[i:i+2],16) for i in (1,3,5))+(int(a),)
 def sheet(key,shape,color='#e9f5e1'):
     out=Image.new('RGBA',(N*FRAMES,N))
+    kind,slot=key.split('/')
+    kind={'grinsk':'goblin','bonewarden':'skeleton'}.get(kind,kind)
+    signature=art.motif(kind,['special','skill2','ultimate'].index(slot),72) if kind!='common' else None
     for f in range(FRAMES):
         im=Image.new('RGBA',(N,N));d=ImageDraw.Draw(im);t=(f+1)/FRAMES;alpha=255*(1-t*.78);c=rgba(color,alpha);white=(255,250,234,int(alpha));r=12+t*28
         if shape in ('slash','trail','blade'):
@@ -59,10 +64,22 @@ def sheet(key,shape,color='#e9f5e1'):
             if shape in ('domain','gravity','aura'):
                 for i in range(5):
                     a=i*1.24+f*.2;d.line((48+math.cos(a)*8,48+math.sin(a)*8,48+math.cos(a+.7)*r,48+math.sin(a+.7)*r),fill=c,width=2)
+        if signature:
+            # Each ability carries its own silhouette, animating from compressed startup
+            # through full impact to dissipating fragments (rather than tint-only reuse).
+            scale=.48+math.sin(t*math.pi*.85)*.52
+            icon=signature.resize((int(72*scale),int(72*scale)),Image.Resampling.LANCZOS)
+            icon.putalpha(icon.getchannel('A').point(lambda a:int(a*(1-t*.65))))
+            im.alpha_composite(icon,((N-icon.width)//2,(N-icon.height)//2))
+            if slot=='ultimate':
+                for j in range(5):
+                    a=j*math.tau/5+f*.16;rr=15+f*3
+                    x=48+math.cos(a)*rr;y=48+math.sin(a)*rr
+                    d.line((x,y,x+math.cos(a)*6,y+math.sin(a)*6),fill=white,width=2)
         # Four transparent texels around every tile prevent adjacent-frame bleed.
         im.paste((0,0,0,0),(0,0,96,4));im.paste((0,0,0,0),(0,92,96,96));im.paste((0,0,0,0),(0,0,4,96));im.paste((0,0,0,0),(92,0,96,96))
         out.paste(im,(f*N,0))
-    path=ROOT/'assets/vfx'/f'{key}.png';path.parent.mkdir(parents=True,exist_ok=True);out.save(path,optimize=True)
+    path=ROOT/'assets/vfx'/f'{key}.png';path.parent.mkdir(parents=True,exist_ok=True);out.quantize(colors=256,method=Image.Quantize.FASTOCTREE).convert('RGBA').save(path,optimize=True) if signature else out.save(path,optimize=True)
     manifest['assets'][key]={'path':str(path.relative_to(ROOT)),'frames':FRAMES,'columns':FRAMES,'fps':18,'tileSize':N,'shape':shape,'color':color,'blend':'normal' if shape in ('dust','smoke','dog','spirit','beam','lightning','echo','slash','blade','soul') else 'additive'}
 common={'slash_arc':'slash','hit_spark':'spark','impact_burst':'explosion','shockwave':'ring','dash_trail':'trail','dust_sheet':'dust','block_impact':'shield','parry_flash':'parry','lightning':'lightning','smoke_sheet':'smoke','magic_particle':'aura','ground_cracks':'cracks','explosion_sheet':'explosion','summon':'spirit','aura':'aura','domain_field':'domain'}
 for name,shape in common.items():sheet('common/'+name,shape)
@@ -73,6 +90,6 @@ for kind,p in data['profiles'].items():
 for id,s in data['skills'].items():
     kind=s['fighter'];slot=s['category'];folder={'goblin':'grinsk','skeleton':'bonewarden'}.get(kind,kind)
     key=folder+'/'+slot if slot in ['special','skill2','ultimate'] else 'common/slash_arc'
-    manifest['skills'][id]={'asset':key,'startup':'common/aura','impact':'common/impact_burst' if slot=='ultimate' else 'common/hit_spark','scale':4 if slot=='ultimate' else 2,'ground':s['hitbox']['type'] in ['radial','field'],'duration':.6 if slot!='ultimate' else 1.3}
+    manifest['skills'][id]={'asset':key,'startup':key if slot in ['special','skill2','ultimate'] else 'common/aura','impact':key if slot in ['special','skill2','ultimate'] else 'common/hit_spark','recovery':key,'recoveryDuration':s['recoveryFrames']/60,'scale':4 if slot=='ultimate' else 2,'ground':s['hitbox']['type'] in ['radial','field'],'duration':.6 if slot!='ultimate' else 1.3}
 (ROOT/'assets/vfx/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print('Generated',len(manifest['assets']),'RGBA flipbooks;',len(manifest['skills']),'skill bindings')

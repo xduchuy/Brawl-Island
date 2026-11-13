@@ -18,13 +18,14 @@ class BrawlMatch {
  }
  start(){this.score=[0,0];this.round=1;this.resetFighters();this.phase='intro';this.phaseTick=0;this.emit('round',{round:1});}
  target(f){let best=null,d=Infinity;for(const t of this.fighters)if(t.team!==f.team&&!t.dead){const dd=Math.hypot(t.x-f.x,t.z-f.z);if(dd<d){d=dd;best=t;}}return best;}
- attack(f,action,charge=0){
+ attack(f,action,charge=0,aim=null){
   if(f.dead||!['light','heavy','special','skill2','ultimate'].includes(action))return false;
   const chaining=f.state==='attack'&&f.moveName==='light'&&f.frame>=f.move.chain&&f.combo<2;
   const cancel=f.state==='attack'&&f.moveName==='light'&&f.confirmed&&f.frame>f.move.end&&f.frame<f.move.length&&['special','skill2'].includes(action);
   if(!['idle','walk','charge'].includes(f.state)&&!(action==='light'&&chaining)&&!cancel)return false;
   const combo=action==='light'&&chaining?f.combo+1:0,m=skillFor(f,action,combo);
   if(!m||f.stamina<m.cost||(f.cooldowns[action]||0)>0||f.ultimate<(m.ultimateCost||0))return false;
+  if(aim&&Number.isFinite(aim.x)&&Number.isFinite(aim.z)&&Math.hypot(aim.x,aim.z)>.001&&m.hitbox.type!=='radial')f.angle=Math.atan2(aim.x,aim.z);
   f.stamina-=m.cost;f.ultimate-=m.ultimateCost||0;f.cooldowns[action]=m.cooldown;f.regen=35;f.state='attack';f.moveName=action;f.combo=combo;
   f.move={...m,damage:Math.round(m.damage*(1+charge*.55)*(f.counter>0?1.15:1)),push:m.push*(1+charge*.35)};
   f.counter=0;f.charge=0;f.frame=0;f.field=null;f.hitIds.clear();f.buffer=null;f.confirmed=false;f.spawned=false;
@@ -78,7 +79,7 @@ class BrawlMatch {
    const t=this.target(f);f.target=t?.id;
    if(t&&!['dodge','dash','down','attack','charge'].includes(f.state))f.angle+=angleDelta(f.angle,Math.atan2(t.x-f.x,t.z-f.z))*.22;
    const input=f.controller==='ai'?this.ai(f):(inputs[f.controller]||{});
-   if(input.action){f.buffer={action:input.action,expires:this.tick+12};if(f.controller==='ai')f.aiInput.action=null;}
+   if(input.action){f.buffer={action:input.action,aim:input.aim?{x:input.aim.x,z:input.aim.z}:null,expires:this.tick+12};if(f.controller==='ai')f.aiInput.action=null;}
    if(f.state==='charge'){
     const length=Math.max(1,Math.hypot(input.x||0,input.z||0));f.x+=(input.x||0)/length*f.stats.speed/60*.22;f.z+=(input.z||0)/length*f.stats.speed/60*.22;
     f.charge=Math.min(45,f.charge+1);
@@ -87,6 +88,7 @@ class BrawlMatch {
     const m=f.move;
     if(f.frame>=m.start-5&&f.frame<=m.end){f.x+=Math.sin(f.angle)*m.lunge/(m.end-m.start+6);f.z+=Math.cos(f.angle)*m.lunge/(m.end-m.start+6);}
     if(f.frame===m.start){this.emit('active',{id:f.id,skill:m.id,x:f.field?.x??f.x,z:f.field?.z??f.z});}
+    if(f.frame===m.end+1)this.emit('recovery',{id:f.id,skill:m.id});
     if(f.frame>=m.start&&f.frame<=m.end){
      if(m.hitbox.type==='projectile'){
       if(!f.spawned){f.spawned=true;const p={id:++this.projectileId,owner:f.id,x:f.x,z:f.z,angle:f.angle,age:0,life:Math.ceil(m.range/m.speed*60),move:m,hitIds:new Set()};this.projectiles.push(p);this.emit('projectile',{id:f.id,projectile:p.id,skill:m.id});}
@@ -100,7 +102,7 @@ class BrawlMatch {
     }
     if(f.buffer?.expires>=this.tick&&f.moveName==='light'){
      if(f.buffer.action==='dodge'&&f.confirmed&&f.frame>m.end&&f.stamina>=30){this.evade(f,'dodge',input,30);}
-     else this.attack(f,f.buffer.action);
+     else this.attack(f,f.buffer.action,0,f.buffer.aim);
     }
     if(f.state==='attack'&&f.frame>=f.move.length){f.state='idle';f.frame=0;}
    }else if(f.state==='dodge'||f.state==='dash'){
@@ -122,7 +124,7 @@ class BrawlMatch {
      if(['dodge','dash'].includes(action)&&f.stamina>=(action==='dash'?16:22))this.evade(f,action,input,action==='dash'?16:22);
      else if(action==='taunt'){f.state='taunt';f.frame=0;f.buffer=null;}
      else if(!blocking&&action==='heavy'&&input.heavyHeld&&f.stamina>=skillFor(f,'heavy').cost){f.state='charge';f.frame=0;f.charge=0;f.buffer=null;this.emit('charge',{id:f.id});}
-     else if(!blocking)this.attack(f,action);
+     else if(!blocking)this.attack(f,action,0,f.buffer.aim);
     }
    }
    f.x+=f.vx/60;f.z+=f.vz/60;f.vx*=.87;f.vz*=.87;
