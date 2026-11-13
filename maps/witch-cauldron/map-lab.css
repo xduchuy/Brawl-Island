@@ -1,0 +1,17 @@
+/* Isolated map review overlay. Never overlays the production combat HUD. */
+#wc-tool-toggle{position:fixed;left:14px;bottom:14px;z-index:50;padding:10px 15px;border:1px solid rgba(135,252,175,.42);border-radius:11px;background:rgba(9,23,29,.88);color:#dbffda;font:600 12px system-ui;letter-spacing:.07em;cursor:pointer;box-shadow:0 8px 30px #03081699;backdrop-filter:blur(14px)}
+#wc-tool-toggle:hover{background:#224338}
+#wc-map-panel{position:fixed;z-index:55;left:14px;top:50%;transform:translateY(-50%);width:min(326px,calc(100vw - 28px));max-height:calc(100dvh - 30px);overflow:auto;padding:14px;background:rgba(8,19,29,.95);color:#ecf5ed;border:1px solid #9ad4b057;border-radius:15px;box-shadow:0 20px 70px #030914d9;backdrop-filter:blur(16px);font:12px/1.5 system-ui}
+#wc-map-panel[hidden]{display:none!important}
+#wc-map-panel header{display:flex;gap:12px;align-items:start;justify-content:space-between;margin-bottom:10px}
+#wc-map-panel h2{font-size:15px;line-height:1.2;margin:0;font-weight:700}
+#wc-map-panel small{display:block;color:#a1c9b0;margin-top:4px;font-size:10px}
+#wc-map-panel button{border:1px solid #96c9ac55;background:#1a4037;color:#dbf9e2;border-radius:8px;padding:9px 11px;min-height:36px;cursor:pointer;font:600 11px system-ui}
+#wc-map-panel button:hover{background:#29644c}
+#wc-map-panel .wc-close{min-width:36px;font-size:17px;padding:5px}
+#wc-map-canvas{display:block;width:100%;height:auto;aspect-ratio:1;background:#10252a;border:1px solid #35574b;border-radius:9px;image-rendering:pixelated}
+#wc-map-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+#wc-map-status{margin-top:10px;color:#bad5c6;font-size:11px;min-height:30px}
+#wc-map-legend{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 0;color:#9bbbaf;font-size:10px}
+#wc-map-legend span:before{content:'';display:inline-block;width:8px;height:8px;margin-right:5px;vertical-align:middle;border-radius:2px;background:var(--swatch)}
+@media(max-width:800px){#wc-tool-toggle{bottom:6px;left:6px;padding:7px 10px;font-size:10px}#wc-map-panel{left:6px;top:6px;transform:none;width:min(300px,92vw);max-height:calc(100dvh - 12px);padding:9px}#wc-map-canvas{width:min(100%,240px);margin:auto}}
