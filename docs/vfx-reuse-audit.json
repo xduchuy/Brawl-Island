@@ -1,0 +1,56 @@
+{
+  "baseline": "0ae8835",
+  "identicalGroups": [
+    [
+      "assets/vfx/kenjaku/ultimate.png",
+      "assets/vfx/kenjaku/skill2.png"
+    ],
+    [
+      "assets/vfx/toji/ultimate.png",
+      "assets/vfx/toji/special.png"
+    ],
+    [
+      "assets/vfx/common/parry_flash.png",
+      "assets/vfx/common/hit_spark.png"
+    ],
+    [
+      "assets/vfx/common/explosion_sheet.png",
+      "assets/vfx/common/impact_burst.png",
+      "assets/vfx/common/dust_sheet.png",
+      "assets/vfx/common/smoke_sheet.png"
+    ],
+    [
+      "assets/vfx/common/magic_particle.png",
+      "assets/vfx/common/domain_field.png",
+      "assets/vfx/common/aura.png"
+    ],
+    [
+      "assets/vfx/common/shockwave.png",
+      "assets/vfx/common/block_impact.png"
+    ],
+    [
+      "assets/vfx/common/dash_trail.png",
+      "assets/vfx/common/slash_arc.png"
+    ],
+    [
+      "assets/vfx/megumi/ultimate.png",
+      "assets/vfx/megumi/skill2.png"
+    ],
+    [
+      "assets/vfx/grinsk/ultimate.png",
+      "assets/vfx/grinsk/special.png"
+    ],
+    [
+      "assets/vfx/sukuna/skill2.png",
+      "assets/vfx/sukuna/special.png"
+    ],
+    [
+      "assets/vfx/yuji/ultimate.png",
+      "assets/vfx/yuji/skill2.png"
+    ],
+    [
+      "assets/vfx/mahito/skill2.png",
+      "assets/vfx/mahito/special.png"
+    ]
+  ]
+}

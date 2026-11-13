@@ -1,0 +1,11 @@
+{
+  "icons": 38,
+  "signatureActions": 33,
+  "dragAim": true,
+  "multiTouch": true,
+  "cancel": true,
+  "cameraSpace": true,
+  "isolatedPreview": true,
+  "errors": [],
+  "requests": []
+}

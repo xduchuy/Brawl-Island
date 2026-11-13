@@ -35,14 +35,14 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots/mob
  await p.evaluate(()=>document.getElementById('stage').removeAttribute('style'));await p.evaluate(()=>__ib.mobile.updateViewport());
  const cdp=await context.newCDPSession(p);
  const point=(id,x,y)=>({id,x,y,radiusX:2,radiusY:2,force:1});
- let activePoints=[];const touches=async(type,points)=>{if(!activePoints.length&&['touchEnd','touchCancel'].includes(type))return;const touchPoints=type==='touchEnd'?activePoints.filter(p=>!points.some(next=>next.id===p.id)):points;await cdp.send('Input.dispatchTouchEvent',{type,touchPoints});activePoints=points;};
+ let activePoints=[];const touches=async(type,points)=>{if(!activePoints.length&&['touchEnd','touchCancel'].includes(type))return;const touchPoints=type==='touchEnd'?activePoints.filter(p=>!points.some(next=>next.id===p.id)):points;if(type==='touchEnd'&&!touchPoints.length)return;await cdp.send('Input.dispatchTouchEvent',{type,touchPoints});activePoints=points;};
  const center=async selector=>{const r=await p.locator(selector).boundingBox();return{x:r.x+r.width/2,y:r.y+r.height/2};};
  async function reset(){await touches('touchEnd',[]);await p.evaluate(()=>{__ib.touchInput.reset();const[a,b]=__ib.match.fighters;Object.assign(a,{x:-1,z:0,state:'idle',frame:0,stamina:100,ultimate:100,cooldowns:{},vx:0,vz:0});Object.assign(b,{x:6,z:0,controller:'p2',state:'idle'});__ib.updateHUD();});}
  const joy=await center('#stick');
  for(const action of ['light','special','skill2','dodge','dash']){
   await reset();const b=await center('[data-action="'+action+'"]');const start=await p.evaluate(()=>__ib.match.fighters[0].x);
   await touches('touchStart',[point(1,joy.x,joy.y)]);await touches('touchMove',[point(1,joy.x+24,joy.y)]);await touches('touchStart',[point(1,joy.x+24,joy.y),point(2,b.x,b.y)]);
-  await p.evaluate(()=>__ib.step(1));const state=await p.evaluate(()=>({move:__ib.match.fighters[0].moveName,state:__ib.match.fighters[0].state,owners:__ib.touchInput.pointers.size}));assert.equal(state.owners,2);assert(['dash','dodge'].includes(action)?state.state===action:state.move===action,action);
+  assert.equal(await p.evaluate(()=>__ib.touchInput.pointers.size),2);if(['special','skill2'].includes(action))await touches('touchEnd',[point(1,joy.x+24,joy.y)]);await p.evaluate(()=>__ib.step(1));const state=await p.evaluate(()=>({move:__ib.match.fighters[0].moveName,state:__ib.match.fighters[0].state}));assert(['dash','dodge'].includes(action)?state.state===action:state.move===action,action);
   await touches('touchEnd',[point(1,joy.x+24,joy.y)]);await p.evaluate(()=>__ib.step(4));assert(await p.evaluate(()=>__ib.touchInput.state.x>0));assert(await p.evaluate(()=>__ib.match.fighters[0].x)>start);await touches('touchEnd',[]);
  }
  await reset();const angle=await p.evaluate(()=>__ib.cameraState.angle);await touches('touchStart',[point(1,350,155),point(2,400,155)]);await touches('touchMove',[point(1,330,140),point(2,430,170)]);await touches('touchEnd',[]);assert.equal(await p.evaluate(()=>__ib.cameraState.angle),angle);
