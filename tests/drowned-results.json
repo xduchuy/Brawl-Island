@@ -1,0 +1,610 @@
+{
+  "metadata": {
+    "name": "THE DROWNED SANCTUARY",
+    "seed": 13374209,
+    "bounds": {
+      "architecture": {
+        "min": {
+          "x": -30.199708938598633,
+          "y": -1.1309115886688232,
+          "z": -25.650876998901367
+        },
+        "max": {
+          "x": 36.49129867553711,
+          "y": 41.585655212402344,
+          "z": 62.33320999145508
+        }
+      },
+      "timbers-bells": {
+        "min": {
+          "x": -22.90478515625,
+          "y": 14.843879699707031,
+          "z": -22.758808135986328
+        },
+        "max": {
+          "x": 34.41374969482422,
+          "y": 30.381399154663086,
+          "z": 15.613748550415039
+        }
+      },
+      "terrain": {
+        "min": {
+          "x": -37.20698165893555,
+          "y": -9.902780532836914,
+          "z": -30.8013973236084
+        },
+        "max": {
+          "x": 37.203121185302734,
+          "y": -0.09829342365264893,
+          "z": 61.839595794677734
+        }
+      },
+      "roots": {
+        "min": {
+          "x": -26.957544326782227,
+          "y": -0.7370253205299377,
+          "z": -18.020153045654297
+        },
+        "max": {
+          "x": 25.354598999023438,
+          "y": 26.895511627197266,
+          "z": 29.936050415039062
+        }
+      },
+      "pedestal": {
+        "min": {
+          "x": -4.28657865524292,
+          "y": -0.7953139543533325,
+          "z": -4.287787914276123
+        },
+        "max": {
+          "x": 4.285161972045898,
+          "y": 4.645774841308594,
+          "z": 4.282845497131348
+        }
+      },
+      "saint": {
+        "min": {
+          "x": -2.619149923324585,
+          "y": 4.565849781036377,
+          "z": -2.3841500282287598
+        },
+        "max": {
+          "x": 2.6641499996185303,
+          "y": 22.554149627685547,
+          "z": 2.239150047302246
+        }
+      },
+      "submerged-paving": {
+        "min": {
+          "x": -15.755000114440918,
+          "y": -0.9100000262260437,
+          "z": -14.255000114440918
+        },
+        "max": {
+          "x": 15.755000114440918,
+          "y": -0.7300000190734863,
+          "z": 17.2549991607666
+        }
+      }
+    },
+    "previewOnly": true,
+    "landmarks": [
+      {
+        "type": "bell-tower",
+        "center": [
+          -19.2,
+          -0.4,
+          -17.2
+        ],
+        "height": 39,
+        "width": 9,
+        "rotation": 0.08
+      },
+      {
+        "type": "bell-tower",
+        "center": [
+          20.2,
+          -0.4,
+          -19.3
+        ],
+        "height": 34.8,
+        "width": 8.4,
+        "rotation": -0.11
+      },
+      {
+        "type": "bell-tower",
+        "center": [
+          31.4,
+          -0.4,
+          12.6
+        ],
+        "height": 27.8,
+        "width": 7.6,
+        "rotation": 0.1
+      }
+    ],
+    "stairs": [
+      {
+        "center": [
+          -14.8,
+          14.5
+        ],
+        "width": 5.4,
+        "stepCount": 9,
+        "rotY": -1.1309733552923256,
+        "startY": -0.95,
+        "risePerStep": 0.25,
+        "runPerStep": 0.56,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      },
+      {
+        "center": [
+          -15.5,
+          1.2
+        ],
+        "width": 5.8,
+        "stepCount": 10,
+        "rotY": -1.5079644737231006,
+        "startY": -0.95,
+        "risePerStep": 0.25,
+        "runPerStep": 0.56,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      },
+      {
+        "center": [
+          -6.8,
+          -14.2
+        ],
+        "width": 5.6,
+        "stepCount": 9,
+        "rotY": -2.670353755551324,
+        "startY": -0.95,
+        "risePerStep": 0.24,
+        "runPerStep": 0.56,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      },
+      {
+        "center": [
+          16.5,
+          -1.5
+        ],
+        "width": 6.2,
+        "stepCount": 10,
+        "rotY": 1.6336281798666925,
+        "startY": -0.95,
+        "risePerStep": 0.25,
+        "runPerStep": 0.56,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      },
+      {
+        "center": [
+          12.8,
+          15.8
+        ],
+        "width": 6,
+        "stepCount": 10,
+        "rotY": 1.0681415022205298,
+        "startY": -0.95,
+        "risePerStep": 0.26,
+        "runPerStep": 0.58,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      },
+      {
+        "center": [
+          6.5,
+          42
+        ],
+        "width": 4.6,
+        "stepCount": 7,
+        "rotY": 0.6911503837897545,
+        "startY": -0.85,
+        "risePerStep": 0.22,
+        "runPerStep": 0.52,
+        "status": "source stair geometry; access only where connected ground samples exist"
+      }
+    ],
+    "platforms": [
+      {
+        "name": "left-balcony",
+        "bounds": [
+          -27.2,
+          8.125,
+          16.5,
+          -19.2,
+          8.775,
+          28.5
+        ],
+        "accessible": false
+      }
+    ],
+    "cameraSafeAreas": [
+      "hero",
+      "wide",
+      "top",
+      "gameplay"
+    ],
+    "waterLevel": -0.005,
+    "balconyAccess": "inspection-only; no continuous stairs to balcony in source"
+  },
+  "spawns": [
+    {
+      "x": -3,
+      "y": -0.7300000190734863,
+      "z": -8.25,
+      "side": "north",
+      "primary": true
+    },
+    {
+      "x": 0,
+      "y": -0.7092575589628811,
+      "z": -7.5,
+      "side": "north",
+      "primary": false
+    },
+    {
+      "x": 2.25,
+      "y": -0.7300000190734863,
+      "z": 15,
+      "side": "south",
+      "primary": true
+    },
+    {
+      "x": -0.75,
+      "y": -0.7300000190734863,
+      "z": 15,
+      "side": "south",
+      "primary": false
+    }
+  ],
+  "nav": {
+    "resolution": 0.75,
+    "components": [
+      591,
+      322,
+      306,
+      280,
+      278,
+      273,
+      231,
+      203,
+      98,
+      88,
+      63,
+      57,
+      55,
+      52,
+      48,
+      48,
+      42,
+      42,
+      40,
+      33,
+      32,
+      30,
+      23,
+      22,
+      22,
+      22,
+      22,
+      20,
+      20,
+      19,
+      18,
+      18,
+      18,
+      17,
+      17,
+      16,
+      16,
+      16,
+      15,
+      14,
+      14,
+      14,
+      13,
+      13,
+      13,
+      13,
+      12,
+      10,
+      10,
+      10,
+      10,
+      10,
+      9,
+      9,
+      9,
+      9,
+      9,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "unreachableSamples": 3759,
+    "agent": {
+      "radius": 0.3,
+      "height": 1.8,
+      "maxStep": 0.4,
+      "clearanceRadius": 0.42
+    },
+    "status": "conservative capsule-clearance graph; future controller integration required"
+  },
+  "metrics": {
+    "meanFrameMs": 1139.3500000000001,
+    "drawCalls": 40,
+    "triangles": 176398,
+    "memory": {
+      "geometries": 47,
+      "textures": 19
+    },
+    "loadMs": 2946.800000000745,
+    "frameMs": 33.400000000001455
+  },
+  "performance": {
+    "meanFrameMs": 1121.0666666666666,
+    "fps": 0.8920076117982874,
+    "frames": 15,
+    "drawCalls": 40,
+    "triangles": 176398,
+    "memory": {
+      "geometries": 47,
+      "textures": 19
+    }
+  },
+  "environment": "Chromium / SwiftShader / 1000x700 / medium",
+  "errors": []
+}

@@ -1,0 +1,246 @@
+{
+  "cycles": [
+    {
+      "spawns": [
+        {
+          "x": -3,
+          "y": -0.7300000190734863,
+          "z": -8.25,
+          "side": "north",
+          "primary": true,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": 0,
+          "y": -0.7092575589628811,
+          "z": -7.5,
+          "side": "north",
+          "primary": false,
+          "ground": -0.7092575589628811,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": 2.25,
+          "y": -0.7300000190734863,
+          "z": 15,
+          "side": "south",
+          "primary": true,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": -0.75,
+          "y": -0.7300000190734863,
+          "z": 15,
+          "side": "south",
+          "primary": false,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        }
+      ],
+      "awakened": true,
+      "clocks": [
+        11.99,
+        12.01,
+        125
+      ],
+      "reducedClock": 0,
+      "paused": true,
+      "navCells": 591,
+      "componentCount": 313,
+      "low": {
+        "meanFrameMs": 326.5962962962687,
+        "drawCalls": 37,
+        "triangles": 154462,
+        "memory": {
+          "geometries": 47,
+          "textures": 18
+        },
+        "loadMs": 2293.599999997765,
+        "frameMs": 100
+      },
+      "high": {
+        "meanFrameMs": 326.5962962962687,
+        "drawCalls": 46,
+        "triangles": 222660,
+        "memory": {
+          "geometries": 47,
+          "textures": 18
+        },
+        "loadMs": 2293.599999997765,
+        "frameMs": 0
+      },
+      "landmarks": [
+        {
+          "type": "bell-tower",
+          "center": [
+            -19.2,
+            -0.4,
+            -17.2
+          ],
+          "height": 39,
+          "width": 9,
+          "rotation": 0.08
+        },
+        {
+          "type": "bell-tower",
+          "center": [
+            20.2,
+            -0.4,
+            -19.3
+          ],
+          "height": 34.8,
+          "width": 8.4,
+          "rotation": -0.11
+        },
+        {
+          "type": "bell-tower",
+          "center": [
+            31.4,
+            -0.4,
+            12.6
+          ],
+          "height": 27.8,
+          "width": 7.6,
+          "rotation": 0.1
+        }
+      ],
+      "performance": {
+        "meanFrameMs": 233.31999999999996,
+        "fps": 4.285959197668439,
+        "frames": 15
+      },
+      "memoryAfter": {
+        "geometries": 21,
+        "textures": 20
+      }
+    },
+    {
+      "spawns": [
+        {
+          "x": -3,
+          "y": -0.7300000190734863,
+          "z": -8.25,
+          "side": "north",
+          "primary": true,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": 0,
+          "y": -0.7092575589628811,
+          "z": -7.5,
+          "side": "north",
+          "primary": false,
+          "ground": -0.7092575589628811,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": 2.25,
+          "y": -0.7300000190734863,
+          "z": 15,
+          "side": "south",
+          "primary": true,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        },
+        {
+          "x": -0.75,
+          "y": -0.7300000190734863,
+          "z": 15,
+          "side": "south",
+          "primary": false,
+          "ground": -0.7300000190734863,
+          "clear": true,
+          "connected": true
+        }
+      ],
+      "awakened": true,
+      "clocks": [
+        11.99,
+        12.01,
+        125
+      ],
+      "reducedClock": 0,
+      "paused": true,
+      "navCells": 591,
+      "componentCount": 313,
+      "low": {
+        "meanFrameMs": 313.0304347826087,
+        "drawCalls": 39,
+        "triangles": 154486,
+        "memory": {
+          "geometries": 47,
+          "textures": 18
+        },
+        "loadMs": 1988.800000000745,
+        "frameMs": 100
+      },
+      "high": {
+        "meanFrameMs": 313.0304347826087,
+        "drawCalls": 48,
+        "triangles": 222684,
+        "memory": {
+          "geometries": 47,
+          "textures": 18
+        },
+        "loadMs": 1988.800000000745,
+        "frameMs": 0
+      },
+      "landmarks": [
+        {
+          "type": "bell-tower",
+          "center": [
+            -19.2,
+            -0.4,
+            -17.2
+          ],
+          "height": 39,
+          "width": 9,
+          "rotation": 0.08
+        },
+        {
+          "type": "bell-tower",
+          "center": [
+            20.2,
+            -0.4,
+            -19.3
+          ],
+          "height": 34.8,
+          "width": 8.4,
+          "rotation": -0.11
+        },
+        {
+          "type": "bell-tower",
+          "center": [
+            31.4,
+            -0.4,
+            12.6
+          ],
+          "height": 27.8,
+          "width": 7.6,
+          "rotation": 0.1
+        }
+      ],
+      "performance": {
+        "meanFrameMs": 226.65333333333328,
+        "fps": 4.412024236719808,
+        "frames": 15
+      },
+      "memoryAfter": {
+        "geometries": 21,
+        "textures": 20
+      }
+    }
+  ],
+  "errors": [],
+  "environment": "Chromium / SwiftShader / 667x375 touch emulation / low"
+}

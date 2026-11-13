@@ -32,6 +32,12 @@ Mobile Controls stores joystick/button sizing, spacing, opacity, handedness, flo
 
 See [mobile implementation and device-testing limits](docs/mobile-landscape.md). Run `node tests/mobile-layout.cjs` for all five landscape sizes, both portrait sizes, simultaneous touch actions, rotation, settings and rematch resource checks. These are desktop-emulated tests; physical phone rotation and hardware FPS still require real-device review.
 
+## Drowned Sanctuary environment preview
+
+Open **Arena Preview · Drowned Sanctuary** in the toolbar to explore the flooded Gothic ruins without starting a fight. Camera views, three lighting moods, quality settings, relic inspection and photo capture use the existing renderer. This environment is a preview with navigation preparation for later fighter integration.
+
+See [source comparison, screenshots, API and validation limits](docs/drowned-sanctuary.md). Run `npm run test:sanctuary` for its navigation and browser checks.
+
 ## Combat rules
 
 - Simulation remains deterministic at **60 Hz**, independent of textures, particles, camera, audio and rendering frame rate.
