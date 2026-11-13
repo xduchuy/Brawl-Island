@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Witch Cauldron Voxel Island</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #060a14;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+    }
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 640px;
+      max-width: 100vw;
+      max-height: 100vh;
+      aspect-ratio: 1080 / 640;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    canvas:active {
+      cursor: grabbing;
+    }
+    /* DIORAMA UI OVERLAY */
+    #diorama-ui {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: radial-gradient(circle at center, transparent 55%, rgba(4, 8, 18, 0.55) 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    #diorama-ui.active {
+      pointer-events: auto;
+    }
+    .ui-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transform: translateY(-12px);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #diorama-ui.active .ui-top {
+      transform: translateY(0);
+    }
+    .title-card {
+      background: rgba(10, 17, 34, 0.76);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(78, 255, 130, 0.28);
+      border-radius: 14px;
+      padding: 14px 20px;
+      color: #f0f6ff;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #38ff6a;
+      box-shadow: 0 0 10px #38ff6a;
+    }
+    .badge-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6eff9b;
+    }
+    .title-card h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .title-card p {
+      font-size: 12px;
+      color: #9cb1d4;
+    }
+    .camera-pills {
+      display: flex;
+      gap: 8px;
+      background: rgba(10, 17, 34, 0.76);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(155, 188, 255, 0.2);
+      padding: 6px;
+      border-radius: 12px;
+    }
+    .cam-btn {
+      background: transparent;
+      border: none;
+      color: #b4c6e4;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cam-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .cam-btn.active {
+      background: rgba(56, 255, 106, 0.18);
+      color: #5eff8a;
+      border: 1px solid rgba(56, 255, 106, 0.4);
+    }
+    .ui-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: rgba(10, 17, 34, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(155, 188, 255, 0.22);
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+      transform: translateY(14px);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #diorama-ui.active .ui-bottom {
+      transform: translateY(0);
+    }
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #24d955, #129e3a);
+      color: #041509;
+      border: none;
+      border-radius: 10px;
+      padding: 9px 15px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(40, 255, 88, 0.35);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      white-space: nowrap;
+    }
+    .action-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+    .secondary-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #d6e4ff;
+      border: 1px solid rgba(155, 188, 255, 0.25);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .secondary-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .secondary-btn.active {
+      background: rgba(56, 255, 106, 0.18);
+      color: #5eff8a;
+      border-color: rgba(56, 255, 106, 0.45);
+    }
+    .hint-pill {
+      font-size: 11.5px;
+      color: #b9cbe6;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 14px;
+      border-radius: 9px;
+      white-space: nowrap;
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+<div id="stage">
+  <div id="diorama-ui">
+    <div class="ui-top">
+      <div class="title-card">
+        <div class="badge-row">
+          <span class="status-dot"></span>
+          <span class="badge-text">Interactive 3D Voxel Diorama • Live Orbits</span>
+        </div>
+        <h1>Witch's Boiling Cauldron Island</h1>
+        <p>90×90 Voxel Floating Island • Ghosts, Bats &amp; Potion in Continuous Motion</p>
+      </div>
+      <div class="camera-pills">
+        <button class="cam-btn active" data-preset="overview">Full Diorama</button>
+        <button class="cam-btn" data-preset="cauldron">Cauldron &amp; Cat</button>
+        <button class="cam-btn" data-preset="hut">Crooked Witch Hut</button>
+        <button class="cam-btn" data-preset="moon">Orbiting Ghosts &amp; Bats</button>
+      </div>
+    </div>
+
+    <div class="ui-bottom">
+      <div class="action-group">
+        <button id="erupt-btn" class="action-btn">🧪 Trigger Potion Geyser</button>
+        <button id="turntable-btn" class="secondary-btn active">🔄 Auto-Rotate: ON</button>
+        <button id="replay-btn" class="secondary-btn">↺ Replay Awakening</button>
+      </div>
+      <div class="hint-pill">🖱️ Drag 360° to Orbit • Scroll to Zoom • Click Views Above</div>
+    </div>
+  </div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+
+// ============================================================================
+// CONSTANTS & DETERMINISTIC SEEDED PRNG
+// ============================================================================
+const OUT_WIDTH = 1080;
+const OUT_HEIGHT = 640;
+const SCALE_FACTOR = 0.85;
+const RT_WIDTH = Math.round(OUT_WIDTH * SCALE_FACTOR);   // 918
+const RT_HEIGHT = Math.round(OUT_HEIGHT * SCALE_FACTOR); // 544
+const LOOP_DURATION = 9.0; // seconds for full diorama loop
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function() {
+    a |= 0;
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function hash3(x, y, z) {
+  let h = Math.imul(x | 0, 374761393) + Math.imul(y | 0, 668265263) + Math.imul(z | 0, 2147483647);
+  h = (h ^ (h >>> 13)) * 1274126177;
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+
+function clamp(v, lo, hi) {
+  return Math.max(lo, Math.min(hi, v));
+}
+
+function smoothstep(edge0, edge1, x) {
+  const t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
+  return t * t * (3.0 - 2.0 * t);
+}
+
+// ============================================================================
+// COLOR PALETTES (3-5 SHADES PER MATERIAL)
+// ============================================================================
+const PALETTES = {
+  grass:     [0x153423, 0x1b3f2a, 0x214a31, 0x122c1e, 0x265337],
+  leaf:      [0x123824, 0x19492f, 0x225a3a, 0x0e2d1d, 0x2c6844],
+  soil:      [0x241914, 0x2d1f18, 0x1d1410, 0x35251d, 0x18100d],
+  clump:     [0x1f1511, 0x281b15, 0x18100c, 0x2f211a],
+  stone:     [0x48505e, 0x545d6d, 0x3d4451, 0x60697a, 0x353b46],
+  boulder:   [0x505868, 0x5d6678, 0x434a58, 0x697386],
+  iron:      [0x171a21, 0x1e222b, 0x12141a, 0x252a35],
+  wood:      [0x362419, 0x422c1f, 0x2b1c14, 0x4c3324],
+  hutWall:   [0x4a382b, 0x564233, 0x3e2f24, 0x614b3b],
+  roofPurp:  [0x3a1f54, 0x472766, 0x2e1844, 0x553078, 0x623989],
+  deadTree:  [0x261d1a, 0x2f2420, 0x1e1614, 0x382b26],
+  broomRod:  [0x593d28, 0x684830, 0x4a3220],
+  broomStraw:[0x9c7a38, 0xb08b42, 0x87682e, 0xc29b4c],
+  wax:       [0xd8ceb8, 0xe5dcc6, 0xc8be9e, 0xf0e8d5],
+  stem:      [0x9fa6b2, 0xb0b7c4, 0x8b929e],
+  cat:       [0x101218, 0x161922, 0x0c0d12, 0x1d202b],
+  bat:       [0x1b1526, 0x241c33, 0x140f1d, 0x2d2340],
+  fog:       [0x657d99, 0x748ea8, 0x586f8a],
+  capDormantPurple: [0x3d2152, 0x492861, 0x311a42],
+  capDormantCyan:   [0x1a4452, 0x215363, 0x143642],
+  capDormantPink:   [0x521f3d, 0x63264a, 0x421831],
+  // Emissive palettes (unlit, boosted HDR multipliers for glow)
+  potion:    [0x28ff58, 0x52ff7a, 0x18d846, 0x7dff9e],
+  steam:     [0x3aff75, 0x6eff9b, 0x24d65a, 0x98ffba],
+  fire:      [0xff4518, 0xff7b1c, 0xffb82e, 0xff2a0e],
+  candle:    [0xffae24, 0xffd644, 0xff7f18],
+  hutWin:    [0x38ff5a, 0x5eff7a, 0x24d943],
+  ghostBody: [0xeafaff, 0xc8f2ff, 0xffffff, 0xb2eaff],
+  moon:      [0xfff6cf, 0xffeba8, 0xe8d28e, 0xffffff],
+  moonCrater:[0xd6c07d, 0xc4ae6c, 0xdec987],
+  mushPurple:[0xb83dff, 0xd46eff, 0x9924e6, 0xe599ff],
+  mushCyan:  [0x1cf2ff, 0x66f7ff, 0x00c8e0, 0x99faff],
+  mushPink:  [0xff2e9c, 0xff6bb8, 0xd9197d, 0xff99ce]
+};
+
+function pickShade(paletteName, x, y, z, salt = 0) {
+  const arr = PALETTES[paletteName];
+  const h = hash3(x + salt * 31, y - salt * 17, z + salt * 53);
+  const idx = Math.floor(h * arr.length) % arr.length;
+  return arr[idx];
+}
+
+// ============================================================================
+// RENDERER, SCENE, CAMERA & POST-PROCESSING SETUP (WITH SAFE WEBGL FALLBACK)
+// ============================================================================
+const stageEl = document.getElementById('stage');
+let canvasEl = document.createElement('canvas');
+canvasEl.width = OUT_WIDTH;
+canvasEl.height = OUT_HEIGHT;
+stageEl.insertBefore(canvasEl, stageEl.firstChild);
+
+function createSafeWebGLRenderer(targetCanvas) {
+  const contextTypes = ['webgl2', 'webgl', 'experimental-webgl'];
+  const attrAttempts = [
+    { alpha: false, depth: true, stencil: false, antialias: false, preserveDrawingBuffer: true, powerPreference: 'default' },
+    { alpha: false, depth: true, antialias: false },
+    {}
+  ];
+
+  for (const type of contextTypes) {
+    for (const attrs of attrAttempts) {
+      try {
+        const testCanvas = document.createElement('canvas');
+        const gl = testCanvas.getContext(type, attrs);
+        if (gl) {
+          const realGl = targetCanvas.getContext(type, attrs);
+          if (realGl) {
+            return new THREE.WebGLRenderer({
+              canvas: targetCanvas,
+              context: realGl,
+              antialias: false,
+              preserveDrawingBuffer: Boolean(attrs.preserveDrawingBuffer)
+            });
+          }
+        }
+      } catch (err) {
+        // Continue trying fallback attributes
+      }
+    }
+  }
+  return null;
+}
+
+const renderer = createSafeWebGLRenderer(canvasEl);
+const hasWebGL = Boolean(renderer);
+let ctx2d = null;
+let renderTarget = null;
+
+if (hasWebGL) {
+  renderer.setSize(OUT_WIDTH, OUT_HEIGHT, false);
+  renderer.setPixelRatio(1);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.NoToneMapping;
+
+  // 85% resolution render target with smooth LinearFilter upscaling and depth texture
+  const isWebGL2 = renderer.capabilities.isWebGL2;
+  renderTarget = new THREE.WebGLRenderTarget(RT_WIDTH, RT_HEIGHT, {
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
+    format: THREE.RGBAFormat,
+    type: isWebGL2 ? THREE.HalfFloatType : THREE.UnsignedByteType
+  });
+  if (isWebGL2 || renderer.extensions.get('WEBGL_depth_texture')) {
+    renderTarget.depthTexture = new THREE.DepthTexture(RT_WIDTH, RT_HEIGHT);
+    renderTarget.depthTexture.format = THREE.DepthFormat;
+    renderTarget.depthTexture.type = THREE.UnsignedShortType;
+  }
+} else {
+  // Replace canvas to ensure a clean 2D rendering context when WebGL is unavailable
+  const fallbackCanvas = document.createElement('canvas');
+  fallbackCanvas.width = OUT_WIDTH;
+  fallbackCanvas.height = OUT_HEIGHT;
+  stageEl.replaceChild(fallbackCanvas, canvasEl);
+  canvasEl = fallbackCanvas;
+  ctx2d = canvasEl.getContext('2d');
+}
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(39, OUT_WIDTH / OUT_HEIGHT, 25, 260);
+
+// Lighting: Soft moonlight + ambient + dynamic point lights
+const ambientLight = new THREE.AmbientLight(0x364d7a, 1.15);
+scene.add(ambientLight);
+
+const hemiLight = new THREE.HemisphereLight(0x5577b5, 0x161d2b, 0.75);
+scene.add(hemiLight);
+
+const moonLight = new THREE.DirectionalLight(0x9bbcff, 2.35);
+moonLight.position.set(55, 85, -45);
+moonLight.castShadow = true;
+moonLight.shadow.mapSize.width = 2048;
+moonLight.shadow.mapSize.height = 2048;
+moonLight.shadow.camera.near = 20;
+moonLight.shadow.camera.far = 190;
+const d = 58;
+moonLight.shadow.camera.left = -d;
+moonLight.shadow.camera.right = d;
+moonLight.shadow.camera.top = d;
+moonLight.shadow.camera.bottom = -d;
+moonLight.shadow.bias = -0.0008;
+moonLight.shadow.normalBias = 0.04;
+scene.add(moonLight);
+
+// Dynamic lights for cauldron, fire, hut windows, and mushroom glow
+const cauldronLight = new THREE.PointLight(0x2eff66, 35, 38, 1.5);
+cauldronLight.position.set(0, 13, 2);
+scene.add(cauldronLight);
+
+const fireLight = new THREE.PointLight(0xff6a1a, 22, 18, 1.6);
+fireLight.position.set(0, 3.2, 2);
+scene.add(fireLight);
+
+const hutLight = new THREE.PointLight(0x38ff5a, 18, 22, 1.6);
+hutLight.position.set(-15, 7, -11);
+scene.add(hutLight);
+
+const mushroomWaveLight = new THREE.PointLight(0xb548ff, 0, 50, 1.3);
+mushroomWaveLight.position.set(0, 8, 2);
+scene.add(mushroomWaveLight);
+
+// ============================================================================
+// VOXEL GEOMETRY WITH SUBTLE PER-FACE SHADING
+// ============================================================================
+function createVoxelGeometry() {
+  const geom = new THREE.BoxGeometry(1, 1, 1);
+  const pos = geom.attributes.position;
+  const norm = geom.attributes.normal;
+  const colors = new Float32Array(pos.count * 3);
+
+  for (let i = 0; i < pos.count; i++) {
+    const ny = norm.getY(i);
+    const nx = norm.getX(i);
+    const py = pos.getY(i);
+    // Subtle vertical gradient + face brightness for crisp voxel readability
+    let shade = 1.0;
+    if (ny > 0.5) shade = 1.04;
+    else if (ny < -0.5) shade = 0.72;
+    else if (Math.abs(nx) > 0.5) shade = 0.90 + (py + 0.5) * 0.08;
+    else shade = 0.84 + (py + 0.5) * 0.08;
+
+    colors[i * 3 + 0] = shade;
+    colors[i * 3 + 1] = shade;
+    colors[i * 3 + 2] = shade;
+  }
+  geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  return geom;
+}
+
+const voxelGeom = createVoxelGeometry();
+
+// ============================================================================
+// STATIC SCENE GENERATION (~90 VOXELS ACROSS)
+// ============================================================================
+const staticVoxelMap = new Map(); // key "x,y,z" -> { x, y, z, color, noAO }
+const surfaceHeightMap = new Map(); // key "x,z" -> top y
+
+function vKey(x, y, z) {
+  return `${x},${y},${z}`;
+}
+
+function setStaticVoxel(x, y, z, hexColor, noAO = false) {
+  const xi = Math.round(x);
+  const yi = Math.round(y);
+  const zi = Math.round(z);
+  staticVoxelMap.set(vKey(xi, yi, zi), { x: xi, y: yi, z: zi, color: hexColor, noAO });
+}
+
+function hasStaticVoxel(x, y, z) {
+  return staticVoxelMap.has(vKey(Math.round(x), Math.round(y), Math.round(z)));
+}
+
+// Store metadata for animated elements
+const mushrooms = [];       // { x, y, z, dist, type, size, capVoxels: [] }
+const candles = [];         // { x, y, z }
+const treeCrowns = [];      // { x, y, z } for bat burst origins
+const hutWindowVoxels = []; // { x, y, z, baseColor }
+const moonVoxels = [];      // { x, y, z, color }
+
+function buildStaticWorld() {
+  const rng = mulberry32(133742);
+
+  // 1. FLOATING ROUNDED-SQUARE ISLAND (~90 VOXELS ACROSS: x,z in [-44..44])
+  for (let x = -45; x <= 45; x++) {
+    for (let z = -45; z <= 45; z++) {
+      const ax = Math.abs(x) / 43.5;
+      const az = Math.abs(z) / 43.5;
+      // Rounded-square SDF (L4 norm blended with organic trigonometric noise)
+      const rSquare = Math.pow(Math.pow(ax, 4.2) + Math.pow(az, 4.2), 1 / 4.2);
+      const edgeNoise = 0.045 * Math.sin(x * 0.19 + z * 0.13) + 0.03 * Math.cos(x * 0.31 - z * 0.27);
+      const distNorm = rSquare + edgeNoise;
+
+      if (distNorm <= 1.0) {
+        // Top surface height variation
+        const distCenter = Math.hypot(x, z - 2);
+        let topY = 0;
+        if (distCenter > 15 && distNorm < 0.92) {
+          const hill = Math.sin(x * 0.11) * Math.cos(z * 0.11) + Math.sin((x - z) * 0.07) * 0.5;
+          if (hill > 0.35) topY = 1;
+          if (hill > 0.85 && distNorm < 0.78) topY = 2;
+        }
+        // Slight elevation under witch hut in back-left
+        const distHut = Math.hypot(x - (-21), z - (-17));
+        if (distHut < 13) {
+          topY = Math.max(topY, distHut < 10 ? 2 : 1);
+        }
+
+        surfaceHeightMap.set(`${x},${z}`, topY);
+
+        // Underside thickness tapers from center toward edges
+        const edgeFactor = clamp(1.0 - distNorm, 0.0, 1.0);
+        const depth = Math.floor(3 + Math.pow(edgeFactor, 0.65) * 11 + 2.2 * Math.sin(x * 0.23) * Math.cos(z * 0.21));
+
+        for (let y = topY; y >= -depth; y--) {
+          if (y === topY) {
+            // Check if in central stone clearing or stepping path
+            const inClearing = distCenter < 12.2 + 1.1 * Math.sin(Math.atan2(z - 2, x) * 5);
+            // Stepping stones toward witch hut
+            const pathT = clamp(((x - 0) * -21 + (z - 2) * -19) / (21 * 21 + 19 * 19), 0, 1);
+            const projX = pathT * -21;
+            const projZ = 2 + pathT * -19;
+            const inPath = Math.hypot(x - projX, z - projZ) < 2.3;
+
+            if (inClearing || inPath) {
+              setStaticVoxel(x, y, z, pickShade('stone', x, y, z));
+            } else {
+              setStaticVoxel(x, y, z, pickShade('grass', x, y, z));
+            }
+          } else if (y >= topY - 1 && distNorm > 0.87 && (hash3(x, y, z) > 0.4)) {
+            // Overhanging mossy turf lip
+            setStaticVoxel(x, y, z, pickShade('grass', x, y, z, 2));
+          } else {
+            setStaticVoxel(x, y, z, pickShade('soil', x, y, z));
+          }
+        }
+      }
+    }
+  }
+
+  // 2. HANGING ROUND DIRT CLUMPS UNDERNEATH THE ISLAND
+  const clumpCount = 34;
+  for (let i = 0; i < clumpCount; i++) {
+    const angle = i * 2.39996 + rng() * 0.35;
+    const rad = Math.sqrt((i + 0.5) / clumpCount) * 35;
+    const cx = Math.round(Math.cos(angle) * rad);
+    const cz = Math.round(Math.sin(angle) * rad);
+    const r = 3.2 + rng() * 4.5;
+    const baseDepth = 8 + Math.floor((1.0 - rad / 42) * 8 + rng() * 5);
+    const cy = -baseDepth;
+
+    const ri = Math.ceil(r);
+    for (let dx = -ri; dx <= ri; dx++) {
+      for (let dy = -ri; dy <= ri; dy++) {
+        for (let dz = -ri; dz <= ri; dz++) {
+          const d = Math.hypot(dx, dy * 0.9, dz);
+          if (d <= r - 0.25 * hash3(cx + dx, cy + dy, cz + dz)) {
+            setStaticVoxel(cx + dx, cy + dy, cz + dz, pickShade('clump', cx + dx, cy + dy, cz + dz));
+          }
+        }
+      }
+    }
+  }
+
+  // 3. CENTRAL CAULDRON ON FOUR SHORT LEGS OVER A LOG FIRE
+  const caulX = 0;
+  const caulZ = 2;
+  const caulBaseY = 1;
+
+  // Crossed wood logs under cauldron
+  for (let i = -4; i <= 4; i++) {
+    setStaticVoxel(caulX + i, caulBaseY, caulZ - 1, pickShade('wood', i, 1, 0));
+    setStaticVoxel(caulX + i, caulBaseY, caulZ + 1, pickShade('wood', i, 1, 1));
+    setStaticVoxel(caulX - 1, caulBaseY, caulZ + i, pickShade('wood', 0, 1, i));
+    setStaticVoxel(caulX + 1, caulBaseY, caulZ + i, pickShade('wood', 1, 1, i));
+    if (Math.abs(i) <= 3) {
+      setStaticVoxel(caulX + i, caulBaseY + 1, caulZ + i, pickShade('wood', i, 2, i));
+      setStaticVoxel(caulX + i, caulBaseY + 1, caulZ - i, pickShade('wood', i, 2, -i));
+    }
+  }
+  // Small ring of hearth stones around the fire
+  for (let a = 0; a < 16; a++) {
+    const ang = (a / 16) * Math.PI * 2;
+    const sx = Math.round(caulX + Math.cos(ang) * 5.8);
+    const sz = Math.round(caulZ + Math.sin(ang) * 5.8);
+    setStaticVoxel(sx, caulBaseY, sz, pickShade('boulder', sx, caulBaseY, sz));
+  }
+
+  // Four sturdy short iron legs
+  const legAngles = [Math.PI * 0.25, Math.PI * 0.75, Math.PI * 1.25, Math.PI * 1.75];
+  for (const ang of legAngles) {
+    const lx = Math.round(caulX + Math.cos(ang) * 4.2);
+    const lz = Math.round(caulZ + Math.sin(ang) * 4.2);
+    for (let y = 1; y <= 4; y++) {
+      for (let ox = 0; ox <= 1; ox++) {
+        for (let oz = 0; oz <= 1; oz++) {
+          setStaticVoxel(lx + ox - 0.5, y, lz + oz - 0.5, pickShade('iron', lx + ox, y, lz + oz));
+        }
+      }
+    }
+  }
+
+  // Cauldron rounded belly (y = 3..11)
+  for (let y = 3; y <= 11; y++) {
+    let outerR = 6.2;
+    let innerR = 4.9;
+    if (y === 3) { outerR = 4.2; innerR = 0.0; }
+    else if (y === 4) { outerR = 5.4; innerR = 3.2; }
+    else if (y >= 5 && y <= 8) { outerR = 6.4; innerR = 5.0; }
+    else if (y === 9) { outerR = 5.9; innerR = 4.6; }
+    else if (y === 10) { outerR = 5.6; innerR = 4.5; }
+    else if (y === 11) { outerR = 6.3; innerR = 4.6; } // flared rim
+
+    const maxR = Math.ceil(outerR);
+    for (let dx = -maxR; dx <= maxR; dx++) {
+      for (let dz = -maxR; dz <= maxR; dz++) {
+        const r = Math.hypot(dx, dz);
+        if (r <= outerR && r >= innerR) {
+          setStaticVoxel(caulX + dx, y, caulZ + dz, pickShade('iron', dx, y, dz));
+        }
+      }
+    }
+  }
+  // Side iron handles on cauldron
+  for (const side of [-1, 1]) {
+    for (let dy = 7; dy <= 9; dy++) {
+      setStaticVoxel(caulX + side * 7, dy, caulZ - 1, pickShade('iron', side * 7, dy, -1));
+      setStaticVoxel(caulX + side * 7, dy, caulZ + 1, pickShade('iron', side * 7, dy, 1));
+      if (dy === 7 || dy === 9) {
+        setStaticVoxel(caulX + side * 7, dy, caulZ, pickShade('iron', side * 7, dy, 0));
+      }
+    }
+  }
+
+  // 4. BACK-LEFT CROOKED WITCH HUT WITH TWISTED PURPLE ROOF, GREEN WINDOWS & BROOM
+  const hutX = -21;
+  const hutZ = -17;
+  const hutBaseY = 2;
+
+  // Stone foundation
+  for (let dx = -8; dx <= 8; dx++) {
+    for (let dz = -7; dz <= 7; dz++) {
+      if (Math.abs(dx) <= 7 || Math.abs(dz) <= 6) {
+        setStaticVoxel(hutX + dx, hutBaseY, hutZ + dz, pickShade('stone', hutX + dx, hutBaseY, hutZ + dz));
+      }
+    }
+  }
+
+  // Crooked walls (y = 3..13) - leans outward slightly as y increases
+  for (let y = hutBaseY + 1; y <= hutBaseY + 11; y++) {
+    const h = y - hutBaseY;
+    const leanX = Math.round(Math.sin(h * 0.25) * 0.8);
+    const leanZ = Math.round(Math.cos(h * 0.22) * 0.6);
+    const halfW = 6 + (h > 6 ? 1 : 0);
+    const halfD = 5 + (h > 7 ? 1 : 0);
+
+    for (let dx = -halfW; dx <= halfW; dx++) {
+      for (let dz = -halfD; dz <= halfD; dz++) {
+        const isEdgeX = Math.abs(dx) === halfW;
+        const isEdgeZ = Math.abs(dz) === halfD;
+        if (!isEdgeX && !isEdgeZ) continue;
+
+        const wx = hutX + dx + leanX;
+        const wz = hutZ + dz + leanZ;
+
+        // Front door facing clearing (+z side, slightly right)
+        if (dz === halfD && dx >= -1 && dx <= 1 && h <= 6) {
+          if (dx === -1 || dx === 1 || h === 6) {
+            setStaticVoxel(wx, y, wz, pickShade('wood', wx, y, wz));
+          } else {
+            setStaticVoxel(wx, y, wz - 1, pickShade('wood', wx, y, wz - 1));
+          }
+          continue;
+        }
+
+        // Green-lit window on front wall (+z)
+        if (dz === halfD && dx >= -4 && dx <= -2 && h >= 4 && h <= 7) {
+          if (dx === -3 && (h === 5 || h === 6)) {
+            hutWindowVoxels.push({ x: wx, y, z: wz, baseColor: pickShade('hutWin', wx, y, wz) });
+          } else {
+            setStaticVoxel(wx, y, wz, pickShade('wood', wx, y, wz));
+          }
+          continue;
+        }
+
+        // Green-lit window on right wall (+x, facing camera/cauldron)
+        if (dx === halfW && dz >= -2 && dz <= 2 && h >= 4 && h <= 7) {
+          if (Math.abs(dz) <= 1 && (h === 5 || h === 6)) {
+            hutWindowVoxels.push({ x: wx, y, z: wz, baseColor: pickShade('hutWin', wx, y, wz) });
+          } else {
+            setStaticVoxel(wx, y, wz, pickShade('wood', wx, y, wz));
+          }
+          continue;
+        }
+
+        // Corner timber beams vs plank walls
+        if ((isEdgeX && isEdgeZ) || h === 1 || h === 11) {
+          setStaticVoxel(wx, y, wz, pickShade('wood', wx, y, wz));
+        } else {
+          setStaticVoxel(wx, y, wz, pickShade('hutWall', wx, y, wz));
+        }
+      }
+    }
+  }
+
+  // Twisted purple witch-hat roof (y = 14..33)
+  for (let h = 0; h <= 19; h++) {
+    const y = hutBaseY + 12 + h;
+    const t = h / 19;
+    // Roof twists and bends dynamically toward a crooked tip
+    const twistX = Math.sin(t * Math.PI * 1.35) * (t * 4.5);
+    const twistZ = Math.cos(t * Math.PI * 1.1) * (t * 3.5) - t * 2.0;
+    const rx = Math.max(0.6, (1.0 - Math.pow(t, 0.82)) * 9.2);
+    const rz = Math.max(0.6, (1.0 - Math.pow(t, 0.82)) * 8.2);
+
+    const maxDx = Math.ceil(rx + 1);
+    const maxDz = Math.ceil(rz + 1);
+    for (let dx = -maxDx; dx <= maxDx; dx++) {
+      for (let dz = -maxDz; dz <= maxDz; dz++) {
+        const normD = Math.max(Math.abs(dx) / rx, Math.abs(dz) / rz * 0.92 + Math.hypot(dx / rx, dz / rz) * 0.25);
+        if (normD <= 1.0 && (normD >= 0.68 || h >= 14 || h === 0)) {
+          const vx = Math.round(hutX + dx + twistX);
+          const vz = Math.round(hutZ + dz + twistZ);
+          setStaticVoxel(vx, y, vz, pickShade('roofPurp', vx, y, vz));
+        }
+      }
+    }
+
+    // Small gable window on the roof front at h = 2..4
+    if (h >= 2 && h <= 4) {
+      const gx = Math.round(hutX + twistX + 1);
+      const gz = Math.round(hutZ + rz + twistZ);
+      if (h === 3) {
+        hutWindowVoxels.push({ x: gx, y, z: gz, baseColor: pickShade('hutWin', gx, y, gz) });
+      } else {
+        setStaticVoxel(gx, y, gz, pickShade('wood', gx, y, gz));
+      }
+    }
+  }
+
+  // Crooked stone chimney on left side of hut
+  for (let h = 0; h <= 16; h++) {
+    const y = hutBaseY + 4 + h;
+    const cx = hutX - 7 - Math.floor(h * 0.15);
+    const cz = hutZ - 2;
+    for (let ox = 0; ox <= 1; ox++) {
+      for (let oz = 0; oz <= 1; oz++) {
+        setStaticVoxel(cx + ox, y, cz + oz, pickShade('stone', cx + ox, y, cz + oz));
+      }
+    }
+  }
+
+  // Broom leaning against the hut near the front corner
+  const broomBaseX = hutX + 5;
+  const broomBaseZ = hutZ + 7;
+  // Straw bristle bundle at bottom (y = 3..5)
+  for (let dy = 0; dy <= 2; dy++) {
+    const r = dy === 0 ? 1 : 1;
+    for (let ox = -r; ox <= r; ox++) {
+      for (let oz = -r; oz <= r; oz++) {
+        if (Math.abs(ox) + Math.abs(oz) <= (dy === 2 ? 1 : 2)) {
+          setStaticVoxel(broomBaseX + ox, hutBaseY + 1 + dy, broomBaseZ + oz, pickShade('broomStraw', ox, dy, oz));
+        }
+      }
+    }
+  }
+  // Broom wooden handle leaning back toward wall (y = 6..11)
+  for (let dy = 3; dy <= 8; dy++) {
+    const lean = Math.floor((dy - 2) * 0.45);
+    setStaticVoxel(broomBaseX, hutBaseY + 1 + dy, broomBaseZ - lean, pickShade('broomRod', 0, dy, lean));
+  }
+
+  // 5. DEAD TWISTED TREES
+  const treeSpecs = [
+    { x: 25, z: -18, height: 24, seed: 11 },
+    { x: -31, z: 9, height: 21, seed: 29 },
+    { x: 29, z: 11, height: 19, seed: 47 },
+    { x: -7, z: -29, height: 22, seed: 73 },
+    { x: 14, z: -28, height: 18, seed: 91 }
+  ];
+
+  for (const spec of treeSpecs) {
+    const baseY = surfaceHeightMap.get(`${spec.x},${spec.z}`) ?? 1;
+    // Gnarled roots
+    for (let r = 0; r < 4; r++) {
+      const ang = r * 1.57 + spec.seed;
+      for (let d = 1; d <= 4; d++) {
+        const rx = Math.round(spec.x + Math.cos(ang) * d);
+        const rz = Math.round(spec.z + Math.sin(ang) * d);
+        const ry = Math.max(baseY, baseY + 2 - Math.floor(d * 0.6));
+        setStaticVoxel(rx, ry, rz, pickShade('deadTree', rx, ry, rz));
+      }
+    }
+    // Twisted trunk
+    let curX = spec.x;
+    let curZ = spec.z;
+    for (let h = 0; h <= spec.height; h++) {
+      const y = baseY + h;
+      curX = spec.x + Math.sin(h * 0.24 + spec.seed) * (h * 0.16);
+      curZ = spec.z + Math.cos(h * 0.21 + spec.seed) * (h * 0.16);
+      const radius = Math.max(0.6, 2.3 - (h / spec.height) * 1.6);
+      const ri = Math.ceil(radius);
+      for (let dx = -ri; dx <= ri; dx++) {
+        for (let dz = -ri; dz <= ri; dz++) {
+          if (Math.hypot(dx, dz) <= radius) {
+            setStaticVoxel(Math.round(curX + dx), y, Math.round(curZ + dz), pickShade('deadTree', curX + dx, y, curZ + dz));
+          }
+        }
+      }
+
+      // Crooked branches splitting outward
+      if (h > spec.height * 0.45 && h % 4 === 0) {
+        const bAng = h * 2.1 + spec.seed;
+        const bLen = 5 + (spec.height - h) * 0.45;
+        for (let s = 1; s <= bLen; s++) {
+          const bx = Math.round(curX + Math.cos(bAng) * s);
+          const bz = Math.round(curZ + Math.sin(bAng) * s);
+          const by = Math.round(y + s * 0.35 + Math.sin(s * 0.7) * 0.8);
+          setStaticVoxel(bx, by, bz, pickShade('deadTree', bx, by, bz));
+          if (s < bLen * 0.6) {
+            setStaticVoxel(bx, by - 1, bz, pickShade('deadTree', bx, by - 1, bz));
+          }
+        }
+      }
+    }
+    treeCrowns.push({ x: curX, y: baseY + spec.height * 0.75, z: curZ });
+  }
+
+  // 6. GREY BOULDERS SCATTERED AROUND THE ISLAND
+  const boulderSpecs = [
+    { x: 16, z: -7, r: 3.4 }, { x: 19, z: -4, r: 2.3 },
+    { x: -16, z: 14, r: 3.6 }, { x: -13, z: 17, r: 2.4 },
+    { x: 22, z: 21, r: 3.8 }, { x: 26, z: 19, r: 2.5 },
+    { x: -32, z: -7, r: 3.3 }, { x: -29, z: -10, r: 2.2 },
+    { x: 6, z: 27, r: 3.1 }, { x: 9, z: 29, r: 2.1 },
+    { x: -6, z: -18, r: 2.7 }, { x: 33, z: -5, r: 3.0 },
+    { x: -21, z: 28, r: 2.9 }, { x: 13, z: 16, r: 2.2 }
+  ];
+
+  for (const b of boulderSpecs) {
+    const by = surfaceHeightMap.get(`${b.x},${b.z}`) ?? 1;
+    const ri = Math.ceil(b.r);
+    for (let dx = -ri; dx <= ri; dx++) {
+      for (let dy = -1; dy <= ri; dy++) {
+        for (let dz = -ri; dz <= ri; dz++) {
+          const d = Math.hypot(dx, dy * 1.15, dz);
+          const n = hash3(b.x + dx, by + dy, b.z + dz) * 0.55;
+          if (d + n <= b.r) {
+            setStaticVoxel(b.x + dx, by + dy, b.z + dz, pickShade('boulder', b.x + dx, by + dy, b.z + dz));
+          }
+        }
+      }
+    }
+  }
+
+  // 7. DENSE DARK-GREEN LEAFY PLANTS (LEAVES RADIATING FROM A CENTER, MANY SHADES)
+  for (let i = 0; i < 115; i++) {
+    const px = Math.round((rng() - 0.5) * 78);
+    const pz = Math.round((rng() - 0.5) * 78);
+    const py = surfaceHeightMap.get(`${px},${pz}`);
+    if (py === undefined) continue;
+
+    // Keep clear of central cauldron clearing & witch hut footprint
+    const distCaul = Math.hypot(px - caulX, pz - caulZ);
+    const distHut = Math.hypot(px - hutX, pz - hutZ);
+    if (distCaul < 12.8 || distHut < 11.5) continue;
+
+    // Radiating rosette of 5-8 arching voxel fronds
+    const frondCount = 5 + Math.floor(rng() * 4);
+    const frondLen = 2.6 + rng() * 2.6;
+    const baseAng = rng() * Math.PI * 2;
+
+    setStaticVoxel(px, py + 1, pz, pickShade('leaf', px, py + 1, pz, i));
+
+    for (let f = 0; f < frondCount; f++) {
+      const ang = baseAng + (f / frondCount) * Math.PI * 2 + (rng() - 0.5) * 0.25;
+      const steps = Math.ceil(frondLen * 2);
+      for (let s = 1; s <= steps; s++) {
+        const dist = (s / steps) * frondLen;
+        const lx = Math.round(px + Math.cos(ang) * dist);
+        const lz = Math.round(pz + Math.sin(ang) * dist);
+        // Arch upward near center, droop slightly at tip
+        const arch = Math.sin((s / steps) * Math.PI * 0.85) * (1.2 + frondLen * 0.25);
+        const ly = Math.round(py + 1 + arch);
+        setStaticVoxel(lx, ly, lz, pickShade('leaf', lx, ly, lz, f + i));
+      }
+    }
+  }
+
+  // 8. FIVE CANDLES AROUND THE CLEARING
+  const candlePositions = [
+    { x: -9, z: 7, h: 3 },
+    { x: -11, z: -2, h: 4 },
+    { x: 10, z: -4, h: 3 },
+    { x: 11, z: 5, h: 2 },
+    { x: -3, z: 12, h: 3 }
+  ];
+  for (const c of candlePositions) {
+    const cy = (surfaceHeightMap.get(`${c.x},${c.z}`) ?? 1) + 1;
+    for (let dy = 0; dy < c.h; dy++) {
+      setStaticVoxel(c.x, cy + dy, c.z, pickShade('wax', c.x, cy + dy, c.z));
+    }
+    candles.push({ x: c.x, y: cy + c.h, z: c.z });
+  }
+
+  // 9. GLOWING MUSHROOMS SCATTERED AROUND (PURPLE, CYAN, PINK CAPS)
+  const mushroomTypes = ['purple', 'cyan', 'pink'];
+  const mushroomCoords = [
+    { x: -13, z: 9, sz: 2 }, { x: -15, z: 11, sz: 1 },
+    { x: 14, z: 9, sz: 2 },  { x: 16, z: 7, sz: 1 },
+    { x: -8, z: -11, sz: 2 },{ x: -10, z: -13, sz: 1 },
+    { x: 12, z: -12, sz: 2 },{ x: 15, z: -11, sz: 1 },
+    { x: 2, z: 17, sz: 2 },  { x: -1, z: 19, sz: 1 },
+    { x: -24, z: 3, sz: 2 }, { x: -26, z: 5, sz: 1 },
+    { x: 23, z: 2, sz: 2 },  { x: 25, z: 4, sz: 1 },
+    { x: -18, z: 22, sz: 2 },{ x: -15, z: 24, sz: 1 },
+    { x: 18, z: 22, sz: 2 }, { x: 20, z: 24, sz: 1 },
+    { x: 5, z: -21, sz: 2 }, { x: 8, z: -23, sz: 1 },
+    { x: -29, z: -14, sz: 2 },{ x: 28, z: -13, sz: 2 },
+    { x: -7, z: 28, sz: 2 }, { x: 11, z: 31, sz: 2 }
+  ];
+
+  mushroomCoords.forEach((mc, idx) => {
+    const my = (surfaceHeightMap.get(`${mc.x},${mc.z}`) ?? 1) + 1;
+    const mType = mushroomTypes[idx % 3];
+    const stemH = mc.sz === 2 ? 3 : 2;
+    for (let sy = 0; sy < stemH; sy++) {
+      setStaticVoxel(mc.x, my + sy, mc.z, pickShade('stem', mc.x, my + sy, mc.z));
+    }
+
+    const capVoxels = [];
+    const capBaseY = my + stemH;
+    if (mc.sz === 2) {
+      // Larger 3x3 domed cap
+      for (let dx = -2; dx <= 2; dx++) {
+        for (let dz = -2; dz <= 2; dz++) {
+          const d = Math.hypot(dx, dz);
+          if (d <= 2.2) {
+            capVoxels.push({ x: mc.x + dx, y: capBaseY, z: mc.z + dz });
+          }
+          if (d <= 1.5) {
+            capVoxels.push({ x: mc.x + dx, y: capBaseY + 1, z: mc.z + dz });
+          }
+        }
+      }
+      capVoxels.push({ x: mc.x, y: capBaseY + 2, z: mc.z });
+    } else {
+      // Smaller cap
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dz = -1; dz <= 1; dz++) {
+          if (Math.abs(dx) + Math.abs(dz) <= 2) {
+            capVoxels.push({ x: mc.x + dx, y: capBaseY, z: mc.z + dz });
+          }
+        }
+      }
+      capVoxels.push({ x: mc.x, y: capBaseY + 1, z: mc.z });
+    }
+
+    const dist = Math.hypot(mc.x - caulX, mc.z - caulZ);
+    mushrooms.push({
+      x: mc.x,
+      y: capBaseY,
+      z: mc.z,
+      dist,
+      type: mType,
+      capVoxels
+    });
+  });
+
+  // 10. BLACK CAT SITTING NEAR THE CAULDRON (STATIC BODY & HEAD; TAIL & EYES DYNAMIC)
+  const catX = 8;
+  const catZ = 8;
+  const catY = (surfaceHeightMap.get(`${catX},${catZ}`) ?? 0) + 1;
+  // Seated body (y = catY .. catY + 2)
+  for (let dy = 0; dy <= 2; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dz = -1; dz <= 1; dz++) {
+        if (dy === 2 && (Math.abs(dx) === 1 && Math.abs(dz) === 1)) continue;
+        setStaticVoxel(catX + dx, catY + dy, catZ + dz, pickShade('cat', catX + dx, catY + dy, catZ + dz), true);
+      }
+    }
+  }
+  // Front paws facing toward cauldron/camera (-x, +z direction)
+  setStaticVoxel(catX - 1, catY, catZ + 1, pickShade('cat', catX - 1, catY, catZ + 1), true);
+  setStaticVoxel(catX, catY, catZ + 2, pickShade('cat', catX, catY, catZ + 2), true);
+  // Head (y = catY + 3 .. catY + 4)
+  for (let dy = 3; dy <= 4; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dz = -1; dz <= 1; dz++) {
+        setStaticVoxel(catX + dx, catY + dy, catZ + dz, pickShade('cat', catX + dx, catY + dy, catZ + dz), true);
+      }
+    }
+  }
+  // Pointed ears (y = catY + 5)
+  setStaticVoxel(catX - 1, catY + 5, catZ, pickShade('cat', catX - 1, catY + 5, catZ), true);
+  setStaticVoxel(catX + 1, catY + 5, catZ, pickShade('cat', catX + 1, catY + 5, catZ), true);
+
+  // 11. PIXEL MOON IN THE UPPER NIGHT SKY
+  const moonCenterX = 36;
+  const moonCenterY = 38;
+  const moonCenterZ = -48;
+  const moonR = 6.2;
+  for (let dx = -7; dx <= 7; dx++) {
+    for (let dy = -7; dy <= 7; dy++) {
+      for (let dz = -2; dz <= 2; dz++) {
+        const d = Math.hypot(dx, dy, dz * 1.8);
+        if (d <= moonR) {
+          const isCrater = (Math.hypot(dx - 2, dy - 1) < 1.8) || (Math.hypot(dx + 2.5, dy + 2) < 1.5);
+          const col = isCrater
+            ? pickShade('moonCrater', dx, dy, dz)
+            : pickShade('moon', dx, dy, dz);
+          moonVoxels.push({
+            x: moonCenterX + dx,
+            y: moonCenterY + dy,
+            z: moonCenterZ + dz,
+            color: col
+          });
+        }
+      }
+    }
+  }
+}
+
+buildStaticWorld();
+
+// ============================================================================
+// BUILD STATIC LIT INSTANCED MESH WITH PER-VOXEL AMBIENT OCCLUSION
+// ============================================================================
+// Filter out completely enclosed interior voxels for optimal performance
+const staticVoxelList = Array.from(staticVoxelMap.values()).filter((v) => {
+  return !(
+    hasStaticVoxel(v.x + 1, v.y, v.z) &&
+    hasStaticVoxel(v.x - 1, v.y, v.z) &&
+    hasStaticVoxel(v.x, v.y + 1, v.z) &&
+    hasStaticVoxel(v.x, v.y - 1, v.z) &&
+    hasStaticVoxel(v.x, v.y, v.z + 1) &&
+    hasStaticVoxel(v.x, v.y, v.z - 1)
+  );
+});
+
+const staticLitMat = new THREE.MeshStandardMaterial({
+  roughness: 0.88,
+  metalness: 0.08,
+  vertexColors: true
+});
+
+const staticLitMesh = new THREE.InstancedMesh(voxelGeom, staticLitMat, staticVoxelList.length);
+staticLitMesh.castShadow = true;
+staticLitMesh.receiveShadow = true;
+scene.add(staticLitMesh);
+
+const staticPreparedList = [];
+{
+  const dummy = new THREE.Object3D();
+  const color = new THREE.Color();
+
+  for (let i = 0; i < staticVoxelList.length; i++) {
+    const v = staticVoxelList[i];
+    dummy.position.set(v.x, v.y, v.z);
+    dummy.scale.set(1, 1, 1);
+    dummy.rotation.set(0, 0, 0);
+    dummy.updateMatrix();
+    staticLitMesh.setMatrixAt(i, dummy.matrix);
+
+    // Simple per-voxel ambient occlusion from immediate upper & side neighbors
+    let ao = 1.0;
+    if (!v.noAO) {
+      let occ = 0;
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dz = -1; dz <= 1; dz++) {
+          if (dx === 0 && dz === 0) continue;
+          if (hasStaticVoxel(v.x + dx, v.y + 1, v.z + dz)) occ += 1.15;
+          if (hasStaticVoxel(v.x + dx, v.y, v.z + dz)) occ += 0.45;
+        }
+      }
+      if (hasStaticVoxel(v.x, v.y + 1, v.z)) occ += 2.0;
+      ao = clamp(1.0 - occ * 0.038, 0.52, 1.0);
+    }
+
+    color.setHex(v.color).multiplyScalar(ao);
+    staticLitMesh.setColorAt(i, color);
+    staticPreparedList.push({
+      x: v.x,
+      y: v.y,
+      z: v.z,
+      r: Math.round(clamp(color.r * 255, 0, 255)),
+      g: Math.round(clamp(color.g * 255, 0, 255)),
+      b: Math.round(clamp(color.b * 255, 0, 255))
+    });
+  }
+  staticLitMesh.instanceMatrix.needsUpdate = true;
+  staticLitMesh.instanceColor.needsUpdate = true;
+}
+
+// ============================================================================
+// DYNAMIC LIT & UNLIT EMISSIVE INSTANCED MESHES
+// ============================================================================
+const MAX_DYN_LIT = 4500;
+const dynLitMat = new THREE.MeshStandardMaterial({
+  roughness: 0.85,
+  metalness: 0.05,
+  vertexColors: true
+});
+const dynLitMesh = new THREE.InstancedMesh(voxelGeom, dynLitMat, MAX_DYN_LIT);
+dynLitMesh.castShadow = true;
+dynLitMesh.receiveShadow = true;
+scene.add(dynLitMesh);
+
+const MAX_EMISSIVE = 9000;
+const emissiveMat = new THREE.MeshBasicMaterial({
+  vertexColors: true
+});
+const emissiveMesh = new THREE.InstancedMesh(voxelGeom, emissiveMat, MAX_EMISSIVE);
+emissiveMesh.castShadow = false;
+emissiveMesh.receiveShadow = false;
+scene.add(emissiveMesh);
+
+// ============================================================================
+// PRECOMPUTED CAULDRON DRIP PATHS, PUDDLE TILES, FOG & GHOST/BAT TEMPLATES
+// ============================================================================
+const dripStreams = [];
+{
+  const numStreams = 14;
+  for (let s = 0; s < numStreams; s++) {
+    const ang = (s / numStreams) * Math.PI * 2 + (hash3(s, 7, 13) - 0.5) * 0.22;
+    const delay = 0.3 + hash3(s, 19, 3) * 0.45;
+    const speed = 1.05 + hash3(s, 31, 9) * 0.45;
+    // Path nodes following cauldron rim (y=11) down curved outer belly to y=1
+    const nodes = [
+      { r: 5.5, y: 11.2 },
+      { r: 6.5, y: 11.0 },
+      { r: 6.0, y: 10.0 },
+      { r: 6.3, y: 9.0 },
+      { r: 6.8, y: 8.0 },
+      { r: 6.9, y: 7.0 },
+      { r: 6.8, y: 6.0 },
+      { r: 6.6, y: 5.0 },
+      { r: 5.8, y: 4.0 },
+      { r: 5.2, y: 3.0 },
+      { r: 5.4, y: 2.0 },
+      { r: 5.7, y: 1.2 }
+    ];
+    dripStreams.push({ ang, delay, speed, nodes, seed: s });
+  }
+}
+
+const puddleVoxels = [];
+{
+  for (let dx = -10; dx <= 10; dx++) {
+    for (let dz = -10; dz <= 10; dz++) {
+      const r = Math.hypot(dx, dz);
+      const ang = Math.atan2(dz, dx);
+      // Lobe shape spreading out from cauldron base
+      const maxLobeR = 7.4 + 1.8 * Math.sin(ang * 5 + 0.6) + 1.1 * Math.cos(ang * 3 - 1.2);
+      if (r >= 4.2 && r <= maxLobeR) {
+        const appearT = 0.65 + ((r - 4.2) / (maxLobeR - 4.2)) * 1.75 + hash3(dx, 0, dz) * 0.12;
+        puddleVoxels.push({
+          x: dx,
+          y: 1.15,
+          z: 2 + dz,
+          appearT,
+          color: pickShade('potion', dx, 1, dz)
+        });
+      }
+    }
+  }
+}
+
+// Voxel Ghost Template (glowing white cubes + dark eye & mouth cubes)
+const ghostTemplate = [];
+{
+  for (let dy = -4; dy <= 4; dy++) {
+    for (let dx = -2; dx <= 2; dx++) {
+      for (let dz = -2; dz <= 2; dz++) {
+        const r = Math.hypot(dx, dz);
+        if (dy === 4 && r > 1.5) continue;
+        if (dy >= 0 && dy <= 3 && r > 2.3) continue;
+        if (dy < 0 && r > 2.4) continue;
+        // Hollow interior for performance
+        if (dy < 3 && r < 1.1) continue;
+
+        // Front face (+z) dark eyes and spooky open mouth
+        if (dz === 2 && ((dy === 2 && Math.abs(dx) === 1) || (dy === 0 && dx === 0))) {
+          ghostTemplate.push({ dx, dy, dz, isEyeOrMouth: true, color: 0x0d1220 });
+        } else {
+          ghostTemplate.push({
+            dx,
+            dy,
+            dz,
+            isEyeOrMouth: false,
+            color: pickShade('ghostBody', dx, dy, dz)
+          });
+        }
+      }
+    }
+  }
+}
+
+// Low drifting fog particles across the grass
+const fogParticles = [];
+{
+  const rng = mulberry32(9001);
+  for (let i = 0; i < 95; i++) {
+    const x = (rng() - 0.5) * 74;
+    const z = (rng() - 0.5) * 74;
+    if (Math.hypot(x, z) > 40) continue;
+    fogParticles.push({
+      baseX: x,
+      baseZ: z,
+      y: 1.6 + rng() * 1.4,
+      speed: 1.4 + rng() * 1.2,
+      phase: rng() * Math.PI * 2,
+      len: 1 + Math.floor(rng() * 2),
+      color: pickShade('fog', Math.round(x), 1, Math.round(z))
+    });
+  }
+}
+
+// ============================================================================
+// POST-PROCESSING SHADER (85% LINEAR UPSCALE + SOFT DEPTH OUTLINE + ACES)
+// ============================================================================
+const postScene = new THREE.Scene();
+const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+const postMaterial = new THREE.ShaderMaterial({
+  uniforms: {
+    tColor: { value: renderTarget ? renderTarget.texture : null },
+    tDepth: { value: renderTarget && renderTarget.depthTexture ? renderTarget.depthTexture : null },
+    uResolution: { value: new THREE.Vector2(RT_WIDTH, RT_HEIGHT) },
+    uNear: { value: camera.near },
+    uFar: { value: camera.far }
+  },
+  vertexShader: /* glsl */`
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = vec4(position.xy, 0.0, 1.0);
+    }
+  `,
+  fragmentShader: /* glsl */`
+    precision highp float;
+    varying vec2 vUv;
+    uniform sampler2D tColor;
+    uniform sampler2D tDepth;
+    uniform vec2 uResolution;
+    uniform float uNear;
+    uniform float uFar;
+
+    float getLinearDepth(vec2 uv) {
+      float z = texture2D(tDepth, uv).x;
+      float ndc = z * 2.0 - 1.0;
+      return (2.0 * uNear * uFar) / (uFar + uNear - ndc * (uFar - uNear));
+    }
+
+    vec3 acesFilm(vec3 x) {
+      const float a = 2.51;
+      const float b = 0.03;
+      const float c = 2.43;
+      const float d = 0.59;
+      const float e = 0.14;
+      return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
+    }
+
+    void main() {
+      vec2 texel = 1.0 / uResolution;
+      float rawDepth = texture2D(tDepth, vUv).x;
+
+      // Night sky gradient: deep navy (#080f24) at top to slate blue (#293f66) at bottom
+      vec3 skyTop = vec3(0.018, 0.036, 0.105);
+      vec3 skyBot = vec3(0.115, 0.195, 0.345);
+      vec3 skyColor = mix(skyBot, skyTop, smoothstep(0.0, 1.0, vUv.y));
+
+      if (rawDepth >= 0.9998) {
+        vec3 mappedSky = pow(acesFilm(skyColor), vec3(1.0 / 2.2));
+        gl_FragColor = vec4(mappedSky, 1.0);
+        return;
+      }
+
+      vec3 col = texture2D(tColor, vUv).rgb;
+
+      // Soft emissive halo sample for glowing parts
+      vec3 glowSum = vec3(0.0);
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2( 2.0,  0.0) * texel).rgb - vec3(0.95));
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2(-2.0,  0.0) * texel).rgb - vec3(0.95));
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2( 0.0,  2.0) * texel).rgb - vec3(0.95));
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2( 0.0, -2.0) * texel).rgb - vec3(0.95));
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2( 1.5,  1.5) * texel).rgb - vec3(0.95));
+      glowSum += max(vec3(0.0), texture2D(tColor, vUv + vec2(-1.5, -1.5) * texel).rgb - vec3(0.95));
+      col += glowSum * 0.09;
+
+      // Soft depth-based outline (darken edges ~25%)
+      float dC = getLinearDepth(vUv);
+      float dL = getLinearDepth(vUv - vec2(texel.x, 0.0));
+      float dR = getLinearDepth(vUv + vec2(texel.x, 0.0));
+      float dU = getLinearDepth(vUv + vec2(0.0, texel.y));
+      float dD = getLinearDepth(vUv - vec2(0.0, texel.y));
+
+      float diff = abs(dL - dC) + abs(dR - dC) + abs(dU - dC) + abs(dD - dC);
+      float edge = smoothstep(0.45, 2.2, diff / max(1.0, dC * 0.015));
+
+      // Darken edges by ~25%
+      col *= mix(1.0, 0.75, edge);
+
+      // Subtle atmospheric depth blend on very distant silhouettes
+      float fogAmt = smoothstep(145.0, 210.0, dC) * 0.22;
+      col = mix(col, skyColor, fogAmt);
+
+      // ACES Filmic Tone Mapping + sRGB Gamma
+      col = acesFilm(col);
+      col = pow(col, vec3(1.0 / 2.2));
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `,
+  depthWrite: false,
+  depthTest: false
+});
+
+const postQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMaterial);
+postScene.add(postQuad);
+
+// ============================================================================
+// DIORAMA PEDESTAL PLINTH & INTERACTIVE CAMERA STATE
+// ============================================================================
+const uiOverlay = document.getElementById('diorama-ui');
+const eruptBtn = document.getElementById('erupt-btn');
+const turntableBtn = document.getElementById('turntable-btn');
+const replayBtn = document.getElementById('replay-btn');
+const camBtns = document.querySelectorAll('.cam-btn');
+
+let targetYawOffset = 0;
+let targetPitchOffset = 0;
+let targetZoomOffset = 0;
+let smoothYawOffset = 0;
+let smoothPitchOffset = 0;
+let smoothZoomOffset = 0;
+
+let isDragging = false;
+let lastMouseX = 0;
+let lastMouseY = 0;
+let autoRotateDiorama = true;
+let lastGeyserTriggerTime = -999;
+
+const CAMERA_PRESETS = {
+  overview: { yaw: 0, pitch: 2, zoom: 4, target: new THREE.Vector3(0, 3.2, -1.0) },
+  cauldron: { yaw: -0.35, pitch: -14, zoom: -44, target: new THREE.Vector3(2, 7.2, 4.0) },
+  hut:      { yaw: -0.68, pitch: -10, zoom: -36, target: new THREE.Vector3(-19, 11.0, -14.0) },
+  moon:     { yaw: 0.25, pitch: -12, zoom: -10, target: new THREE.Vector3(4, 20.0, -6.0) }
+};
+let activePreset = 'overview';
+const currentLookTarget = new THREE.Vector3(0, 3.2, -2.0);
+const desiredLookTarget = new THREE.Vector3(0, 3.2, -2.0);
+
+canvasEl.addEventListener('pointerdown', (e) => {
+  isDragging = true;
+  lastMouseX = e.clientX;
+  lastMouseY = e.clientY;
+});
+window.addEventListener('pointermove', (e) => {
+  if (!isDragging) return;
+  const dx = e.clientX - lastMouseX;
+  const dy = e.clientY - lastMouseY;
+  lastMouseX = e.clientX;
+  lastMouseY = e.clientY;
+  targetYawOffset -= dx * 0.007;
+  targetPitchOffset = clamp(targetPitchOffset + dy * 0.25, -32, 38);
+});
+window.addEventListener('pointerup', () => {
+  isDragging = false;
+});
+canvasEl.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  targetZoomOffset = clamp(targetZoomOffset + e.deltaY * 0.055, -52, 38);
+}, { passive: false });
+
+camBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    camBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activePreset = btn.dataset.preset;
+    targetYawOffset = 0;
+    targetPitchOffset = 0;
+    targetZoomOffset = 0;
+  });
+});
+
+// ============================================================================
+// DETERMINISTIC FRAME RENDERER: window.renderAt(t)
+// ============================================================================
+const dummyObj = new THREE.Object3D();
+const tmpColor = new THREE.Color();
+const DIORAMA_START = 5.4;
+const DIORAMA_FULL = 6.5;
+const fallbackDynVoxels = [];
+
+function renderFallbackCanvas2D() {
+  if (!ctx2d) return;
+  camera.updateMatrixWorld();
+  camera.matrixWorldInverse.copy(camera.matrixWorld).invert();
+  const viewProj = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+  const e = viewProj.elements;
+
+  // Draw Night Sky Gradient
+  const grad = ctx2d.createLinearGradient(0, 0, 0, OUT_HEIGHT);
+  grad.addColorStop(0, '#080f24');
+  grad.addColorStop(1, '#293f66');
+  ctx2d.fillStyle = grad;
+  ctx2d.fillRect(0, 0, OUT_WIDTH, OUT_HEIGHT);
+
+  const drawList = [];
+  const halfW = OUT_WIDTH * 0.5;
+  const halfH = OUT_HEIGHT * 0.5;
+  const focal = halfH / Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5));
+
+  function projectAndPush(x, y, z, scale, r, g, b, isEmissive) {
+    const cx = e[0] * x + e[4] * y + e[8] * z + e[12];
+    const cy = e[1] * x + e[5] * y + e[9] * z + e[13];
+    const cz = e[2] * x + e[6] * y + e[10] * z + e[14];
+    const cw = e[3] * x + e[7] * y + e[11] * z + e[15];
+    if (cw <= 0.1) return;
+    const invW = 1.0 / cw;
+    const ndcX = cx * invW;
+    const ndcY = cy * invW;
+    if (ndcX < -1.15 || ndcX > 1.15 || ndcY < -1.15 || ndcY > 1.15) return;
+
+    const sx = halfW + ndcX * halfW;
+    const sy = halfH - ndcY * halfH;
+    const size = Math.max(1.5, (scale * focal) * invW);
+    drawList.push({ sx, sy, cw, size, r, g, b, isEmissive, cz });
+  }
+
+  for (let i = 0; i < staticPreparedList.length; i++) {
+    const v = staticPreparedList[i];
+    projectAndPush(v.x, v.y, v.z, 1.05, v.r, v.g, v.b, false);
+  }
+
+  for (let i = 0; i < fallbackDynVoxels.length; i++) {
+    const v = fallbackDynVoxels[i];
+    projectAndPush(v.x, v.y, v.z, v.s, v.r, v.g, v.b, v.emissive);
+  }
+
+  // Painter's algorithm sort (back to front)
+  drawList.sort((a, b) => b.cw - a.cw);
+
+  for (let i = 0; i < drawList.length; i++) {
+    const item = drawList[i];
+    const s = item.size;
+    const hs = s * 0.5;
+    if (item.isEmissive) {
+      ctx2d.fillStyle = `rgba(${item.r},${item.g},${item.b},0.22)`;
+      ctx2d.fillRect(item.sx - hs * 1.6, item.sy - hs * 1.6, s * 1.6, s * 1.6);
+      ctx2d.fillStyle = `rgb(${item.r},${item.g},${item.b})`;
+      ctx2d.fillRect(item.sx - hs, item.sy - hs, s, s);
+    } else {
+      // Top highlight + shaded body for 3D voxel appearance
+      ctx2d.fillStyle = `rgb(${item.r},${item.g},${item.b})`;
+      ctx2d.fillRect(item.sx - hs, item.sy - hs, s, s);
+      ctx2d.fillStyle = `rgb(${Math.min(255, item.r + 22)},${Math.min(255, item.g + 22)},${Math.min(255, item.b + 22)})`;
+      ctx2d.fillRect(item.sx - hs, item.sy - hs, s, s * 0.35);
+    }
+  }
+}
+
+function renderSceneAt(rawTime) {
+  // Time continues advancing forever so ghosts, bats, steam, bubbles, and fire keep moving in their orbits!
+  const t = Math.max(0, rawTime);
+  const dioramaBlend = smoothstep(DIORAMA_START, DIORAMA_FULL, t);
+
+  // Reveal interactive 3D Diorama UI once the awakening sequence finishes
+  if (uiOverlay) {
+    uiOverlay.style.opacity = dioramaBlend.toFixed(3);
+    if (dioramaBlend > 0.5) {
+      uiOverlay.classList.add('active');
+    } else {
+      uiOverlay.classList.remove('active');
+    }
+  }
+
+  let dynLitIdx = 0;
+  let emissiveIdx = 0;
+  if (!hasWebGL) fallbackDynVoxels.length = 0;
+
+  function addDynLit(x, y, z, sx, sy, sz, hexCol, brightness = 1.0, rx = 0, ry = 0, rz = 0) {
+    if (dynLitIdx >= MAX_DYN_LIT) return;
+    dummyObj.position.set(x, y, z);
+    dummyObj.scale.set(sx, sy, sz);
+    dummyObj.rotation.set(rx, ry, rz);
+    dummyObj.updateMatrix();
+    dynLitMesh.setMatrixAt(dynLitIdx, dummyObj.matrix);
+    tmpColor.setHex(hexCol).multiplyScalar(brightness);
+    dynLitMesh.setColorAt(dynLitIdx, tmpColor);
+    dynLitIdx++;
+    if (!hasWebGL) {
+      fallbackDynVoxels.push({
+        x, y, z,
+        s: Math.max(sx, sy, sz),
+        r: Math.round(clamp(tmpColor.r * 255, 0, 255)),
+        g: Math.round(clamp(tmpColor.g * 255, 0, 255)),
+        b: Math.round(clamp(tmpColor.b * 255, 0, 255)),
+        emissive: false
+      });
+    }
+  }
+
+  function addEmissive(x, y, z, sx, sy, sz, hexCol, intensity = 1.5, rx = 0, ry = 0, rz = 0) {
+    if (emissiveIdx >= MAX_EMISSIVE) return;
+    dummyObj.position.set(x, y, z);
+    dummyObj.scale.set(sx, sy, sz);
+    dummyObj.rotation.set(rx, ry, rz);
+    dummyObj.updateMatrix();
+    emissiveMesh.setMatrixAt(emissiveIdx, dummyObj.matrix);
+    tmpColor.setHex(hexCol).multiplyScalar(intensity);
+    emissiveMesh.setColorAt(emissiveIdx, tmpColor);
+    emissiveIdx++;
+    if (!hasWebGL) {
+      fallbackDynVoxels.push({
+        x, y, z,
+        s: Math.max(sx, sy, sz),
+        r: Math.round(clamp(tmpColor.r * 210, 0, 255)),
+        g: Math.round(clamp(tmpColor.g * 210, 0, 255)),
+        b: Math.round(clamp(tmpColor.b * 210, 0, 255)),
+        emissive: true
+      });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 1. CAMERA: Intro ~6 deg drift -> Live Interactive 3D Orbit & Turntable
+  // --------------------------------------------------------------------------
+  const preset = CAMERA_PRESETS[activePreset] || CAMERA_PRESETS.overview;
+  smoothYawOffset += (targetYawOffset - smoothYawOffset) * 0.12;
+  smoothPitchOffset += (targetPitchOffset - smoothPitchOffset) * 0.12;
+  smoothZoomOffset += (targetZoomOffset - smoothZoomOffset) * 0.12;
+
+  const driftProgress = clamp(t / DIORAMA_FULL, 0.0, 1.0);
+  const turntableAngle = (autoRotateDiorama && !isDragging && t > DIORAMA_START)
+    ? (t - DIORAMA_START) * 0.14 * dioramaBlend
+    : 0.0;
+
+  const baseAzimuth = 0.42
+    + driftProgress * (6.0 * Math.PI / 180.0)
+    + turntableAngle
+    + (preset.yaw + smoothYawOffset) * dioramaBlend;
+
+  const camRadius = 114 + (preset.zoom + smoothZoomOffset) * dioramaBlend;
+  const camHeight = 64 + (preset.pitch + smoothPitchOffset) * dioramaBlend;
+
+  // Time since either Frame-1 eruption (t=0) or user clicking "Trigger Potion Geyser"
+  const geyserAge = (t >= lastGeyserTriggerTime && lastGeyserTriggerTime > 0)
+    ? Math.min(t, t - lastGeyserTriggerTime)
+    : t;
+
+  // Slight camera shake during geyser eruption
+  const shakeEnv = Math.exp(-geyserAge * 5.2) * smoothstep(0.68, 0.0, geyserAge);
+  const shakeX = Math.sin(geyserAge * 58.0) * 0.72 * shakeEnv;
+  const shakeY = Math.cos(geyserAge * 73.0) * 0.65 * shakeEnv;
+
+  desiredLookTarget.set(
+    preset.target.x * dioramaBlend,
+    3.2 + (preset.target.y - 3.2) * dioramaBlend,
+    -2.0 * (1.0 - dioramaBlend) + preset.target.z * dioramaBlend
+  );
+  currentLookTarget.lerp(desiredLookTarget, 0.12);
+
+  camera.position.set(
+    Math.sin(baseAzimuth) * camRadius + shakeX,
+    camHeight + shakeY,
+    Math.cos(baseAzimuth) * camRadius
+  );
+  camera.lookAt(
+    currentLookTarget.x + shakeX * 0.4,
+    currentLookTarget.y + shakeY * 0.4,
+    currentLookTarget.z
+  );
+
+  // --------------------------------------------------------------------------
+  // 1b. DIORAMA DISPLAY FRAME / FLOATING PLINTH RIM (fades in when diorama active)
+  // --------------------------------------------------------------------------
+  if (dioramaBlend > 0.02) {
+    const rimY = -17.5 + Math.sin(t * 1.8) * 0.25;
+    const rimScale = dioramaBlend;
+    for (let i = -46; i <= 46; i += 2) {
+      addDynLit(i, rimY, 46, 2 * rimScale, 1.2 * rimScale, 1.2 * rimScale, 0x263248, 0.9);
+      addDynLit(i, rimY, -46, 2 * rimScale, 1.2 * rimScale, 1.2 * rimScale, 0x263248, 0.9);
+      addDynLit(46, rimY, i, 1.2 * rimScale, 1.2 * rimScale, 2 * rimScale, 0x263248, 0.9);
+      addDynLit(-46, rimY, i, 1.2 * rimScale, 1.2 * rimScale, 2 * rimScale, 0x263248, 0.9);
+    }
+    // Glowing corner runes on the diorama plinth
+    for (const cx of [-46, 46]) {
+      for (const cz of [-46, 46]) {
+        addEmissive(cx, rimY + 0.2, cz, 1.6 * rimScale, 1.6 * rimScale, 1.6 * rimScale, 0x38ff6a, (1.6 + 0.3 * Math.sin(t * 3.0)) * dioramaBlend);
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 2. PIXEL MOON (EMISSIVE)
+  // --------------------------------------------------------------------------
+  for (let i = 0; i < moonVoxels.length; i++) {
+    const mv = moonVoxels[i];
+    addEmissive(mv.x, mv.y, mv.z, 1, 1, 1, mv.color, 1.65);
+  }
+
+  // --------------------------------------------------------------------------
+  // 3. HUT WINDOWS FLICKER & CANDLES FLICKER
+  // --------------------------------------------------------------------------
+  const hutFlicker = 1.25 + 0.35 * Math.sin(t * 11.0) * Math.cos(t * 19.0 + 1.1);
+  hutLight.intensity = 15.0 * hutFlicker;
+  for (let i = 0; i < hutWindowVoxels.length; i++) {
+    const wv = hutWindowVoxels[i];
+    const localFlicker = hutFlicker + 0.15 * Math.sin(t * 17.0 + i);
+    addEmissive(wv.x, wv.y, wv.z, 1, 1, 1, wv.baseColor, localFlicker);
+  }
+
+  for (let i = 0; i < candles.length; i++) {
+    const c = candles[i];
+    const flk = Math.sin(t * 18.0 + i * 2.3) * 0.22;
+    const tipShiftX = Math.sin(t * 14.0 + i * 1.7) * 0.18;
+    const tipShiftZ = Math.cos(t * 12.0 + i * 3.1) * 0.18;
+    addEmissive(c.x, c.y, c.z, 0.55, 0.7, 0.55, PALETTES.candle[0], 1.8 + flk);
+    addEmissive(c.x + tipShiftX, c.y + 0.55, c.z + tipShiftZ, 0.36, 0.55, 0.36, PALETTES.candle[1], 2.2 + flk);
+  }
+
+  // --------------------------------------------------------------------------
+  // 4. LOG FIRE UNDER CAULDRON FLICKERS
+  // --------------------------------------------------------------------------
+  const fireFlicker = 1.0 + 0.3 * Math.sin(t * 23.0) * Math.cos(t * 15.0);
+  fireLight.intensity = 22.0 * fireFlicker;
+  for (let i = 0; i < 24; i++) {
+    const ang = (i / 24) * Math.PI * 2 + t * 2.5;
+    const r = (i % 4) * 0.95;
+    const fx = Math.cos(ang) * r;
+    const fz = 2 + Math.sin(ang) * r;
+    const flameWave = Math.sin(t * 16.0 + i * 1.9) * 0.5 + 0.5;
+    const fy = 1.5 + flameWave * 1.6;
+    const fCol = PALETTES.fire[i % PALETTES.fire.length];
+    addEmissive(fx, fy, fz, 0.75, 0.85, 0.75, fCol, 1.9 + flameWave * 0.8);
+  }
+
+  // --------------------------------------------------------------------------
+  // 5. BOILING POTION SURFACE, BIG BUBBLES & FRAME-1 GREEN GEYSER ERUPTION
+  // --------------------------------------------------------------------------
+  // Base glowing green potion surface inside cauldron at y = 10.2
+  for (let dx = -4; dx <= 4; dx++) {
+    for (let dz = -4; dz <= 4; dz++) {
+      if (Math.hypot(dx, dz) <= 4.3) {
+        const waveY = 0.18 * Math.sin(t * 8.0 + dx * 0.9 + dz * 0.9);
+        const pCol = pickShade('potion', dx, 10, dz);
+        addEmissive(dx, 10.2 + waveY, 2 + dz, 1, 0.8, 1, pCol, 1.75);
+      }
+    }
+  }
+
+  // Big bubbles grow and pop (already boiling at Frame 1 / t = 0)
+  const bubbleCount = 9;
+  for (let b = 0; b < bubbleCount; b++) {
+    const cycle = (t * 1.65 + b * (1.0 / bubbleCount) + 0.35) % 1.0;
+    const bAng = b * 2.399 + Math.floor(t * 1.65 + b * 0.11) * 0.7;
+    const bRad = (b % 3) * 1.15 + 0.4;
+    const bx = Math.cos(bAng) * bRad;
+    const bz = 2 + Math.sin(bAng) * bRad;
+
+    if (cycle < 0.78) {
+      // Growing voxel bubble dome
+      const grow = cycle / 0.78;
+      const sz = 0.6 + grow * 1.35;
+      addEmissive(bx, 10.7 + grow * 0.9, bz, sz, sz, sz, PALETTES.potion[b % 4], 2.1);
+    } else {
+      // Popping ring of tiny voxel droplets
+      const popT = (cycle - 0.78) / 0.22;
+      for (let k = 0; k < 4; k++) {
+        const pAng = bAng + k * 1.57;
+        const px = bx + Math.cos(pAng) * (0.8 + popT * 1.4);
+        const pz = bz + Math.sin(pAng) * (0.8 + popT * 1.4);
+        const py = 11.6 + Math.sin(popT * Math.PI) * 1.1;
+        addEmissive(px, py, pz, 0.4, 0.4, 0.4, PALETTES.potion[1], 2.4);
+      }
+    }
+  }
+
+  // Frame 1 (or manual re-trigger): Bright green geyser shoots up with green flash & droplets
+  const geyserEnv = clamp(1.0 - smoothstep(0.25, 1.15, geyserAge), 0.0, 1.0);
+  const flashEnv = Math.exp(-geyserAge * 4.5);
+  cauldronLight.intensity = 32.0 + flashEnv * 115.0 + Math.sin(t * 9.0) * 5.0;
+
+  if (geyserEnv > 0.01) {
+    const geyserTop = 11.0 + 16.5 * Math.sin(clamp((geyserAge + 0.18) / 0.95, 0.0, 1.0) * Math.PI * 0.82);
+    for (let y = 11; y <= geyserTop; y++) {
+      const hNorm = (y - 11) / Math.max(1, geyserTop - 11);
+      const colRadius = (1.0 - hNorm * 0.55) * 2.4 * geyserEnv;
+      const ri = Math.ceil(colRadius);
+      for (let dx = -ri; dx <= ri; dx++) {
+        for (let dz = -ri; dz <= ri; dz++) {
+          if (Math.hypot(dx, dz) <= colRadius) {
+            const jitX = Math.sin(geyserAge * 25.0 + y) * 0.22;
+            const jitZ = Math.cos(geyserAge * 23.0 + y) * 0.22;
+            const col = pickShade('potion', dx, y, dz);
+            addEmissive(dx + jitX, y, 2 + dz + jitZ, 0.92, 0.92, 0.92, col, 2.3 + flashEnv * 1.6);
+          }
+        }
+      }
+    }
+
+    // Splashing droplets arcing out from the geyser
+    for (let d = 0; d < 42; d++) {
+      const dTime = geyserAge + 0.14 - (d % 7) * 0.03;
+      if (dTime > 0 && dTime < 1.15) {
+        const ang = d * 1.732;
+        const speedR = 4.5 + (d % 5) * 1.8;
+        const vy0 = 11.0 + (d % 6) * 2.2;
+        const dx = Math.cos(ang) * speedR * dTime;
+        const dz = Math.sin(ang) * speedR * dTime;
+        const dy = 11.5 + vy0 * dTime - 0.5 * 28.0 * dTime * dTime;
+        if (dy >= 1.2) {
+          addEmissive(dx, dy, 2 + dz, 0.65, 0.65, 0.65, PALETTES.potion[d % 4], 2.5);
+        }
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 6. 0.3s - 2.5s: POTION OVERFLOWS (DRIPS DOWN BELLY + GLOWING PUDDLES)
+  // --------------------------------------------------------------------------
+  for (let s = 0; s < dripStreams.length; s++) {
+    const stream = dripStreams[s];
+    const progress = clamp((t - stream.delay) * stream.speed, 0.0, 1.0);
+    if (progress <= 0.0) continue;
+
+    const activeNodes = Math.floor(progress * stream.nodes.length);
+    for (let n = 0; n < activeNodes; n++) {
+      const node = stream.nodes[n];
+      const wobble = Math.sin(n * 0.8 + stream.seed) * 0.06;
+      const vx = Math.cos(stream.ang + wobble) * node.r;
+      const vz = 2 + Math.sin(stream.ang + wobble) * node.r;
+      const pulse = 1.65 + 0.25 * Math.sin(t * 7.0 - n * 0.6 + s);
+      const col = PALETTES.potion[(s + n) % 4];
+      addEmissive(vx, node.y, vz, 0.78, 0.9, 0.78, col, pulse);
+    }
+  }
+
+  // Glowing green puddles spreading across the stone clearing (0.65s - 2.5s)
+  for (let i = 0; i < puddleVoxels.length; i++) {
+    const pv = puddleVoxels[i];
+    if (t >= pv.appearT) {
+      const grow = smoothstep(pv.appearT, pv.appearT + 0.35, t);
+      const shimmer = 1.45 + 0.25 * Math.sin(t * 5.0 + pv.x * 0.7 + pv.z * 0.7);
+      addEmissive(pv.x, pv.y, pv.z, grow, 0.35 * grow, grow, pv.color, shimmer);
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 7. SWIRLING GREEN STEAM COLUMN DISSOLVING INTO PIXELS AT THE TOP
+  // --------------------------------------------------------------------------
+  const steamParticles = 140;
+  for (let i = 0; i < steamParticles; i++) {
+    const hNorm = ((i / steamParticles) + t * 0.22) % 1.0;
+    const y = 11.8 + hNorm * 34.0;
+    const swirlAng = hNorm * 11.5 - t * 2.6 + (i % 3) * (Math.PI * 2 / 3);
+    const baseR = 1.2 + Math.pow(hNorm, 0.85) * 6.2;
+
+    // Dissolve into scattered individual pixels near the top
+    const scatter = smoothstep(0.55, 1.0, hNorm);
+    const px = Math.cos(swirlAng) * baseR + Math.sin(i * 13.7) * scatter * 3.2;
+    const pz = 2 + Math.sin(swirlAng) * baseR + Math.cos(i * 17.3) * scatter * 3.2;
+
+    // Quantize slightly at top for crisp voxel pixel dissolution
+    const vx = scatter > 0.3 ? Math.round(px * 2) * 0.5 : px;
+    const vy = scatter > 0.3 ? Math.round(y * 2) * 0.5 : y;
+    const vz = scatter > 0.3 ? Math.round(pz * 2) * 0.5 : pz;
+
+    const size = (1.0 - scatter * 0.45) * (0.75 + 0.35 * Math.sin(i * 3.1));
+    if (hNorm < 0.96 && (scatter < 0.5 || ((i + Math.floor(t * 8)) % 2 === 0))) {
+      const col = PALETTES.steam[i % PALETTES.steam.length];
+      addEmissive(vx, vy, vz, size, size, size, col, 1.45 * (1.0 - hNorm * 0.45));
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 8. GHOSTS AT 0.9s, 2.0s, 3.1s, 4.2s RISING & SPIRALING OUTWARD
+  // --------------------------------------------------------------------------
+  const ghostSpawnTimes = [0.9, 2.0, 3.1, 4.2];
+  for (let g = 0; g < ghostSpawnTimes.length; g++) {
+    const dt = t - ghostSpawnTimes[g];
+    if (dt < 0) continue;
+
+    // Smooth scale growth over 0.85s
+    const scale = smoothstep(0.0, 0.85, dt) * 0.72;
+    // Spiral outward from cauldron steam column and settle into orbital diorama paths
+    const spiralR = 2.0 + 31.0 * (1.0 - Math.exp(-dt * 0.62)) + (g % 2) * 3.5;
+    const spiralAng = g * 1.57 + dt * (1.15 - g * 0.08);
+    const gx = Math.cos(spiralAng) * spiralR;
+    const gz = 2 + Math.sin(spiralAng) * spiralR;
+    const gy = 14.0 + Math.min(11.0, dt * 5.2) + Math.sin(t * 3.2 + g * 1.7) * 2.2;
+
+    // Face forward along spiral tangent
+    const heading = spiralAng + Math.PI * 0.5;
+    const cosH = Math.cos(heading);
+    const sinH = Math.sin(heading);
+
+    for (let v = 0; v < ghostTemplate.length; v++) {
+      const gt = ghostTemplate[v];
+      // Wavy tail motion for lower skirt voxels (dy < 0)
+      let waveX = 0;
+      let waveZ = 0;
+      if (gt.dy < 0) {
+        const tailDepth = -gt.dy;
+        waveX = Math.sin(t * 9.0 + tailDepth * 0.9 + g) * 0.38 * tailDepth;
+        waveZ = -tailDepth * 0.35;
+      }
+
+      const lx = (gt.dx + waveX) * scale;
+      const ly = gt.dy * scale;
+      const lz = (gt.dz + waveZ) * scale;
+
+      const wx = gx + lx * cosH + lz * sinH;
+      const wy = gy + ly;
+      const wz = gz - lx * sinH + lz * cosH;
+
+      if (gt.isEyeOrMouth) {
+        addDynLit(wx, wy, wz, scale * 1.04, scale * 1.04, scale * 1.04, gt.color, 0.3, 0, heading, 0);
+      } else {
+        addEmissive(wx, wy, wz, scale, scale, scale, gt.color, 1.85, 0, heading, 0);
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 9. AT 4.6s: MUSHROOMS LIGHT UP IN A RADIAL WAVE + BATS BURST & CIRCLE
+  // --------------------------------------------------------------------------
+  const waveTime = t - 4.6;
+  mushroomWaveLight.intensity = waveTime > 0 ? smoothstep(0.0, 1.2, waveTime) * 26.0 : 0.0;
+
+  for (let m = 0; m < mushrooms.length; m++) {
+    const mush = mushrooms[m];
+    const hitTime = 4.6 + mush.dist / 26.0;
+    const isLit = t >= hitTime;
+
+    if (isLit) {
+      const age = t - hitTime;
+      const flare = smoothstep(0.0, 0.35, age);
+      const pulse = 1.55 + 0.45 * Math.sin(age * 6.5 - mush.dist * 0.25);
+      const palName = mush.type === 'purple' ? 'mushPurple' : (mush.type === 'cyan' ? 'mushCyan' : 'mushPink');
+
+      for (let c = 0; c < mush.capVoxels.length; c++) {
+        const cv = mush.capVoxels[c];
+        const col = pickShade(palName, cv.x, cv.y, cv.z);
+        addEmissive(cv.x, cv.y, cv.z, 1, 1, 1, col, flare * pulse);
+      }
+    } else {
+      const dormName = mush.type === 'purple' ? 'capDormantPurple' : (mush.type === 'cyan' ? 'capDormantCyan' : 'capDormantPink');
+      for (let c = 0; c < mush.capVoxels.length; c++) {
+        const cv = mush.capVoxels[c];
+        const col = pickShade(dormName, cv.x, cv.y, cv.z);
+        addDynLit(cv.x, cv.y, cv.z, 1, 1, 1, col, 0.95);
+      }
+    }
+  }
+
+  // Flock of bats bursts out of the dead trees at 4.6s and circles the island
+  if (t >= 4.6) {
+    const batDt = t - 4.6;
+    const numBats = 20;
+    for (let b = 0; b < numBats; b++) {
+      const origin = treeCrowns[b % treeCrowns.length];
+      const orbitR = 26.0 + (b % 5) * 3.8;
+      const orbitAng = b * 0.95 + batDt * (1.45 + (b % 3) * 0.18);
+      const orbitX = Math.cos(orbitAng) * orbitR;
+      const orbitZ = Math.sin(orbitAng) * orbitR;
+      const orbitY = 20.0 + (b % 6) * 2.4 + Math.sin(batDt * 4.5 + b) * 1.8;
+
+      // Smoothly transition from tree crown burst to island-circling orbit
+      const blend = smoothstep(0.0, 1.15, batDt);
+      const bx = origin.x * (1.0 - blend) + orbitX * blend;
+      const by = origin.y * (1.0 - blend) + orbitY * blend;
+      const bz = origin.z * (1.0 - blend) + orbitZ * blend;
+
+      const heading = orbitAng + Math.PI * 0.5;
+      const cosH = Math.cos(heading);
+      const sinH = Math.sin(heading);
+
+      // Body & ears
+      const batCol = PALETTES.bat[b % PALETTES.bat.length];
+      addDynLit(bx, by, bz, 0.85, 0.75, 1.1, batCol, 1.0, 0, heading, 0);
+      addDynLit(bx + sinH * 0.4, by + 0.5, bz + cosH * 0.4, 0.35, 0.45, 0.35, batCol, 1.0, 0, heading, 0);
+
+      // Flapping wings (3 voxel segments per wing)
+      const flap = Math.sin(t * 26.0 + b * 1.7);
+      for (const side of [-1, 1]) {
+        for (let seg = 1; seg <= 3; seg++) {
+          const span = side * seg * 0.68;
+          const lift = flap * seg * 0.52;
+          const wx = bx + span * cosH;
+          const wy = by + lift;
+          const wz = bz - span * sinH;
+          addDynLit(wx, wy, wz, 0.65, 0.28, 0.75, batCol, 1.0, 0, heading, 0);
+        }
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 10. BLACK CAT BLINKS AND SWISHES ITS TAIL
+  // --------------------------------------------------------------------------
+  const catX = 8;
+  const catZ = 8;
+  const catY = (surfaceHeightMap.get(`${catX},${catZ}`) ?? 0) + 1;
+
+  // Cat blinks periodically
+  const blinkPhase = (t + 0.4) % 2.3;
+  const isBlinking = (blinkPhase > 1.95 && blinkPhase < 2.13);
+  if (!isBlinking) {
+    addEmissive(catX - 1.15, catY + 3.6, catZ + 0.55, 0.38, 0.38, 0.38, 0xc8ff2e, 2.1);
+    addEmissive(catX - 0.55, catY + 3.6, catZ + 1.15, 0.38, 0.38, 0.38, 0xc8ff2e, 2.1);
+  } else {
+    addDynLit(catX - 1.15, catY + 3.6, catZ + 0.55, 0.38, 0.38, 0.38, PALETTES.cat[0], 1.0);
+    addDynLit(catX - 0.55, catY + 3.6, catZ + 1.15, 0.38, 0.38, 0.38, PALETTES.cat[0], 1.0);
+  }
+
+  // Swishing curved voxel tail on the back-right of the cat
+  for (let seg = 1; seg <= 5; seg++) {
+    const swish = Math.sin(t * 4.2 - seg * 0.45) * (seg * 0.38);
+    const tx = catX + 1.0 + seg * 0.45;
+    const ty = catY + 0.4 + seg * 0.55;
+    const tz = catZ - 0.8 + swish;
+    addDynLit(tx, ty, tz, 0.68, 0.68, 0.68, PALETTES.cat[seg % 4], 1.0);
+  }
+
+  // --------------------------------------------------------------------------
+  // 11. LOW FOG PIXELS DRIFTING ACROSS THE GRASS
+  // --------------------------------------------------------------------------
+  for (let i = 0; i < fogParticles.length; i++) {
+    const fp = fogParticles[i];
+    const driftX = fp.baseX + Math.sin(t * 0.55 + fp.phase) * 3.8 + (t * fp.speed) % 12.0 - 6.0;
+    const driftZ = fp.baseZ + Math.cos(t * 0.45 + fp.phase) * 2.5;
+    const dist = Math.hypot(driftX, driftZ);
+    if (dist < 39.0 && Math.hypot(driftX, driftZ - 2) > 9.5) {
+      const groundY = surfaceHeightMap.get(`${Math.round(driftX)},${Math.round(driftZ)}`) ?? 0;
+      const fy = groundY + fp.y + 0.25 * Math.sin(t * 2.0 + fp.phase);
+      addDynLit(driftX, fy, driftZ, fp.len, 0.42, 0.85, fp.color, 1.15);
+    }
+  }
+
+  // Commit dynamic instance counts and buffers
+  dynLitMesh.count = dynLitIdx;
+  dynLitMesh.instanceMatrix.needsUpdate = true;
+  if (dynLitMesh.instanceColor) dynLitMesh.instanceColor.needsUpdate = true;
+
+  emissiveMesh.count = emissiveIdx;
+  emissiveMesh.instanceMatrix.needsUpdate = true;
+  if (emissiveMesh.instanceColor) emissiveMesh.instanceColor.needsUpdate = true;
+
+  if (hasWebGL) {
+    // Render scene at 85% resolution into renderTarget, then upscale + outline + ACES to screen
+    if (renderTarget && renderTarget.depthTexture) {
+      renderer.setRenderTarget(renderTarget);
+      renderer.clear();
+      renderer.render(scene, camera);
+
+      renderer.setRenderTarget(null);
+      renderer.render(postScene, postCamera);
+    } else {
+      renderer.setRenderTarget(null);
+      renderer.clear();
+      renderer.render(scene, camera);
+    }
+  } else {
+    renderFallbackCanvas2D();
+  }
+}
+
+// Expose deterministic frame control
+let manualControl = false;
+let playbackStartTime = performance.now();
+
+window.renderAt = function(t) {
+  manualControl = true;
+  const val = Number(t) || 0;
+  renderSceneAt(val);
+};
+
+// Interactive 3D Diorama Controls
+if (eruptBtn) {
+  eruptBtn.addEventListener('click', () => {
+    lastGeyserTriggerTime = (performance.now() - playbackStartTime) * 0.001;
+  });
+}
+
+if (turntableBtn) {
+  turntableBtn.addEventListener('click', () => {
+    autoRotateDiorama = !autoRotateDiorama;
+    turntableBtn.classList.toggle('active', autoRotateDiorama);
+    turntableBtn.textContent = autoRotateDiorama ? '🔄 Auto-Rotate: ON' : '⏸️ Auto-Rotate: OFF';
+  });
+}
+
+if (replayBtn) {
+  replayBtn.addEventListener('click', () => {
+    manualControl = false;
+    lastGeyserTriggerTime = -999;
+    targetYawOffset = 0;
+    targetPitchOffset = 0;
+    targetZoomOffset = 0;
+    smoothYawOffset = 0;
+    smoothPitchOffset = 0;
+    smoothZoomOffset = 0;
+    activePreset = 'overview';
+    camBtns.forEach(b => b.classList.toggle('active', b.dataset.preset === 'overview'));
+    playbackStartTime = performance.now();
+  });
+}
+
+// Continuous live animation loop: intro plays 0->6.5s, then stays a living 3D diorama with continuous orbits
+function animate(now) {
+  requestAnimationFrame(animate);
+  if (!manualControl) {
+    const elapsed = (now - playbackStartTime) * 0.001;
+    renderSceneAt(elapsed);
+  }
+}
+
+// Render Frame 1 immediately at t = 0
+renderSceneAt(0);
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
