@@ -1,0 +1,14 @@
+{
+  "environment": "Chromium / SwiftShader / 1000x700",
+  "reference": {
+    "meanFrameMs": 1748.8200000000002,
+    "fps": 0.5718141375327364,
+    "frames": 15,
+    "drawCalls": 59,
+    "triangles": 218548,
+    "memory": {
+      "geometries": 25,
+      "textures": 1
+    }
+  }
+}
