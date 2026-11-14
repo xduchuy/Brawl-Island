@@ -1,7 +1,7 @@
 class BrawlMatch {
  constructor(config={}) {
   this.seed=config.seed||1; this.rng=rng32(this.seed); this.mode=config.mode||1; this.rounds=config.rounds||2;
-  this.difficulty=config.difficulty||'normal'; this.arena=config.arena||'skyreach';
+  this.difficulty=config.difficulty||'normal'; this.arena=config.arena||'skyreach';this.arenaRules=config.arenaRules||null;
   this.gameMode=config.gameMode||'versus'; this.training={dummy:'stand',unlimited:false,...config.training};
   this.slots=config.slots||[{kind:'goblin',controller:'p1'},{kind:'skeleton',controller:'ai'},{kind:'skeleton',controller:'ai'},{kind:'goblin',controller:'ai'}];
   this.events=[];this.results=[];this.score=[0,0];this.round=1;this.tick=0;this.phase='ready';this.phaseTick=0;this.time=5940;this.paused=false;this.hitstop=0;
@@ -14,6 +14,7 @@ class BrawlMatch {
    x:i%2?2.8:-2.8,z:i>1?2:-.8,y:0,angle:i%2?-Math.PI/2:Math.PI/2,state:'idle',frame:0,combo:0,move:null,buffer:null,hitIds:new Set(),
    vx:0,vz:0,mx:0,mz:0,distance:0,travel:0,invul:0,flinch:0,dead:false,fall:false,aiThink:0,aiInput:{x:0,z:0},dodgeX:0,dodgeZ:0,regen:0,guardLocked:0,target:null,
    previousX:i%2?2.8:-2.8,previousZ:i>1?2:-.8,ultimate:0,cooldowns:{},guardStart:-999,counter:0,charge:0,comboHits:0,comboDamage:0,comboUntil:0,damageTotal:0,receivedChain:0,chainUntil:0,markUntil:0,confirmed:false,spawned:false}));
+  if(this.arenaRules)for(const f of this.fighters){const p=this.arenaRules.spawnPoints[f.id];Object.assign(f,{x:p.x,z:p.z,y:p.y,previousX:p.x,previousZ:p.z,angle:f.team?Math.PI:0});}
   this.time=5940;
  }
  start(){this.score=[0,0];this.round=1;this.resetFighters();this.phase='intro';this.phaseTick=0;this.emit('round',{round:1});}
@@ -44,7 +45,7 @@ class BrawlMatch {
   const dist=Math.hypot(t.x-f.x,t.z-f.z),dx=(t.x-f.x)/(dist||1),dz=(t.z-f.z)/(dist||1),range=f.stats.reach;
   const input={x:0,z:0,block:false},rad=Math.hypot(f.x,f.z),danger=t.state==='attack'&&t.frame<=t.move.end&&dist<3;
   const zoner=['gojo','nobara','geto','kenjaku','megumi'].includes(f.kind);
-  if(rad>7.3){input.x=-f.x/rad;input.z=-f.z/rad;}
+  if(!this.arenaRules&&rad>7.3){input.x=-f.x/rad;input.z=-f.z/rad;}
   else if(f.stamina<24&&dist<3){input.x=-dx*.65;input.z=-dz*.65;}
   else if(dist>range*.9){input.x=dx;input.z=dz;}
   else {const s=this.rng()-.5;input.x=-dz*s*.55;input.z=dx*s*.55;}
@@ -55,6 +56,7 @@ class BrawlMatch {
    const r=this.rng(),punish=t.state==='attack'&&t.frame>t.move.end;
    input.action=(t.state==='block'||punish)&&!f.cooldowns.special&&f.stamina>40?'special':r<.65?'light':r<.83?'heavy':!f.cooldowns.skill2?'skill2':'light';
   }else if(!zoner&&dist>4&&f.stamina>60&&this.rng()<.25)input.action='dash';
+  if(this.arenaRules&&(dist>range*.9||!this.arenaRules.canHit(f,t))){const dir=this.arenaRules.steer(f,t);input.x=dir.x;input.z=dir.z;if(!this.arenaRules.canHit(f,t))delete input.action;}
   f.aiInput=input;return input;
  }
  step(inputs={}){
@@ -96,7 +98,7 @@ class BrawlMatch {
       if(m.pulses&&m.pulses.includes(f.frame))f.hitIds.clear();
       if(!m.pulses||m.pulses.includes(f.frame))for(const enemy of this.fighters){
        if(enemy.team===f.team||enemy.dead||f.hitIds.has(enemy.id)||enemy.invul||['down','getup'].includes(enemy.state))continue;
-       if(contactTest(f,enemy,m,m.hitbox.type==='field'?f.field:f)){f.hitIds.add(enemy.id);pending.push({attacker:f,target:enemy,move:m});}
+       if(contactTest(f,enemy,m,m.hitbox.type==='field'?f.field:f)&&(!this.arenaRules||this.arenaRules.canHit(f,enemy))){f.hitIds.add(enemy.id);pending.push({attacker:f,target:enemy,move:m});}
       }
      }
     }
@@ -129,12 +131,14 @@ class BrawlMatch {
    }
    f.x+=f.vx/60;f.z+=f.vz/60;f.vx*=.87;f.vz*=.87;
    const radius=Math.hypot(f.x,f.z);
-   if(this.arena==='sanctum'&&radius>9.4){f.x*=9.4/radius;f.z*=9.4/radius;if(Math.hypot(f.vx,f.vz)>2){f.vx*=-.5;f.vz*=-.5;this.emit('wall',{id:f.id});}}
+   if(this.arenaRules){this.arenaRules.constrain(f,f.previousX,f.previousZ);}
+   else if(this.arena==='sanctum'&&radius>9.4){f.x*=9.4/radius;f.z*=9.4/radius;if(Math.hypot(f.vx,f.vz)>2){f.vx*=-.5;f.vz*=-.5;this.emit('wall',{id:f.id});}}
    else if(radius>10.15){f.dead=true;f.fall=true;f.state='fall';f.frame=0;f.hp=0;this.emit('ringout',{id:f.id});}
    f.travel=Math.hypot(f.x-f.previousX,f.z-f.previousZ);f.distance+=f.travel;
   }
   for(const p of this.projectiles){
    const a=this.fighters[p.owner],m=p.move,oldX=p.x,oldZ=p.z;p.x+=Math.sin(p.angle)*m.speed/60;p.z+=Math.cos(p.angle)*m.speed/60;p.age++;
+   if(this.arenaRules&&!this.arenaRules.canHit({x:oldX,z:oldZ,y:a.y},{x:p.x,z:p.z,y:a.y})){p.age=p.life;continue;}
    for(const t of this.fighters){if(t.team===a.team||t.dead||t.invul||p.hitIds.has(t.id)||['down','getup'].includes(t.state))continue;
     const dx=p.x-oldX,dz=p.z-oldZ,u=clamp(((t.x-oldX)*dx+(t.z-oldZ)*dz)/(dx*dx+dz*dz||1),0,1);
     if(Math.hypot(t.x-oldX-dx*u,t.z-oldZ-dz*u)<m.hitbox.radius+.3){p.hitIds.add(t.id);pending.push({attacker:a,target:t,move:m});p.age=p.life;}
@@ -144,10 +148,12 @@ class BrawlMatch {
   for(const h of pending)this.hit(h);
   for(let i=0;i<this.fighters.length;i++)for(let j=i+1;j<this.fighters.length;j++){
    const a=this.fighters[i],b=this.fighters[j];if(a.dead||b.dead)continue;let dx=b.x-a.x,dz=b.z-a.z,d=Math.hypot(dx,dz);
+   const ax=a.x,az=a.z,bx=b.x,bz=b.z;
    if(d<.62){if(d<.001){dx=.01;d=.01;}const push=(.62-d)/2;a.x-=dx/d*push;a.z-=dz/d*push;b.x+=dx/d*push;b.z+=dz/d*push;}
+   if(this.arenaRules){this.arenaRules.constrain(a,ax,az);this.arenaRules.constrain(b,bx,bz);}
   }
   if(this.gameMode==='training'){
-   for(const f of this.fighters)if(f.dead){this.emit('trainingko',{id:f.id});Object.assign(f,{dead:false,fall:false,hp:f.stats.hp,x:f.team?2.8:-2.8,z:0,y:0,state:'getup',frame:0,invul:60,vx:0,vz:0});}
+   for(const f of this.fighters)if(f.dead){this.emit('trainingko',{id:f.id});Object.assign(f,{dead:false,fall:false,hp:f.stats.hp,x:f.team?2.8:-2.8,z:0,y:0,state:'getup',frame:0,invul:60,vx:0,vz:0});if(this.arenaRules){const p=this.arenaRules.spawnPoints[f.id];Object.assign(f,{x:p.x,y:p.y,z:p.z,previousX:p.x,previousZ:p.z});}}
    return;
   }
   const alive=[0,0];for(const f of this.fighters)if(!f.dead)alive[f.team]++;

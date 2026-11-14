@@ -1,8 +1,8 @@
-# The Drowned Sanctuary — environment preview
+# The Drowned Sanctuary — playable arena and environment preview
 
-Open **Arena Preview · Drowned Sanctuary** in the game's toolbar. This environment uses the existing game's WebGL canvas, renderer and frame loop. It pauses the match while open and restores the prior renderer and pause state on exit. It does not register new combat rules or fighters. Witch's Cauldron is separate and untouched.
+Choose **ARENA → Drowned Sanctuary · Flooded ruins**, select 1v1 or 2v2 and start a match. The arena uses its own grounded spawns, connected courtyard boundary, solid obstacles and AI routes. The existing game's WebGL canvas, fighters, skills, controls, scoring and frame loop are reused. **Arena Preview · Drowned Sanctuary** remains available for inspection without a fight. Witch's Cauldron is separate and untouched.
 
-The branch starts from main `2bbcd46195d05edf31cb9d4e3b22fa5ebd356855`, confirmed still current during implementation. The supplied `The_Drowned_Sanctuary_Expanded.html` is preserved byte-for-byte in [the reference folder](../reference/drowned-sanctuary/source.html), SHA-256 `d693880526c8025a605393235936cf128f9506df9e7d33c2930022873021690e`. Only that isolated reference page uses r160/CDN modules. The generated production `index.html` contains the existing bundled r128 and no additional runtime downloads.
+The playable integration builds on merged PR #5, main `3aa053d0202ebafba1f3b76b0cca335fa10a4a70`. The original environment port was based on `2bbcd46195d05edf31cb9d4e3b22fa5ebd356855`. The supplied `The_Drowned_Sanctuary_Expanded.html` is preserved byte-for-byte in [the reference folder](../reference/drowned-sanctuary/source.html), SHA-256 `d693880526c8025a605393235936cf128f9506df9e7d33c2930022873021690e`. Only that isolated reference page uses r160/CDN modules. The generated production `index.html` contains the existing bundled r128 and no additional runtime downloads.
 
 ## Source audit and port
 
@@ -32,6 +32,7 @@ Major mesh bounds and tower dimensions are recorded in `tests/drowned-results.js
 - `src/maps/drowned-sanctuary/geometry.js`: source procedural builders.
 - `ambience.js`: materials, lighting, shaders, instanced vegetation, particles and relic builders.
 - `index.js`: `createDrownedSanctuary({THREE, scene, renderer, quality, seed})`, construction, update, moods, tiers and disposal. The map owns a scene/root rendered by the **host** renderer; it does not mutate the existing combat scene.
+- `combat.js`: deterministic movement/attack adapter, AI route steering, grounded spawns, and rendering of the existing fighters/VFX in the map scene. Dynamic game objects are restored to their original parents after rendering; leaving the arena disposes only map resources.
 - `navigation.js`: upward-triangle rasterization, spatially indexed capsule clearance, graph connectivity and spawn selection.
 - `preview.js` / `preview.css`: registered environment, small toolbar entry, inspection controls and host renderer bridge.
 - `tools/build.cjs`: inserts the procedural sources into the factory and bundles them into the offline HTML.
@@ -57,13 +58,15 @@ Auto starts at Medium and drops to Low after five seconds of sustained frame tim
 
 ## Navigation preparation and explicit limits
 
-Navigation comes from the **actual generated triangles**, not a circular boundary. Upward faces are rasterized at .75-unit resolution; headroom, rotated source boxes and a triangle/capsule test filter candidates. Adjacency is restricted to .4-unit steps and quarter-edge clearance samples. The .42 clearance radius conservatively covers a future .3-radius agent between samples; height is approximately 1.8 units. Triangle blockers include roots, architecture, terrain, pedestal and statue. Water/foliage/relic effects are not blockers.
+Navigation comes from the **actual generated triangles**, not a circular boundary. Upward faces are rasterized at .75-unit resolution; headroom, rotated source boxes and a triangle/capsule test filter candidates. Adjacency is restricted to .4-unit steps and quarter-edge clearance samples. The .42 clearance radius conservatively covers the .3-radius combat agent between samples; height is approximately 1.8 units. Triangle blockers include roots, architecture, terrain, pedestal and statue. Water/foliage/relic effects are not blockers.
 
-A low, submerged paving layer fills source terrain seams within the courtyard (X -15…15, Z -13.5…16.5, surface Y -.73), excluding the central pedestal footprint. Major architecture remains in place. This is the only added structural surface. The largest clear connected ground region provides four deterministic anchors, two on each opposing side, with both ground sampling and capsule clearance verified. These are future-integration anchors, not active combat spawns.
+A low, submerged paving layer fills source terrain seams within the courtyard (X -15…15, Z -13.5…16.5, surface Y -.73), excluding the central pedestal footprint. Major architecture remains in place. This is the only added structural surface. The largest clear connected ground region provides four deterministic anchors, two on each opposing side, with both ground sampling and capsule clearance verified. These are the active combat spawns, ordered by alternating team and teammate, and reused on round reset and Training revival.
 
 The green overlay shows that connected region. Red points show other disconnected ground samples, **excluded from navigation**. Ruin debris, broken stairs, the outer causeway and outlying terrain are not assumed traversable just because visible. Unmapped water is non-traversable in the metadata. The left balcony at Y≈8.45 has no continuous stair connection in the source and is explicitly inspection-only. Stair parameters and platform bounds are exposed; only portions joining the validated ground graph may be treated as accessible.
 
-This is a conservative sampled graph for later controller work, not a complete continuous navmesh for arbitrary fighter sizes. Future integration must map fighter scale to these units, apply the blockers/water rules to movement, and validate controller stepping/ground support at runtime. The current BrawlMatch ring-out/movement rules remain untouched. No claim is made that every ruined arcade or elevated platform supports combat.
+The combat controller uses this conservative graph and continuous movement inside its cells. Each movement is swept in at most .12-unit increments, with .3-radius triangle clearance and axis sliding. Walking, dodge/dash, lunge, knockback and fighter separation all pass through it. Unmapped water and disconnected ruins act as solid movement limits; this arena uses health/time victories rather than Skyreach ring-outs. BrawlMatch accepts an optional arena adapter; Skyreach/Sanctum retain their prior behavior.
+
+AI follows graph routes around the monument and pillars. A conservative body-height clearance trace blocks attacks and projectiles through stone. These traces are not a per-limb 3D hitbox simulation. The accessible connected courtyard is the combat space; elevated balconies and excluded ruins remain scenery. Arbitrary new fighter sizes require clearance revalidation.
 
 ## Reproducing validation
 
@@ -71,6 +74,8 @@ This is a conservative sampled graph for later controller work, not a complete c
 npm run build
 npm test
 node tests/drowned-navigation.cjs
+node tests/sanctuary-combat.cjs
+node tests/sanctuary-playable-browser.cjs
 node tests/drowned-browser.cjs
 node tests/drowned-lifecycle.cjs
 node tests/deployment.cjs
@@ -96,3 +101,9 @@ These are short, 15-frame samples after five warm-up frames on the managed Linux
 Procedural construction including navigation took 2.95 seconds for the Medium run and 2.29/1.99 seconds for the two Low opens. This excludes first shader compilation. Medium reported 47 geometries / 19 textures; Low 47 / 18. These renderer resource counts include the retained game resources, unlike the isolated reference. After each close and game render the counts returned to **21 geometries / 20 textures**. Byte-level GPU/heap memory was not measured.
 
 The final offline deployment check produced `public/index.html` matching the offline build, HTTP 200, all 11 existing fighters, 49 existing textures, zero runtime asset requests and zero page errors. Photo download and the transparent debug overlay were additionally checked after the final overlay adjustment. No hardware 60 FPS / 30 FPS claim is made; physical-device profiling remains a review gate before production promotion.
+
+## Playable combat validation
+
+The real sanctuary geometry is used in headless 1v1 and 2v2 simulations. With fixed seeds, both matches reach a winner before the time limit (13/27 landed hits, 1240/1410 simulation ticks). Every sampled living fighter remains on connected ground with capsule clearance. Additional checks cover monument occlusion, large knockback and grounded Training revival.
+
+The playable browser test selects the arena through the UI, starts matches with existing fighters, renders combat on desktop and mobile landscape, and switches back to Skyreach while checking map disposal and browser errors. Combat images are `combat-desktop.png`, `combat-mobile.png` and `combat-teams.png`. Combat camera framing uses the courtyard coordinates and a higher angle; contact shadows, skill indicators and VFX follow ground elevation. Desktop uses up to Medium environment density; mobile uses Low with .7 render scale. Earlier performance measurements above describe inspection mode, not measured combat FPS. Hardware profiling remains outstanding.

@@ -12,7 +12,7 @@ class SkillIndicators {
    const w=h.type==='projectile'?h.radius:h.width;segment(-w,0,-w,radius);segment(w,0,w,radius);segment(-w,radius,w,radius);segment(0,0,0,radius);segment(-.22,radius-.4,0,radius);segment(.22,radius-.4,0,radius);circle(.12,0,radius);
   }else{circle(radius,0,0,-h.angle,h.angle);for(const a of [-h.angle,h.angle])segment(0,0,Math.sin(a)*radius,Math.cos(a)*radius);segment(0,0,0,radius);}
   const triangles=[],cz=h.type==='field'?(s.offset||0):0;for(let i=0;i<vertices.length;i+=6)triangles.push(0,.11,cz,...vertices.slice(i,i+6));this.fillGeometry.attributes.position.array.set(triangles);this.fillGeometry.attributes.position.needsUpdate=true;this.fillGeometry.setDrawRange(0,triangles.length/3);this.fillMaterial.color.set(canceled?'#f1607d':'#36dbba');this.fillMaterial.opacity=mobilePrefs.previewOpacity*.4;
-  this.geometry.attributes.position.array.set(vertices);this.geometry.attributes.position.needsUpdate=true;this.geometry.setDrawRange(0,vertices.length/3);this.group.position.set(f.x,0,f.z);this.group.rotation.y=angle;this.material.color.set(canceled?'#bb264a':'#164e59');this.material.opacity=mobilePrefs.previewOpacity;this.group.visible=true;
+  this.geometry.attributes.position.array.set(vertices);this.geometry.attributes.position.needsUpdate=true;this.geometry.setDrawRange(0,vertices.length/3);this.group.position.set(f.x,f.y||0,f.z);this.group.rotation.y=angle;this.material.color.set(canceled?'#bb264a':'#164e59');this.material.opacity=mobilePrefs.previewOpacity;this.group.visible=true;
  }
 }
 const skillIndicators=new SkillIndicators(),skillAim=new SkillAim();

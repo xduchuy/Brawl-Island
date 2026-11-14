@@ -46,7 +46,7 @@ mobile.exit=()=>{
 };
 mobile.cameraFrame=()=>{
  const w=Math.max(1,$('stage').clientWidth),h=Math.max(1,$('stage').clientHeight),pad=mobile.safeInsets(),rect={left:pad.left+28,right:w-pad.right-28,top:pad.top+76,bottom:Math.min(h-pad.bottom-96,document.querySelector('.touch-actions').getBoundingClientRect().top-8)};
- const angle=.1,tilt=.5,right=V(Math.cos(angle),0,-Math.sin(angle)),up=V(-Math.sin(angle)*Math.sin(tilt),Math.cos(tilt),-Math.cos(angle)*Math.sin(tilt));
+ const angle=.1,tilt=match.arena==='drowned-sanctuary'?1.05:.5,right=V(Math.cos(angle),0,-Math.sin(angle)),up=V(-Math.sin(angle)*Math.sin(tilt),Math.cos(tilt),-Math.cos(angle)*Math.sin(tilt));
  const fs=match.fighters.filter(f=>!f.dead);if(!fs.length)fs.push(...match.fighters);let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;const center=V();
  for(const f of fs){center.add(V(f.x,0,f.z));for(const y of [0,f.stats.height+.25]){const p=V(f.x,y,f.z),x=p.dot(right),yy=p.dot(up);minX=Math.min(minX,x-.65);maxX=Math.max(maxX,x+.65);minY=Math.min(minY,yy-.25);maxY=Math.max(maxY,yy+.25);}}
  center.multiplyScalar(1/fs.length);center.addScaledVector(right,(minX+maxX)/2-center.dot(right));center.addScaledVector(up,(minY+maxY)/2-center.dot(up));
