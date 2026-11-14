@@ -1,7 +1,7 @@
 {
   "version": 1,
   "width": 1088,
-  "height": 680,
+  "height": 2040,
   "gutter": 4,
   "icons": [
     {
@@ -21,9 +21,9 @@
       ],
       "uv": [
         0.003676470588235294,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -43,9 +43,9 @@
       ],
       "uv": [
         0.12867647058823528,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -65,9 +65,9 @@
       ],
       "uv": [
         0.2536764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -87,9 +87,9 @@
       ],
       "uv": [
         0.3786764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -109,9 +109,9 @@
       ],
       "uv": [
         0.5036764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -131,9 +131,9 @@
       ],
       "uv": [
         0.6286764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -153,9 +153,9 @@
       ],
       "uv": [
         0.7536764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -175,9 +175,9 @@
       ],
       "uv": [
         0.8786764705882353,
-        0.0058823529411764705,
+        0.00196078431372549,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -197,9 +197,9 @@
       ],
       "uv": [
         0.003676470588235294,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -219,9 +219,9 @@
       ],
       "uv": [
         0.12867647058823528,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -241,9 +241,9 @@
       ],
       "uv": [
         0.2536764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -263,9 +263,9 @@
       ],
       "uv": [
         0.3786764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -285,9 +285,9 @@
       ],
       "uv": [
         0.5036764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -307,9 +307,9 @@
       ],
       "uv": [
         0.6286764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -329,9 +329,9 @@
       ],
       "uv": [
         0.7536764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -351,9 +351,9 @@
       ],
       "uv": [
         0.8786764705882353,
-        0.20588235294117646,
+        0.06862745098039216,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -373,9 +373,9 @@
       ],
       "uv": [
         0.003676470588235294,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -395,9 +395,9 @@
       ],
       "uv": [
         0.12867647058823528,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -417,9 +417,9 @@
       ],
       "uv": [
         0.2536764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -439,9 +439,9 @@
       ],
       "uv": [
         0.3786764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -461,9 +461,9 @@
       ],
       "uv": [
         0.5036764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -483,9 +483,9 @@
       ],
       "uv": [
         0.6286764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -505,9 +505,9 @@
       ],
       "uv": [
         0.7536764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -527,9 +527,9 @@
       ],
       "uv": [
         0.8786764705882353,
-        0.40588235294117647,
+        0.13529411764705881,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -549,9 +549,9 @@
       ],
       "uv": [
         0.003676470588235294,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -571,9 +571,9 @@
       ],
       "uv": [
         0.12867647058823528,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -593,9 +593,9 @@
       ],
       "uv": [
         0.2536764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -615,9 +615,9 @@
       ],
       "uv": [
         0.3786764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -637,9 +637,9 @@
       ],
       "uv": [
         0.5036764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -659,9 +659,9 @@
       ],
       "uv": [
         0.6286764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -681,9 +681,9 @@
       ],
       "uv": [
         0.7536764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -703,9 +703,9 @@
       ],
       "uv": [
         0.8786764705882353,
-        0.6058823529411764,
+        0.2019607843137255,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -725,9 +725,9 @@
       ],
       "uv": [
         0.003676470588235294,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -747,9 +747,9 @@
       ],
       "uv": [
         0.12867647058823528,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -769,9 +769,9 @@
       ],
       "uv": [
         0.2536764705882353,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -791,9 +791,9 @@
       ],
       "uv": [
         0.3786764705882353,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -813,9 +813,9 @@
       ],
       "uv": [
         0.5036764705882353,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
       ]
     },
     {
@@ -835,9 +835,1659 @@
       ],
       "uv": [
         0.6286764705882353,
-        0.8058823529411765,
+        0.26862745098039215,
         0.11764705882352941,
-        0.18823529411764706
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tanjiro",
+      "slot": "special",
+      "skillId": "tanjiro_special",
+      "label": "Water Wheel",
+      "icon": "assets/ui/skills/tanjiro/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        820,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.26862745098039215,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tanjiro",
+      "slot": "skill2",
+      "skillId": "tanjiro_skill2",
+      "label": "Hinokami Kagura",
+      "icon": "assets/ui/skills/tanjiro/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        548,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.26862745098039215,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tanjiro",
+      "slot": "ultimate",
+      "skillId": "tanjiro_ultimate",
+      "label": "Sun Halo Dragon",
+      "icon": "assets/ui/skills/tanjiro/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        4,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nezuko",
+      "slot": "special",
+      "skillId": "nezuko_special",
+      "label": "Exploding Blood",
+      "icon": "assets/ui/skills/nezuko/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        140,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nezuko",
+      "slot": "skill2",
+      "skillId": "nezuko_skill2",
+      "label": "Claw Rush",
+      "icon": "assets/ui/skills/nezuko/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        276,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nezuko",
+      "slot": "ultimate",
+      "skillId": "nezuko_ultimate",
+      "label": "Crimson Blood Burst",
+      "icon": "assets/ui/skills/nezuko/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        412,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "zenitsu",
+      "slot": "special",
+      "skillId": "zenitsu_special",
+      "label": "Thunderclap and Flash",
+      "icon": "assets/ui/skills/zenitsu/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        548,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "zenitsu",
+      "slot": "skill2",
+      "skillId": "zenitsu_skill2",
+      "label": "Rice Spirit",
+      "icon": "assets/ui/skills/zenitsu/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        684,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "zenitsu",
+      "slot": "ultimate",
+      "skillId": "zenitsu_ultimate",
+      "label": "Flaming Thunder God",
+      "icon": "assets/ui/skills/zenitsu/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        820,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "inosuke",
+      "slot": "special",
+      "skillId": "inosuke_special",
+      "label": "Piercing Fangs",
+      "icon": "assets/ui/skills/inosuke/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        956,
+        684,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.3352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "inosuke",
+      "slot": "skill2",
+      "skillId": "inosuke_skill2",
+      "label": "Crazy Cutting",
+      "icon": "assets/ui/skills/inosuke/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        4,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "inosuke",
+      "slot": "ultimate",
+      "skillId": "inosuke_ultimate",
+      "label": "Devouring Rush",
+      "icon": "assets/ui/skills/inosuke/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        140,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kanao",
+      "slot": "special",
+      "skillId": "kanao_special",
+      "label": "Crimson Hanagoromo",
+      "icon": "assets/ui/skills/kanao/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        276,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kanao",
+      "slot": "skill2",
+      "skillId": "kanao_skill2",
+      "label": "Peonies of Futility",
+      "icon": "assets/ui/skills/kanao/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        412,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kanao",
+      "slot": "ultimate",
+      "skillId": "kanao_ultimate",
+      "label": "Vermilion Eye",
+      "icon": "assets/ui/skills/kanao/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        548,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "genya",
+      "slot": "special",
+      "skillId": "genya_special",
+      "label": "Nichirin Shot",
+      "icon": "assets/ui/skills/genya/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        684,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "genya",
+      "slot": "skill2",
+      "skillId": "genya_skill2",
+      "label": "Flesh Gun",
+      "icon": "assets/ui/skills/genya/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        820,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "genya",
+      "slot": "ultimate",
+      "skillId": "genya_ultimate",
+      "label": "Blood Demon Barrage",
+      "icon": "assets/ui/skills/genya/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        956,
+        820,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.4019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "giyu",
+      "slot": "special",
+      "skillId": "giyu_special",
+      "label": "Water Surface Slash",
+      "icon": "assets/ui/skills/giyu/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        4,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "giyu",
+      "slot": "skill2",
+      "skillId": "giyu_skill2",
+      "label": "Flowing Dance",
+      "icon": "assets/ui/skills/giyu/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        140,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "giyu",
+      "slot": "ultimate",
+      "skillId": "giyu_ultimate",
+      "label": "Dead Calm",
+      "icon": "assets/ui/skills/giyu/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        276,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "shinobu",
+      "slot": "special",
+      "skillId": "shinobu_special",
+      "label": "Butterfly Dance",
+      "icon": "assets/ui/skills/shinobu/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        412,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "shinobu",
+      "slot": "skill2",
+      "skillId": "shinobu_skill2",
+      "label": "Bee Sting",
+      "icon": "assets/ui/skills/shinobu/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        548,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "shinobu",
+      "slot": "ultimate",
+      "skillId": "shinobu_ultimate",
+      "label": "Centipede Zigzag",
+      "icon": "assets/ui/skills/shinobu/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        684,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "rengoku",
+      "slot": "special",
+      "skillId": "rengoku_special",
+      "label": "Rising Scorching Sun",
+      "icon": "assets/ui/skills/rengoku/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        820,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "rengoku",
+      "slot": "skill2",
+      "skillId": "rengoku_skill2",
+      "label": "Flame Tiger",
+      "icon": "assets/ui/skills/rengoku/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        956,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.46862745098039216,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "rengoku",
+      "slot": "ultimate",
+      "skillId": "rengoku_ultimate",
+      "label": "Ninth Form: Rengoku",
+      "icon": "assets/ui/skills/rengoku/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tengen",
+      "slot": "special",
+      "skillId": "tengen_special",
+      "label": "Roar",
+      "icon": "assets/ui/skills/tengen/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        140,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tengen",
+      "slot": "skill2",
+      "skillId": "tengen_skill2",
+      "label": "Resounding Slashes",
+      "icon": "assets/ui/skills/tengen/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        276,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "tengen",
+      "slot": "ultimate",
+      "skillId": "tengen_ultimate",
+      "label": "String Performance",
+      "icon": "assets/ui/skills/tengen/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        412,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "mitsuri",
+      "slot": "special",
+      "skillId": "mitsuri_special",
+      "label": "Shivers of First Love",
+      "icon": "assets/ui/skills/mitsuri/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        548,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "mitsuri",
+      "slot": "skill2",
+      "skillId": "mitsuri_skill2",
+      "label": "Love Pangs",
+      "icon": "assets/ui/skills/mitsuri/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        684,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "mitsuri",
+      "slot": "ultimate",
+      "skillId": "mitsuri_ultimate",
+      "label": "Catlegged Winds of Love",
+      "icon": "assets/ui/skills/mitsuri/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        820,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muichiro",
+      "slot": "special",
+      "skillId": "muichiro_special",
+      "label": "Sea of Clouds",
+      "icon": "assets/ui/skills/muichiro/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        956,
+        1092,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.5352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muichiro",
+      "slot": "skill2",
+      "skillId": "muichiro_skill2",
+      "label": "Shifting Flow Slash",
+      "icon": "assets/ui/skills/muichiro/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muichiro",
+      "slot": "ultimate",
+      "skillId": "muichiro_ultimate",
+      "label": "Obscuring Clouds",
+      "icon": "assets/ui/skills/muichiro/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        140,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyomei",
+      "slot": "special",
+      "skillId": "gyomei_special",
+      "label": "Serpentinite Bipolar",
+      "icon": "assets/ui/skills/gyomei/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        276,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyomei",
+      "slot": "skill2",
+      "skillId": "gyomei_skill2",
+      "label": "Upper Smash",
+      "icon": "assets/ui/skills/gyomei/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        412,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyomei",
+      "slot": "ultimate",
+      "skillId": "gyomei_ultimate",
+      "label": "Arcs of Justice",
+      "icon": "assets/ui/skills/gyomei/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        548,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "sanemi",
+      "slot": "special",
+      "skillId": "sanemi_special",
+      "label": "Dust Whirlwind Cutter",
+      "icon": "assets/ui/skills/sanemi/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        684,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "sanemi",
+      "slot": "skill2",
+      "skillId": "sanemi_skill2",
+      "label": "Black Wind Mountain Mist",
+      "icon": "assets/ui/skills/sanemi/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        820,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "sanemi",
+      "slot": "ultimate",
+      "skillId": "sanemi_ultimate",
+      "label": "Idaten Typhoon",
+      "icon": "assets/ui/skills/sanemi/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        956,
+        1228,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.6019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "obanai",
+      "slot": "special",
+      "skillId": "obanai_special",
+      "label": "Winding Serpent Slash",
+      "icon": "assets/ui/skills/obanai/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "obanai",
+      "slot": "skill2",
+      "skillId": "obanai_skill2",
+      "label": "Venom Fangs",
+      "icon": "assets/ui/skills/obanai/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        140,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "obanai",
+      "slot": "ultimate",
+      "skillId": "obanai_ultimate",
+      "label": "Slithering Serpent",
+      "icon": "assets/ui/skills/obanai/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        276,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muzan",
+      "slot": "special",
+      "skillId": "muzan_special",
+      "label": "Barbed Whips",
+      "icon": "assets/ui/skills/muzan/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        412,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muzan",
+      "slot": "skill2",
+      "skillId": "muzan_skill2",
+      "label": "Black Blood Brambles",
+      "icon": "assets/ui/skills/muzan/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        548,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "muzan",
+      "slot": "ultimate",
+      "skillId": "muzan_ultimate",
+      "label": "Demon King Onslaught",
+      "icon": "assets/ui/skills/muzan/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        684,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kokushibo",
+      "slot": "special",
+      "skillId": "kokushibo_special",
+      "label": "Evening Palace",
+      "icon": "assets/ui/skills/kokushibo/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        820,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kokushibo",
+      "slot": "skill2",
+      "skillId": "kokushibo_skill2",
+      "label": "Calamitous Eddy",
+      "icon": "assets/ui/skills/kokushibo/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        1364,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.6686274509803921,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kokushibo",
+      "slot": "ultimate",
+      "skillId": "kokushibo_ultimate",
+      "label": "Moonbow Half Moon",
+      "icon": "assets/ui/skills/kokushibo/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "doma",
+      "slot": "special",
+      "skillId": "doma_special",
+      "label": "Frozen Lotuses",
+      "icon": "assets/ui/skills/doma/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        140,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "doma",
+      "slot": "skill2",
+      "skillId": "doma_skill2",
+      "label": "Crystalline Divine Child",
+      "icon": "assets/ui/skills/doma/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        276,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "doma",
+      "slot": "ultimate",
+      "skillId": "doma_ultimate",
+      "label": "Rime Water Lily",
+      "icon": "assets/ui/skills/doma/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        412,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "akaza",
+      "slot": "special",
+      "skillId": "akaza_special",
+      "label": "Air Type",
+      "icon": "assets/ui/skills/akaza/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        548,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "akaza",
+      "slot": "skill2",
+      "skillId": "akaza_skill2",
+      "label": "Disorder",
+      "icon": "assets/ui/skills/akaza/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "self",
+      "rect": [
+        684,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "akaza",
+      "slot": "ultimate",
+      "skillId": "akaza_ultimate",
+      "label": "Annihilation Type",
+      "icon": "assets/ui/skills/akaza/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        820,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "hantengu",
+      "slot": "special",
+      "skillId": "hantengu_special",
+      "label": "Weeping Spears",
+      "icon": "assets/ui/skills/hantengu/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        956,
+        1500,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.7352941176470589,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "hantengu",
+      "slot": "skill2",
+      "skillId": "hantengu_skill2",
+      "label": "Thunder Drums",
+      "icon": "assets/ui/skills/hantengu/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "hantengu",
+      "slot": "ultimate",
+      "skillId": "hantengu_ultimate",
+      "label": "Wood Dragon Menace",
+      "icon": "assets/ui/skills/hantengu/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        140,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyokko",
+      "slot": "special",
+      "skillId": "gyokko_special",
+      "label": "Thousand Needle Fish",
+      "icon": "assets/ui/skills/gyokko/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        276,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyokko",
+      "slot": "skill2",
+      "skillId": "gyokko_skill2",
+      "label": "Water Prison Pot",
+      "icon": "assets/ui/skills/gyokko/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        412,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyokko",
+      "slot": "ultimate",
+      "skillId": "gyokko_ultimate",
+      "label": "Killer Fish Scales",
+      "icon": "assets/ui/skills/gyokko/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        548,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyutaro",
+      "slot": "special",
+      "skillId": "gyutaro_special",
+      "label": "Blood Sickles",
+      "icon": "assets/ui/skills/gyutaro/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        684,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyutaro",
+      "slot": "skill2",
+      "skillId": "gyutaro_skill2",
+      "label": "Rampant Arc Rampage",
+      "icon": "assets/ui/skills/gyutaro/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        820,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "gyutaro",
+      "slot": "ultimate",
+      "skillId": "gyutaro_ultimate",
+      "label": "Rotating Circular Slashes",
+      "icon": "assets/ui/skills/gyutaro/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        956,
+        1636,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.8019607843137255,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "daki",
+      "slot": "special",
+      "skillId": "daki_special",
+      "label": "Obi Slash",
+      "icon": "assets/ui/skills/daki/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "daki",
+      "slot": "skill2",
+      "skillId": "daki_skill2",
+      "label": "Eight-Layered Obi",
+      "icon": "assets/ui/skills/daki/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        140,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.12867647058823528,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "daki",
+      "slot": "ultimate",
+      "skillId": "daki_ultimate",
+      "label": "Sash Maelstrom",
+      "icon": "assets/ui/skills/daki/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        276,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.2536764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nakime",
+      "slot": "special",
+      "skillId": "nakime_special",
+      "label": "String Resonance",
+      "icon": "assets/ui/skills/nakime/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        412,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.3786764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nakime",
+      "slot": "skill2",
+      "skillId": "nakime_skill2",
+      "label": "Shifting Rooms",
+      "icon": "assets/ui/skills/nakime/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        548,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.5036764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "nakime",
+      "slot": "ultimate",
+      "skillId": "nakime_ultimate",
+      "label": "Infinity Castle",
+      "icon": "assets/ui/skills/nakime/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "self",
+      "rect": [
+        684,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.6286764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kaigaku",
+      "slot": "special",
+      "skillId": "kaigaku_special",
+      "label": "Dark Thunder",
+      "icon": "assets/ui/skills/kaigaku/skill1.png",
+      "cooldown": 220,
+      "staminaCost": 31,
+      "aimType": "directional",
+      "rect": [
+        820,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.7536764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kaigaku",
+      "slot": "skill2",
+      "skillId": "kaigaku_skill2",
+      "label": "Thunder Swarm",
+      "icon": "assets/ui/skills/kaigaku/skill2.png",
+      "cooldown": 240,
+      "staminaCost": 27,
+      "aimType": "directional",
+      "rect": [
+        956,
+        1772,
+        128,
+        128
+      ],
+      "uv": [
+        0.8786764705882353,
+        0.8686274509803922,
+        0.11764705882352941,
+        0.06274509803921569
+      ]
+    },
+    {
+      "fighter": "kaigaku",
+      "slot": "ultimate",
+      "skillId": "kaigaku_ultimate",
+      "label": "Rumble and Flash",
+      "icon": "assets/ui/skills/kaigaku/ultimate.png",
+      "cooldown": 600,
+      "staminaCost": 25,
+      "aimType": "directional",
+      "rect": [
+        4,
+        1908,
+        128,
+        128
+      ],
+      "uv": [
+        0.003676470588235294,
+        0.9352941176470588,
+        0.11764705882352941,
+        0.06274509803921569
       ]
     }
   ]

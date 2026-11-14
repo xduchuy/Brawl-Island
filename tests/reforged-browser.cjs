@@ -5,18 +5,20 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots');f
  const context=await b.newContext({viewport:{width:1440,height:1100},offline:true});const p=await context.newPage(),errors=[],network=[];
  p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});p.on('request',r=>{if(/^https?:/.test(r.url()))network.push(r.url());});
  await p.setContent(fs.readFileSync(path.join(root,'index.html'),'utf8'));await p.waitForFunction(()=>window.__ib);await p.evaluate(()=>__ib.vfx.ready);
- assert.equal(await p.evaluate(()=>__ib.vfx.loaded),49);assert.deepEqual(await p.evaluate(()=>__ib.vfx.failed),[]);
+ assert.equal(await p.evaluate(()=>__ib.vfx.loaded),124);assert.deepEqual(await p.evaluate(()=>__ib.vfx.failed),[]);
  await p.screenshot({path:path.join(out,'01-menu.png'),fullPage:true});
- await p.click('#chooseFighters');assert.equal(await p.locator('[data-fighter]').count(),11);await p.locator('#panel').screenshot({path:path.join(out,'02-fighter-select.png')});
- // All eleven model factories and all signature attack/ultimate poses, with stable IK.
- const kinds=await p.evaluate(()=>Object.keys(__ib.profiles));
+ await p.click('#chooseFighters');assert.equal(await p.locator('[data-fighter]').count(),36);await p.locator('#panel').screenshot({path:path.join(out,'02-fighter-select.png')});
+ // All registered model factories and all signature attack/ultimate poses, with stable IK.
+ const kinds=await p.evaluate(()=>{__ib.setManualClock(true);return Object.keys(__ib.profiles);});
  for(const kind of kinds){
   await p.evaluate(kind=>{__ib.match.phase='ready';const s=document.querySelector('[data-slot="0"] .fighter-select');s.value=kind;s.dispatchEvent(new Event('change'));},kind);
   await p.evaluate(()=>{__ib.start();__ib.step(151);if(!__ib.state.paused)__ib.pause();});
   for(const action of ['light','heavy','skill2','special','ultimate']){
    const stable=await p.evaluate(action=>{const m=__ib.match,[a,b]=m.fighters;Object.assign(a,{state:'idle',stamina:100,ultimate:100,cooldowns:{},x:-.9,z:0});Object.assign(b,{controller:'p2',x:.9,z:0,state:'idle'});m.attack(a,action);a.frame=a.move.start;__ib.visualStep(.02);return __ib.getActors().every(a=>Object.keys(a.bones).length===18&&Object.values(a.bones).every(b=>b.matrixWorld.elements.every(Number.isFinite)));},action);assert(stable,kind+' '+action);
   }
+  console.log('Rig and five attack poses:',kind);
  }
+ await p.evaluate(()=>__ib.setManualClock(false));
  // Return to the vertical slice and freeze only after normal inputs have advanced it.
  await p.evaluate(()=>{__ib.match.phase='ready';const s=document.querySelector('[data-slot="0"] .fighter-select');s.value='yuji';s.dispatchEvent(new Event('change'));__ib.start();__ib.step(151);__ib.pause();__ib.visualStep(3);});
  await p.addStyleTag({content:'.pause-screen{visibility:hidden!important}'});
@@ -45,7 +47,7 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots');f
  }
  // Encounter progression and terminal states, using deterministic result fixtures to cover both paths.
  for(const mode of ['arcade','survival']){
-  const count=mode==='arcade'?10:5;await p.evaluate(mode=>__ib.configureMode(mode),mode);
+  const count=mode==='arcade'?kinds.length-1:5;await p.evaluate(mode=>__ib.configureMode(mode),mode);
   for(let stage=0;stage<count;stage++){
    await p.evaluate(()=>__ib.start());assert.equal(await p.evaluate(()=>__ib.reforged.stage),stage);
    await p.evaluate(()=>{const m=__ib.match;m.phase='fight';m.fighters[1].dead=true;m.fighters[1].hp=0;m.step();__ib.processEvents();});
@@ -66,5 +68,5 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots');f
  assert(await p.evaluate(()=>document.documentElement.scrollWidth===innerWidth));assert.equal(await p.locator('#touchControls button').count(),8);await p.screenshot({path:path.join(out,'09-mobile-combat.png'),fullPage:true});
  await p.click('#chooseFighters');assert(await p.evaluate(()=>document.documentElement.scrollWidth===innerWidth));
  assert.deepEqual(errors,[]);assert.deepEqual(network,[]);
- const report={fighters:11,poses:55,textures:49,modes,team,offline:true,externalRequests:network,errors,mobileWidth:390,screenshots:9};fs.writeFileSync(path.join(__dirname,'reforged-browser-results.json'),JSON.stringify(report,null,2));console.log(report);await b.close();
+ const report={fighters:36,poses:180,textures:124,modes,team,offline:true,externalRequests:network,errors,mobileWidth:390,screenshots:9};fs.writeFileSync(path.join(__dirname,'reforged-browser-results.json'),JSON.stringify(report,null,2));console.log(report);await b.close();
 })().catch(e=>{console.error(e);process.exit(1)});

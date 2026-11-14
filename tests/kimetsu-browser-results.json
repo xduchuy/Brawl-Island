@@ -1,0 +1,214 @@
+{
+  "records": [
+    {
+      "kind": "tanjiro",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 85,
+      "icon": "tanjiro_ultimate"
+    },
+    {
+      "kind": "nezuko",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 99,
+      "icon": "nezuko_ultimate"
+    },
+    {
+      "kind": "zenitsu",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 80,
+      "icon": "zenitsu_ultimate"
+    },
+    {
+      "kind": "inosuke",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 80,
+      "icon": "inosuke_ultimate"
+    },
+    {
+      "kind": "kanao",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 74,
+      "icon": "kanao_ultimate"
+    },
+    {
+      "kind": "genya",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 66,
+      "icon": "genya_ultimate"
+    },
+    {
+      "kind": "giyu",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 76,
+      "icon": "giyu_ultimate"
+    },
+    {
+      "kind": "shinobu",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 76,
+      "icon": "shinobu_ultimate"
+    },
+    {
+      "kind": "rengoku",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 79,
+      "icon": "rengoku_ultimate"
+    },
+    {
+      "kind": "tengen",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 81,
+      "icon": "tengen_ultimate"
+    },
+    {
+      "kind": "mitsuri",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 98,
+      "icon": "mitsuri_ultimate"
+    },
+    {
+      "kind": "muichiro",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 78,
+      "icon": "muichiro_ultimate"
+    },
+    {
+      "kind": "gyomei",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 87,
+      "icon": "gyomei_ultimate"
+    },
+    {
+      "kind": "sanemi",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 68,
+      "icon": "sanemi_ultimate"
+    },
+    {
+      "kind": "obanai",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 93,
+      "icon": "obanai_ultimate"
+    },
+    {
+      "kind": "muzan",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 72,
+      "icon": "muzan_ultimate"
+    },
+    {
+      "kind": "kokushibo",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 100,
+      "icon": "kokushibo_ultimate"
+    },
+    {
+      "kind": "doma",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 83,
+      "icon": "doma_ultimate"
+    },
+    {
+      "kind": "akaza",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 66,
+      "icon": "akaza_ultimate"
+    },
+    {
+      "kind": "hantengu",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 80,
+      "icon": "hantengu_ultimate"
+    },
+    {
+      "kind": "gyokko",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 65,
+      "icon": "gyokko_ultimate"
+    },
+    {
+      "kind": "gyutaro",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 63,
+      "icon": "gyutaro_ultimate"
+    },
+    {
+      "kind": "daki",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 80,
+      "icon": "daki_ultimate"
+    },
+    {
+      "kind": "nakime",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 76,
+      "icon": "nakime_ultimate"
+    },
+    {
+      "kind": "kaigaku",
+      "kimetsu": true,
+      "bones": 18,
+      "parts": 67,
+      "icon": "kaigaku_ultimate"
+    }
+  ],
+  "mobileResult": {
+    "fighters": [
+      {
+        "kind": "tanjiro",
+        "hp": 60,
+        "clear": true
+      },
+      {
+        "kind": "akaza",
+        "hp": 21,
+        "clear": true
+      },
+      {
+        "kind": "rengoku",
+        "hp": 35,
+        "clear": true
+      },
+      {
+        "kind": "kokushibo",
+        "hp": 77,
+        "clear": true
+      }
+    ],
+    "icons": [
+      "common/attack",
+      "common/heavy",
+      "tanjiro/special",
+      "common/dodge",
+      "common/guard",
+      "tanjiro/skill2",
+      "tanjiro/ultimate",
+      "common/dash"
+    ]
+  },
+  "errors": []
+}

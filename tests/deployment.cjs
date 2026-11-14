@@ -15,7 +15,7 @@ const temp=fs.mkdtempSync(path.join(os.tmpdir(),'brawl-deployment-'));
   const{chromium}=require('playwright');browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});
   const page=await browser.newPage(),errors=[],requests=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url());});
   const response=await page.goto('http://127.0.0.1:'+server.address().port+'/');assert.equal(response.status(),200);await page.waitForFunction(()=>window.__ib);await page.evaluate(()=>__ib.vfx.ready);
-  assert.equal(await page.evaluate(()=>__ib.vfx.loaded),49);assert.deepEqual(await page.evaluate(()=>__ib.vfx.failed),[]);assert.equal(await page.locator('[data-fighter]').count(),11);assert.deepEqual(errors,[]);assert.equal(requests.length,1);
-  console.log('Vercel build: dependency-free; public/index.html matches offline build; HTTP 200; 11 fighters; 49 textures; no runtime asset requests or page errors.');
+  assert.equal(await page.evaluate(()=>__ib.vfx.loaded),124);assert.deepEqual(await page.evaluate(()=>__ib.vfx.failed),[]);assert.equal(await page.locator('[data-fighter]').count(),36);assert.deepEqual(errors,[]);assert.equal(requests.length,1);
+  console.log('Vercel build: dependency-free; public/index.html matches offline build; HTTP 200; 36 fighters; 124 textures; no runtime asset requests or page errors.');
  }finally{if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));fs.rmSync(temp,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,7 +1,7 @@
 {
-  "fighters": 11,
-  "poses": 55,
-  "textures": 49,
+  "fighters": 36,
+  "poses": 180,
+  "textures": 124,
   "modes": [
     {
       "mode": "versus",

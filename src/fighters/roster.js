@@ -23,3 +23,413 @@ Object.assign(IB_CHARACTER_MOVES,{
  mahito:{light:makeCombo([29,33,46],[13,15,22]),heavy:{length:58,start:23,end:32,damage:28,cost:28,push:5.5,lunge:.7,reach:.45,down:true,label:'TRANSFIGURATION'},special:{length:67,start:28,end:37,damage:30,cost:35,push:4.7,lunge:.9,reach:.35,break:true,label:'SOUL TOUCH'}},
  toji:{light:makeCombo([27,30,44],[13,15,21]),heavy:{length:54,start:22,end:30,damage:28,cost:28,push:5.5,lunge:.85,down:true,label:'INVERTED SPEAR'},special:{length:64,start:26,end:35,damage:28,cost:34,push:5.8,lunge:1.9,down:true,label:'HEAVENLY RUSH'}}
 });
+
+// Kimetsu no Yaiba pack: six leads, nine Hashira, Muzan and nine Upper Moons.
+const KIMETSU_ROSTER = {
+ "tanjiro": {
+  "name": "Tanjiro Kamado",
+  "group": "Main cast",
+  "style": "water",
+  "color": "#50c6df",
+  "hair": "#55282d",
+  "coat": "#24886b",
+  "pattern": "check",
+  "weapon": "sword",
+  "skills": [
+   "Water Wheel",
+   "Hinokami Kagura",
+   "Sun Halo Dragon"
+  ],
+  "height": 1.65
+ },
+ "nezuko": {
+  "name": "Nezuko Kamado",
+  "group": "Main cast",
+  "style": "blood",
+  "color": "#ff7398",
+  "hair": "#201c26",
+  "coat": "#ed9aaa",
+  "pattern": "hemp",
+  "weapon": "claws",
+  "skills": [
+   "Exploding Blood",
+   "Claw Rush",
+   "Crimson Blood Burst"
+  ],
+  "height": 1.53
+ },
+ "zenitsu": {
+  "name": "Zenitsu Agatsuma",
+  "group": "Main cast",
+  "style": "thunder",
+  "color": "#ffe26b",
+  "hair": "#efbd48",
+  "coat": "#e9a63b",
+  "pattern": "triangles",
+  "weapon": "sword",
+  "skills": [
+   "Thunderclap and Flash",
+   "Rice Spirit",
+   "Flaming Thunder God"
+  ],
+  "height": 1.64
+ },
+ "inosuke": {
+  "name": "Inosuke Hashibira",
+  "group": "Main cast",
+  "style": "beast",
+  "color": "#a6d6e4",
+  "hair": "#47434a",
+  "coat": "#816d57",
+  "pattern": "fur",
+  "weapon": "dual",
+  "skills": [
+   "Piercing Fangs",
+   "Crazy Cutting",
+   "Devouring Rush"
+  ],
+  "height": 1.64
+ },
+ "kanao": {
+  "name": "Kanao Tsuyuri",
+  "group": "Main cast",
+  "style": "flower",
+  "color": "#eea7de",
+  "hair": "#282332",
+  "coat": "#f4ebde",
+  "pattern": "cape",
+  "weapon": "sword",
+  "skills": [
+   "Crimson Hanagoromo",
+   "Peonies of Futility",
+   "Vermilion Eye"
+  ],
+  "height": 1.56
+ },
+ "genya": {
+  "name": "Genya Shinazugawa",
+  "group": "Main cast",
+  "style": "gun",
+  "color": "#b199de",
+  "hair": "#24232c",
+  "coat": "#5e456d",
+  "pattern": "vest",
+  "weapon": "gun",
+  "skills": [
+   "Nichirin Shot",
+   "Flesh Gun",
+   "Blood Demon Barrage"
+  ],
+  "height": 1.8
+ },
+ "giyu": {
+  "name": "Giyu Tomioka",
+  "group": "Hashira",
+  "style": "water",
+  "color": "#65b9f4",
+  "hair": "#1b2634",
+  "coat": "#8b3047",
+  "pattern": "split",
+  "weapon": "sword",
+  "skills": [
+   "Water Surface Slash",
+   "Flowing Dance",
+   "Dead Calm"
+  ],
+  "height": 1.76
+ },
+ "shinobu": {
+  "name": "Shinobu Kocho",
+  "group": "Hashira",
+  "style": "insect",
+  "color": "#bf9af2",
+  "hair": "#282338",
+  "coat": "#d8d9d6",
+  "pattern": "butterfly",
+  "weapon": "rapier",
+  "skills": [
+   "Butterfly Dance",
+   "Bee Sting",
+   "Centipede Zigzag"
+  ],
+  "height": 1.51
+ },
+ "rengoku": {
+  "name": "Kyojuro Rengoku",
+  "group": "Hashira",
+  "style": "flame",
+  "color": "#ff8846",
+  "hair": "#f8d45d",
+  "coat": "#f3e7ca",
+  "pattern": "flame",
+  "weapon": "sword",
+  "skills": [
+   "Rising Scorching Sun",
+   "Flame Tiger",
+   "Ninth Form: Rengoku"
+  ],
+  "height": 1.77
+ },
+ "tengen": {
+  "name": "Tengen Uzui",
+  "group": "Hashira",
+  "style": "sound",
+  "color": "#e2c16a",
+  "hair": "#e8e5df",
+  "coat": "#233b3d",
+  "pattern": "vest",
+  "weapon": "cleavers",
+  "skills": [
+   "Roar",
+   "Resounding Slashes",
+   "String Performance"
+  ],
+  "height": 1.98
+ },
+ "mitsuri": {
+  "name": "Mitsuri Kanroji",
+  "group": "Hashira",
+  "style": "love",
+  "color": "#f695c6",
+  "hair": "#eaa4c5",
+  "coat": "#f3eadb",
+  "pattern": "cape",
+  "weapon": "whip",
+  "skills": [
+   "Shivers of First Love",
+   "Love Pangs",
+   "Catlegged Winds of Love"
+  ],
+  "height": 1.67
+ },
+ "muichiro": {
+  "name": "Muichiro Tokito",
+  "group": "Hashira",
+  "style": "mist",
+  "color": "#8cded8",
+  "hair": "#202e36",
+  "coat": "#253a3d",
+  "pattern": "plain",
+  "weapon": "sword",
+  "skills": [
+   "Sea of Clouds",
+   "Shifting Flow Slash",
+   "Obscuring Clouds"
+  ],
+  "height": 1.6
+ },
+ "gyomei": {
+  "name": "Gyomei Himejima",
+  "group": "Hashira",
+  "style": "stone",
+  "color": "#c7b599",
+  "hair": "#34332f",
+  "coat": "#7c8062",
+  "pattern": "vest",
+  "weapon": "flail",
+  "skills": [
+   "Serpentinite Bipolar",
+   "Upper Smash",
+   "Arcs of Justice"
+  ],
+  "height": 2.2
+ },
+ "sanemi": {
+  "name": "Sanemi Shinazugawa",
+  "group": "Hashira",
+  "style": "wind",
+  "color": "#a2e4ac",
+  "hair": "#e6e8df",
+  "coat": "#ece9dc",
+  "pattern": "open",
+  "weapon": "sword",
+  "skills": [
+   "Dust Whirlwind Cutter",
+   "Black Wind Mountain Mist",
+   "Idaten Typhoon"
+  ],
+  "height": 1.79
+ },
+ "obanai": {
+  "name": "Obanai Iguro",
+  "group": "Hashira",
+  "style": "serpent",
+  "color": "#c2b2ee",
+  "hair": "#24232c",
+  "coat": "#e3e2db",
+  "pattern": "stripes",
+  "weapon": "sword",
+  "skills": [
+   "Winding Serpent Slash",
+   "Venom Fangs",
+   "Slithering Serpent"
+  ],
+  "height": 1.62
+ },
+ "muzan": {
+  "name": "Muzan Kibutsuji",
+  "group": "Demons",
+  "style": "blood",
+  "color": "#e5536a",
+  "hair": "#22222c",
+  "coat": "#e8e5dc",
+  "pattern": "suit",
+  "weapon": "whips",
+  "skills": [
+   "Barbed Whips",
+   "Black Blood Brambles",
+   "Demon King Onslaught"
+  ],
+  "height": 1.79
+ },
+ "kokushibo": {
+  "name": "Kokushibo",
+  "group": "Upper Moons",
+  "style": "moon",
+  "color": "#c99aea",
+  "hair": "#302237",
+  "coat": "#6b4979",
+  "pattern": "hex",
+  "weapon": "sword",
+  "skills": [
+   "Evening Palace",
+   "Calamitous Eddy",
+   "Moonbow Half Moon"
+  ],
+  "height": 1.9
+ },
+ "doma": {
+  "name": "Doma",
+  "group": "Upper Moons",
+  "style": "ice",
+  "color": "#9fe8e7",
+  "hair": "#e5d2b2",
+  "coat": "#a83443",
+  "pattern": "lotus",
+  "weapon": "fans",
+  "skills": [
+   "Frozen Lotuses",
+   "Crystalline Divine Child",
+   "Rime Water Lily"
+  ],
+  "height": 1.87
+ },
+ "akaza": {
+  "name": "Akaza",
+  "group": "Upper Moons",
+  "style": "compass",
+  "color": "#8fdaef",
+  "hair": "#d68d9b",
+  "coat": "#3b5680",
+  "pattern": "tattoos",
+  "weapon": "fists",
+  "skills": [
+   "Air Type",
+   "Disorder",
+   "Annihilation Type"
+  ],
+  "height": 1.73
+ },
+ "hantengu": {
+  "name": "Hantengu",
+  "group": "Upper Moons",
+  "style": "wood",
+  "color": "#bdbe78",
+  "hair": "#2c2825",
+  "coat": "#654634",
+  "pattern": "stripes",
+  "weapon": "staff",
+  "skills": [
+   "Weeping Spears",
+   "Thunder Drums",
+   "Wood Dragon Menace"
+  ],
+  "height": 1.66
+ },
+ "gyokko": {
+  "name": "Gyokko",
+  "group": "Upper Moons",
+  "style": "pot",
+  "color": "#a7cecd",
+  "hair": "#d9d7c6",
+  "coat": "#6a5290",
+  "pattern": "scales",
+  "weapon": "claws",
+  "skills": [
+   "Thousand Needle Fish",
+   "Water Prison Pot",
+   "Killer Fish Scales"
+  ],
+  "height": 1.7
+ },
+ "gyutaro": {
+  "name": "Gyutaro",
+  "group": "Upper Moons",
+  "style": "sickle",
+  "color": "#bedc68",
+  "hair": "#75865b",
+  "coat": "#47403c",
+  "pattern": "spots",
+  "weapon": "sickles",
+  "skills": [
+   "Blood Sickles",
+   "Rampant Arc Rampage",
+   "Rotating Circular Slashes"
+  ],
+  "height": 1.83
+ },
+ "daki": {
+  "name": "Daki",
+  "group": "Upper Moons",
+  "style": "obi",
+  "color": "#f494ce",
+  "hair": "#ecece3",
+  "coat": "#cc4b7d",
+  "pattern": "obi",
+  "weapon": "ribbons",
+  "skills": [
+   "Obi Slash",
+   "Eight-Layered Obi",
+   "Sash Maelstrom"
+  ],
+  "height": 1.7
+ },
+ "nakime": {
+  "name": "Nakime",
+  "group": "Upper Moons",
+  "style": "castle",
+  "color": "#c591c6",
+  "hair": "#242028",
+  "coat": "#4d2a36",
+  "pattern": "kimono",
+  "weapon": "biwa",
+  "skills": [
+   "String Resonance",
+   "Shifting Rooms",
+   "Infinity Castle"
+  ],
+  "height": 1.65
+ },
+ "kaigaku": {
+  "name": "Kaigaku",
+  "group": "Upper Moons",
+  "style": "darkthunder",
+  "color": "#8b9bdb",
+  "hair": "#242d32",
+  "coat": "#253c49",
+  "pattern": "vest",
+  "weapon": "sword",
+  "skills": [
+   "Dark Thunder",
+   "Thunder Swarm",
+   "Rumble and Flash"
+  ],
+  "height": 1.67
+ }
+};
+for(const [kind,d] of Object.entries(KIMETSU_ROSTER)){
+ const heavy=['gyomei','kokushibo','muzan','tengen'].includes(kind),fast=['zenitsu','shinobu','kaigaku','inosuke'].includes(kind);
+ IB_STATS[kind]={name:d.name,hp:heavy?116:fast?98:106,height:d.height,speed:fast?4.8:heavy?3.9:4.35,reach:['whip','flail','whips','ribbons','staff'].includes(d.weapon)?1.95:1.65,guard:heavy?.8:.95};
+ const ranged=['gun','ice','pot','compass'].includes(d.style);
+ IB_CHARACTER_MOVES[kind]={light:makeCombo(fast?[27,30,43]:heavy?[32,36,49]:[29,33,46],heavy?[14,16,23]:[12,15,21]),heavy:{length:heavy?64:58,start:heavy?26:23,end:heavy?35:32,damage:heavy?30:27,cost:28,push:5.5,lunge:.65,down:true,label:d.weapon==='fists'?'HEAVY PALM':'HEAVY CUT'},special:{label:d.skills[0],length:64,start:23,end:32,damage:25,cost:31,push:4.6,lunge:ranged?0:['thunder','darkthunder','beast'].includes(d.style)?2:.8,break:true,cooldown:220,type:ranged?'projectile':'arc',radius:ranged?.32:2,range:7,speed:11,arc:1.8}};
+}

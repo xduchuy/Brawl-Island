@@ -12,4 +12,4 @@ for e in m['icons']:
     assert max(ImageStat.Stat(ImageChops.difference(crop,im)).mean)<12,e['icon']
     for box in [(x-4,y-4,x+w+4,y),(x-4,y+h,x+w+4,y+h+4),(x-4,y,x,y+h),(x+w,y,x+w+4,y+h)]:assert not atlas.getchannel('A').crop(box).getbbox()
     assert e['uv']==[x/atlas.width,y/atlas.height,w/atlas.width,h/atlas.height]
-print('38 nonblank RGBA masters; transparent corners; 4px alpha gutters; exact UVs; palette error <12/255')
+print(str(len(m['icons']))+' nonblank RGBA masters; transparent corners; 4px alpha gutters; exact UVs; palette error <12/255')

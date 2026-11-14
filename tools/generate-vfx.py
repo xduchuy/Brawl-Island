@@ -84,6 +84,9 @@ def sheet(key,shape,color='#e9f5e1'):
 common={'slash_arc':'slash','hit_spark':'spark','impact_burst':'explosion','shockwave':'ring','dash_trail':'trail','dust_sheet':'dust','block_impact':'shield','parry_flash':'parry','lightning':'lightning','smoke_sheet':'smoke','magic_particle':'aura','ground_cracks':'cracks','explosion_sheet':'explosion','summon':'spirit','aura':'aura','domain_field':'domain'}
 for name,shape in common.items():sheet('common/'+name,shape)
 shapes={'yuji':['echo','lightning','lightning'],'gojo':['ring','gravity','beam'],'sukuna':['slash','slash','domain'],'megumi':['dog','domain','domain'],'nobara':['spark','nail','explosion'],'toji':['blade','line','blade'],'kenjaku':['spirit','gravity','domain'],'geto':['gravity','spirit','beam'],'mahito':['soul','soul','domain'],'goblin':['explosion','trail','explosion'],'skeleton':['shield','blade','domain']}
+for kind,d in art.KIMETSU.items():
+    style=d['style'];base='lightning' if 'thunder' in style else 'explosion' if style in ['flame','blood'] else 'spirit' if style in ['wood','pot'] else 'slash'
+    shapes[kind]=[base,'nail' if style in ['gun','sickle'] else 'gravity' if style in ['mist','castle'] else base,'domain' if style in ['castle','ice','wood'] else 'beam' if kind in ['genya','tanjiro','kokushibo','gyokko'] else base]
 for kind,p in data['profiles'].items():
     folder={'goblin':'grinsk','skeleton':'bonewarden'}.get(kind,kind)
     for i,slot in enumerate(['special','skill2','ultimate']):sheet(folder+'/'+slot,shapes[kind][i],'#c28aff' if kind=='gojo' and slot=='ultimate' else '#ff5264' if kind=='gojo' and slot=='special' else p[1])

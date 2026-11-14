@@ -13,6 +13,7 @@ const FIGHTER_PROFILES = {
  goblin: ['TRICKSTER', '#b0e978', 'Fast mace strings, a green feint dash and a dirty finisher.', 'MISCHIEF RUSH', 'EMERALD MAYHEM', 'rush', 'burst'],
  skeleton: ['HEAVY DEFENSE', '#b3d6e5', 'Long sword reach, an efficient shield and spectral pressure.', 'SPECTRAL EDGE', 'LAST WATCH', 'projectile', 'burst']
 };
+for(const [kind,d] of Object.entries(KIMETSU_ROSTER))FIGHTER_PROFILES[kind]=[d.style.toUpperCase(),d.color,d.group+' · '+d.skills[0]+' opens pressure; '+d.skills[1]+' controls space.',d.skills[1],d.skills[2],'arc','burst'];
 const SKILLS = {}, FIGHTER_SKILLS = {};
 function registerSkill(kind, slot, move, index=0) {
  const id = kind+'_'+slot+(slot==='light'?'_'+index:'');
@@ -42,6 +43,13 @@ function configureFighter(kind) {
  if(p[6]==='beam')Object.assign(ultimate,{type:'line',radius:9,width:1.05,damage:48});
  if(p[6]==='rush')Object.assign(ultimate,{type:'arc',radius:2.1,lunge:3.5,start:34,end:48,length:96,damage:48});
  if(p[6]==='burst')Object.assign(ultimate,{type:'radial',radius:3.8,damage:44});
+ if(KIMETSU_ROSTER[kind]){
+  const d=KIMETSU_ROSTER[kind],i=Object.keys(KIMETSU_ROSTER).indexOf(kind);
+  const types={water:'arc',blood:'radial',thunder:'line',beast:'arc',flower:'arc',gun:'projectile',insect:'line',flame:'arc',sound:'radial',love:'line',mist:'field',stone:'arc',wind:'radial',serpent:'line',moon:'arc',ice:'field',compass:'radial',wood:'field',pot:'field',sickle:'projectile',obi:'line',castle:'field',darkthunder:'projectile'};
+  const type=types[d.style];Object.assign(second,{type,radius:type==='projectile'?.36:type==='line'?3.9:type==='field'?2.3:2.5,width:.5,range:7.5,speed:10,offset:1.5,damage:21+i%4,start:20+i%5,end:30+i%5,length:64+i%4,lunge:type==='arc'?.8:0,down:['stone','wind','sound'].includes(d.style)});
+  const rush=['zenitsu','kaigaku','rengoku','inosuke','kanao','shinobu'].includes(kind),beam=['genya','tanjiro','kokushibo','gyokko'].includes(kind);
+  Object.assign(ultimate,{type:rush?'arc':beam?'line':'radial',radius:rush?2.3:beam?7:4.2,width:1.05,lunge:rush?3.2:0,start:rush?34:48,end:rush?46:60,length:rush?96:112,damage:44+i%5});
+ }
  FIGHTER_SKILLS[kind]={light:base.light.map((m,i)=>registerSkill(kind,'light',m,i)),heavy:registerSkill(kind,'heavy',base.heavy),special:registerSkill(kind,'special',base.special),skill2:registerSkill(kind,'skill2',second),ultimate:registerSkill(kind,'ultimate',ultimate)};
 }
 // Yuji and Gojo form the initial vertical slice. Remaining fighters share validated rules.
