@@ -1,5 +1,5 @@
 {
-  "matches": 500,
+  "matches": 1750,
   "stuck": 0,
   "specialsHit": true,
   "rows": [
@@ -64,6 +64,156 @@
       "wins": 3
     },
     {
+      "kind": "sukuna",
+      "enemy": "tanjiro",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "nezuko",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "zenitsu",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "inosuke",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "kanao",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "genya",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "giyu",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "shinobu",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "rengoku",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "tengen",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "mitsuri",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "muichiro",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "gyomei",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "sanemi",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "obanai",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "muzan",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "kokushibo",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "doma",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "akaza",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "hantengu",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "gyokko",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "gyutaro",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "daki",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "nakime",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "kaigaku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
       "kind": "kenjaku",
       "enemy": "goblin",
       "matches": 10,
@@ -120,6 +270,156 @@
     {
       "kind": "kenjaku",
       "enemy": "toji",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "tanjiro",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "nezuko",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "zenitsu",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "inosuke",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "kanao",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "genya",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "giyu",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "shinobu",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "rengoku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "tengen",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "mitsuri",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "muichiro",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "gyomei",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "sanemi",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "obanai",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "muzan",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "kokushibo",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "doma",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "akaza",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "hantengu",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "gyokko",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "gyutaro",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "daki",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "nakime",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "kaigaku",
       "matches": 10,
       "wins": 7
     },
@@ -182,6 +482,156 @@
       "enemy": "toji",
       "matches": 10,
       "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "tanjiro",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "nezuko",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "zenitsu",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "inosuke",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "kanao",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "genya",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "geto",
+      "enemy": "giyu",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "shinobu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "rengoku",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "tengen",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "mitsuri",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "muichiro",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "gyomei",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "sanemi",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "obanai",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "muzan",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "kokushibo",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "doma",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "akaza",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "hantengu",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "gyokko",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "geto",
+      "enemy": "gyutaro",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "daki",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "nakime",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "kaigaku",
+      "matches": 10,
+      "wins": 5
     },
     {
       "kind": "mahito",
@@ -244,6 +694,156 @@
       "wins": 5
     },
     {
+      "kind": "mahito",
+      "enemy": "tanjiro",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "nezuko",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "zenitsu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "mahito",
+      "enemy": "inosuke",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "mahito",
+      "enemy": "kanao",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "genya",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "giyu",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "shinobu",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "mahito",
+      "enemy": "rengoku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "tengen",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "mahito",
+      "enemy": "mitsuri",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "mahito",
+      "enemy": "muichiro",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "gyomei",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "mahito",
+      "enemy": "sanemi",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "obanai",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "muzan",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "mahito",
+      "enemy": "kokushibo",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "doma",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "akaza",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "hantengu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "mahito",
+      "enemy": "gyokko",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "mahito",
+      "enemy": "gyutaro",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "mahito",
+      "enemy": "daki",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "mahito",
+      "enemy": "nakime",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "kaigaku",
+      "matches": 10,
+      "wins": 5
+    },
+    {
       "kind": "toji",
       "enemy": "goblin",
       "matches": 10,
@@ -302,6 +902,156 @@
       "enemy": "mahito",
       "matches": 10,
       "wins": 7
+    },
+    {
+      "kind": "toji",
+      "enemy": "tanjiro",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "nezuko",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "zenitsu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "inosuke",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "kanao",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "genya",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "toji",
+      "enemy": "giyu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "shinobu",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "rengoku",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "tengen",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "toji",
+      "enemy": "mitsuri",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "muichiro",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "gyomei",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "toji",
+      "enemy": "sanemi",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "obanai",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "muzan",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "toji",
+      "enemy": "kokushibo",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "doma",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "toji",
+      "enemy": "akaza",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "hantengu",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "gyokko",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "gyutaro",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "daki",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "nakime",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "toji",
+      "enemy": "kaigaku",
+      "matches": 10,
+      "wins": 6
     }
   ]
 }

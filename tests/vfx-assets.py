@@ -10,4 +10,4 @@ for key,a in m['assets'].items():
     for f in range(a['frames']):
         tile=alpha.crop((f*n,0,(f+1)*n,n));assert tile.getbbox()
         for box in [(0,0,n,4),(0,n-4,n,n),(0,0,4,n),(n-4,0,n,n)]:assert tile.crop(box).getextrema()==(0,0),key
-print('49 RGBA sheets: dimensions, visible frames and four-pixel transparent UV gutters verified')
+print('RGBA sheets: dimensions, visible frames and four-pixel transparent UV gutters verified')

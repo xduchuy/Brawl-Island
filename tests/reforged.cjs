@@ -3,7 +3,7 @@ const context={};vm.createContext(context);
 vm.runInContext(fs.readFileSync(__dirname+'/../index.html','utf8').match(/<script id="combat-engine">([\s\S]*?)<\/script>/)[1]+';this.B=BrawlMatch;this.skills=SKILLS;this.stats=IB_STATS;this.hit=contactTest;',context);
 const {B,skills,stats}=context,checks=[];
 function ready(kind='yuji',extra={}){const m=new B({rounds:1,slots:[{kind,controller:'p1'},{kind:'skeleton',controller:'p2'}],...extra});m.start();for(let i=0;i<151;i++)m.step();const[a,b]=m.fighters;Object.assign(a,{x:-.5,z:0,angle:Math.PI/2});Object.assign(b,{x:.5,z:0,angle:-Math.PI/2});m.events.length=0;return m;}
-assert.equal(Object.keys(skills).length,77);
+assert.equal(Object.keys(skills).length,252);
 for(const kind of Object.keys(stats))for(const action of ['light','heavy','special','skill2','ultimate']){
  const m=ready(kind),[a,b]=m.fighters;a.ultimate=100;assert(m.attack(a,action));const skill=a.move;
  assert(skill.start>0&&skill.end>=skill.start&&skill.length>skill.end);assert(skill.animation&&skill.vfx&&skill.sound&&skill.hitbox);
@@ -12,11 +12,11 @@ for(const kind of Object.keys(stats))for(const action of ['light','heavy','speci
  const hits=m.events.filter(e=>e.type==='hit');assert(hits.length<=(skill.pulses?.length||1));
  const hp=b.hp;for(let i=0;i<80;i++)m.step();assert.equal(b.hp,hp,'damage after recovery');
 }
-checks.push('55 base attacks: startup safety, collision, one contact per pulse, no recovery damage');
+checks.push('180 base attacks: startup safety, collision, one contact per pulse, no recovery damage');
 for(const kind of Object.keys(stats))for(let combo=1;combo<3;combo++){
  const m=ready(kind),[a,b]=m.fighters;m.attack(a,'light');a.frame=a.move.chain;a.combo=combo-1;assert(m.attack(a,'light'));assert.equal(a.combo,combo);for(let n=0;n<70;n++)m.step();assert(b.hp<112);
 }
-checks.push('22 light combo follow-ups execute; all 77 registry entries exercised');
+checks.push('72 light combo follow-ups execute; all 252 registry entries exercised');
 {
  const m=ready(),[a,b]=m.fighters;assert(!m.attack(a,'ultimate'));a.ultimate=100;a.stamina=24;assert(!m.attack(a,'ultimate'));assert.equal(a.ultimate,100);a.stamina=100;assert(m.attack(a,'ultimate'));assert.equal(a.ultimate,0);assert(!m.attack(a,'ultimate'));for(let i=0;i<130;i++)m.step();a.stamina=100;assert(!m.attack(a,'ultimate'));assert(a.ultimate===0,'ultimate must not refund its own meter');
 }
@@ -60,5 +60,5 @@ checks.push('32 seeded AI matches complete across both arenas and 1v1/2v2');
 function snapshot(){const m=new B({mode:2,seed:729,slots:['yuji','gojo','nobara','geto'].map(kind=>({kind,controller:'ai'}))});m.start();for(let i=0;i<2200;i++){m.step();m.events.length=0;}return JSON.stringify(m.fighters.map(f=>[f.hp,f.x,f.z,f.stamina,f.ultimate,f.state]));}
 assert.equal(snapshot(),snapshot());checks.push('Identical seed produces identical fixed-step state');
 const manifest=JSON.parse(fs.readFileSync(__dirname+'/../assets/vfx/manifest.json'));for(const s of Object.values(skills)){const binding=manifest.skills[s.id];assert(binding);for(const key of [binding.asset,binding.startup,binding.impact])assert(fs.existsSync(__dirname+'/../'+manifest.assets[key].path));}
-checks.push('All 77 skills resolve their startup, release and impact asset files');
+checks.push('All 252 skills resolve their startup, release and impact asset files');
 fs.writeFileSync(__dirname+'/reforged-results.json',JSON.stringify({checks,matches:seeded},null,2));console.log(checks.join('\n'));

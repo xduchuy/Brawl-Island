@@ -19,7 +19,7 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots/mob
  await send('touchStart',[pt(4,b.x,b.y)]);await send('touchCancel',[]);assert(await p.evaluate(()=>!__ib.skillAim.pending&&!__ib.skillIndicators.group.visible&&__ib.touchInput.pointers.size===0));
  // World aim depends on the actual camera, including an alternate yaw.
  assert(await p.evaluate(()=>{const camera=__ib.camera,aim=__ib.skillAim;camera.position.set(100,70,0);camera.lookAt(0,0,0);camera.updateMatrixWorld();const a=aim.ground(400,190),b=aim.ground(450,190);return Math.abs(b.z-a.z)>Math.abs(b.x-a.x)*2;}));
- for(const kind of ['yuji','gojo','sukuna','megumi','nobara','toji','kenjaku','geto','mahito','goblin','skeleton']){
+ for(const kind of await p.evaluate(()=>Object.keys(__ib.profiles))){
   await reset(kind);for(const action of ['special','skill2','ultimate']){await p.evaluate(()=>{const f=__ib.match.fighters[0];Object.assign(f,{state:'idle',stamina:100,ultimate:100,cooldowns:{}});__ib.updateSkillHUD();});assert.equal(await p.locator('[data-action='+action+'] b').getAttribute('data-icon'),kind+'/'+action);const b=await center('[data-action='+action+']');await send('touchStart',[pt(9,b.x,b.y)]);await send('touchEnd',[]);await p.evaluate(()=>__ib.step(1));assert.equal(await p.evaluate(()=>__ib.match.fighters[0].moveName),action);}
  }
  await reset('gojo');await p.screenshot({path:out+'/03-gojo-ready.png'});
@@ -30,5 +30,5 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots/mob
  await p.evaluate(()=>__ib.openSkillPreview('yuji'));await p.waitForTimeout(100);await p.click('#closeSkillPreview');
  await p.setViewportSize({width:667,height:375});await p.evaluate(()=>{__ib.mobilePrefs.preset='compact';__ib.mobile.updateViewport();__ib.visualStep(3);});await p.screenshot({path:out+'/07-compact.png'});
  // Atlas has transparent gutters and exact source rects; rendering resolves every image.
- assert.equal(await p.evaluate(()=>__ib.iconAtlas.image.naturalWidth),1088);assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);fs.writeFileSync(root+'/tests/moba-browser-results.json',JSON.stringify({icons:38,signatureActions:33,dragAim:true,multiTouch:true,cancel:true,cameraSpace:true,isolatedPreview:true,errors,requests},null,2));console.log('MOBA browser: icons, 33 releases, multi-touch aim, cancellation, camera conversion, UI states, live preview passed');
+ assert.equal(await p.evaluate(()=>__ib.iconAtlas.image.naturalWidth),1088);assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);fs.writeFileSync(root+'/tests/moba-browser-results.json',JSON.stringify({icons:113,signatureActions:108,dragAim:true,multiTouch:true,cancel:true,cameraSpace:true,isolatedPreview:true,errors,requests},null,2));console.log('MOBA browser: icons, 108 releases, multi-touch aim, cancellation, camera conversion, UI states, live preview passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});

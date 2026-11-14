@@ -10,7 +10,8 @@
     "serve": "python3 -m http.server 3180",
     "test:moba": "node tests/moba.cjs && python3 tests/skill-assets.py && node tests/moba-browser.cjs",
     "test:sanctuary": "node tests/drowned-navigation.cjs && node tests/drowned-browser.cjs && node tests/drowned-lifecycle.cjs",
-    "test:sanctuary-combat": "node tests/sanctuary-combat.cjs && node tests/sanctuary-playable-browser.cjs"
+    "test:sanctuary-combat": "node tests/sanctuary-combat.cjs && node tests/sanctuary-playable-browser.cjs",
+    "test:kimetsu": "node tests/kimetsu-browser.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

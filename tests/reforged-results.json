@@ -1,7 +1,7 @@
 {
   "checks": [
-    "55 base attacks: startup safety, collision, one contact per pulse, no recovery damage",
-    "22 light combo follow-ups execute; all 77 registry entries exercised",
+    "180 base attacks: startup safety, collision, one contact per pulse, no recovery damage",
+    "72 light combo follow-ups execute; all 252 registry entries exercised",
     "Ultimate requires meter and stamina, consumes once, never refunds its damage",
     "Cooldown and stamina gates independently reject recasts",
     "Timed parry prevents damage, staggers attacker and opens counter window",
@@ -12,7 +12,7 @@
     "Sealed arena bounces; training resets KO and supports unlimited resources",
     "32 seeded AI matches complete across both arenas and 1v1/2v2",
     "Identical seed produces identical fixed-step state",
-    "All 77 skills resolve their startup, release and impact asset files"
+    "All 252 skills resolve their startup, release and impact asset files"
   ],
   "matches": [
     {

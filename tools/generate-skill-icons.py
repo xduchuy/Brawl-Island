@@ -8,6 +8,11 @@ ROOT=Path(__file__).resolve().parents[1]
 S=3; N=128
 PALETTES={'yuji':'ff4167','gojo':'748aff','sukuna':'e52e57','megumi':'8490df','nobara':'ffae58','toji':'a9d8dd','kenjaku':'c179ee','geto':'ad8af6','mahito':'68e8ca','goblin':'a4ed53','skeleton':'9cddff','common':'ead8a5'}
 MOTIFS={'yuji':['fist','echo','rush'],'gojo':['red','vortex','beam'],'sukuna':['slashes','cross','shrine'],'megumi':['wolf','snare','garden'],'nobara':['hammer','nails','doll'],'toji':['blade','chain','execution'],'kenjaku':['swarm','gravity','womb'],'geto':['spiral','spirit','maelstrom'],'mahito':['hand','morph','hands'],'goblin':['mace','rogue','mayhem'],'skeleton':['shield','sword','crest'],'common':['blade','fist','shield','boot','wings']}
+code="const fs=require('fs'),vm=require('vm'),c={};vm.createContext(c);vm.runInContext(fs.readFileSync('src/fighters/roster.js','utf8')+';this.k=KIMETSU_ROSTER;',c);console.log(JSON.stringify(c.k));"
+KIMETSU=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
+for kind,d in KIMETSU.items():
+    PALETTES[kind]=d['color'].lstrip('#')
+    MOTIFS[kind]=[kind+'_'+str(i) for i in range(3)]
 def rgb(h):return tuple(bytes.fromhex(h))
 def motif(kind,index,size=384):
     c=rgb(PALETTES[kind]); light=tuple(int(v*.3+178) for v in c); dark=tuple(int(v*.26) for v in c); white=(255,247,222)
@@ -132,6 +137,73 @@ def motif(kind,index,size=384):
         if name=='wings':poly([(27,20),(64,42),(56,57),(31,48),(51,44)],c,light,1)
     elif name=='shield':
         poly([(31,32),(64,18),(97,32),(90,78),(64,108),(38,78)],dark,light,3);poly([(41,39),(64,28),(86,39),(79,73),(64,94),(49,73)],c);poly([(64,32),(79,43),(73,70),(64,85)],light);oval((55,51,73,69),dark,white,1)
+    elif kind in KIMETSU:
+        style=KIMETSU[kind]['style']
+        if kind=='tanjiro' and index>0:style='flame';c=(255,125,64);light=(255,229,172)
+        if index==0 and KIMETSU[kind]['weapon'] in ['sword','rapier','dual','cleavers','whip']:blade()
+        if style in ['water','wind','mist','moon','sickle','serpent']:
+            for j in range(2+index):
+                pts=[]
+                for t in range(65):
+                    a=t/64*math.pi*1.7+j*.52;r=26+j*10
+                    pts.append((64+math.cos(a)*r,64+math.sin(a)*r*.8))
+                line(pts,dark,7);line(pts,c,4);line(pts[10:44],light,1)
+            if style=='serpent':oval((88,27,105,40),c,light);oval((98,31,101,34),dark)
+            if style=='moon':
+                for x,y in [(35,28),(95,87),(28,91)]:oval((x-10,y-10,x+10,y+10),c);oval((x-5,y-14,x+13,y+5),(0,0,0,0))
+        elif style in ['thunder','darkthunder']:
+            for j in range(index+1):
+                dx=(j-index/2)*23
+                poly([(73+dx,16),(39+dx,62),(59+dx,61),(45+dx,110),(94+dx,49),(70+dx,50)],light,c,2)
+        elif style in ['flame','blood']:
+            for j in range(3+index):
+                x=25+j*78/(2+index);y=102-abs(j-(2+index)/2)*5
+                poly([(x-11,y),(x-17,y-25),(x-4,y-50),(x+2,y-72),(x+13,y-39),(x+9,y-12)],c,light,1)
+                poly([(x-6,y-3),(x,y-38),(x+6,y-9)],light,c,1)
+        elif style in ['flower','love','ice','insect']:
+            petals=4 if style=='insect' else 5+index
+            for j in range(petals):
+                a=j*math.tau/petals+index*.3;cx=64+math.cos(a)*27;cy=64+math.sin(a)*27
+                if style=='ice':poly([(64,64),(cx-11,cy-10),(64+math.cos(a)*52,64+math.sin(a)*52),(cx+9,cy+11)],c,light,2)
+                else:oval((cx-16,cy-23,cx+16,cy+23),c,light,2)
+            oval((52,52,76,76),dark,white,2)
+            if style=='love':poly([(64,90),(31,59),(32,42),(47,34),(64,45),(81,34),(96,42),(97,59)],light,c,2)
+        elif style in ['beast','compass']:
+            if style=='beast':
+                for j in range(3+index):line([(22+j*15,104),(49+j*10,61),(38+j*14,26)],light,5)
+                wolf(0,0,.58)
+            else:
+                for j in range(6+index*2):
+                    a=j*math.tau/(6+index*2);line([(64,64),(64+math.cos(a)*48,64+math.sin(a)*48)],light,3)
+                oval((34,34,94,94),None,c,3);fist(0,0,.55)
+        elif style in ['gun','stone','sound']:
+            if style=='gun':
+                poly([(28,104),(40,108),(60,62),(77,34),(64,27),(42,59)],dark,light,2)
+                for j in range(3+index):poly([(73+j*5,24+j*11),(92+j*3,16+j*11),(97+j*3,21+j*11),(80+j*5,31+j*11)],c,light,1)
+            else:
+                for j in range(7):oval((22+j*8,80-j*5,34+j*8,92-j*5),None,light,2)
+                if style=='stone':oval((67,18,111,62),dark,c,3);poly([(22,29),(49,22),(62,43),(37,60),(27,51)],light,c,2)
+                else:
+                    poly([(25,104),(31,26),(51,20),(54,76)],c,light,2);poly([(76,105),(74,24),(96,28),(103,82)],c,light,2)
+                    for j in range(1+index):line([(19,24+j*18),(10,29+j*18),(17,36+j*18)],light,2)
+        elif style=='wood':
+            for j in range(3+index):
+                x=25+j*18;line([(x,105),(x-6,77),(x+10,52),(x+3,22)],c,8);line([(x+3,55),(x-10,41),(x-14,24)],light,2)
+            wolf(0,-15,.45)
+        elif style=='pot':
+            poly([(39,23),(89,23),(83,38),(100,76),(89,104),(39,104),(28,76),(45,38)],c,light,2)
+            for j in range(2+index):line([(38,55+j*13),(51,49+j*13),(73,60+j*13),(90,53+j*13)],dark,3)
+        elif style=='obi':
+            for j in range(2+index):
+                pts=[(18,20+j*20),(45,29+j*14),(75,12+j*20),(108,28+j*20),(91,48+j*17),(53,44+j*17)]
+                line(pts,dark,12);line(pts,c,8);line(pts,light,2)
+        elif style=='castle':
+            for j in range(3+index):
+                x=17+j*13;y=24+j*14;poly([(x,y),(x+49,y-8),(x+49,y+30),(x,y+38)],dark,c,2)
+                for k in range(3):line([(x+12+k*12,y-2),(x+12+k*12,y+31)],light,1)
+        # Each form has a distinct number and placement of small orbiting accents.
+        for j in range(3+index*2):
+            a=j*math.tau/(3+index*2)+index*.25;oval((62+math.cos(a)*51,62+math.sin(a)*51,66+math.cos(a)*51,66+math.sin(a)*51),white)
     # Paint volume into each opaque illustration layer, preserving the ink edges.
     pixels=im.load();grain=random.Random(931+index+sum(map(ord,kind)))
     for yy in range(384):
@@ -168,11 +240,11 @@ def generate():
             filename='skill1' if slot=='special' else slot;p=out/kind/(filename+'.png');p.parent.mkdir(exist_ok=True);illustrated(kind,i).save(p,optimize=True)
             sk=skills.get(kind+'_'+slot,{});h=sk.get('hitbox',{})
             entries.append(dict(fighter=kind,slot=slot,skillId=sk.get('id'),label=sk.get('label',slot.upper()),icon=str(p.relative_to(ROOT)),cooldown=sk.get('cooldown',0),staminaCost=sk.get('cost',0),aimType='self' if h.get('type')=='radial' else 'directional' if sk else 'instant'))
-    tile=136;atlas=Image.new('RGBA',(tile*8,tile*5))
+    tile=136;atlas=Image.new('RGBA',(tile*8,tile*math.ceil(len(entries)/8)))
     for i,e in enumerate(entries):
         x=i%8*tile+4;y=i//8*tile+4;atlas.paste(Image.open(ROOT/e['icon']),(x,y));e['rect']=[x,y,128,128];e['uv']=[x/atlas.width,y/atlas.height,128/atlas.width,128/atlas.height]
     atlas.quantize(colors=256,method=Image.Quantize.FASTOCTREE).save(out/'atlas.png',optimize=True);(out/'manifest.json').write_text(json.dumps(dict(version=1,width=atlas.width,height=atlas.height,gutter=4,icons=entries),indent=2)+'\n')
-    sheet=Image.new('RGB',(680,11*168),(16,25,33));d=ImageDraw.Draw(sheet)
+    sheet=Image.new('RGB',(680,(len(PALETTES)-1)*168),(16,25,33));d=ImageDraw.Draw(sheet)
     for row,kind in enumerate(k for k in PALETTES if k!='common'):
         d.text((12,row*168+62),{'goblin':'GRINSK','skeleton':'BONEWARDEN'}.get(kind,kind.upper()),fill='#cadbc9')
         for i in range(3):
