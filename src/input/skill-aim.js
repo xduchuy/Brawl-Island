@@ -11,7 +11,7 @@ class SkillAim {
   this.pending={action,skill:s,button,id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dz:0,angle:enemy?Math.atan2(enemy.x-f.x,enemy.z-f.z):f.angle,canceled:false};
   button.classList.add('aiming');this.cancel.hidden=false;this.preview();return true;
  }
- ground(x,y){const r=$('stage').getBoundingClientRect();this.ray.setFromCamera(new THREE.Vector2((x-r.left)/r.width*2-1,1-(y-r.top)/r.height*2),camera);return this.ray.ray.intersectPlane(this.plane,new THREE.Vector3());}
+ ground(x,y){this.plane.constant=-(match?.fighters[0]?.y||0);const r=$('stage').getBoundingClientRect();this.ray.setFromCamera(new THREE.Vector2((x-r.left)/r.width*2-1,1-(y-r.top)/r.height*2),camera);return this.ray.ray.intersectPlane(this.plane,new THREE.Vector3());}
  move(e){const p=this.pending;if(!p||e.pointerId!==p.id)return;
   const rect=this.cancel.getBoundingClientRect(),slop=mobilePrefs.cancelSensitivity;p.canceled=e.clientX>=rect.left-slop&&e.clientX<=rect.right+slop&&e.clientY>=rect.top-slop&&e.clientY<=rect.bottom+slop;
   this.cancel.classList.toggle('cancel-active',p.canceled);p.button.classList.toggle('canceling',p.canceled);

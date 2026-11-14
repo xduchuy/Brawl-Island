@@ -15,10 +15,10 @@ function updateHitboxes(){for(let i=0;i<4;i++){const f=match.fighters[i],mesh=de
  mesh.material.color.set(active?'#ff696b':'#62e4bf');const arr=mesh.geometry.attributes.position.array;let vertices=[];
  if(h.type==='line'){vertices=[-h.width,0,0,h.width,0,0,h.width,0,h.radius,-h.width,0,0,h.width,0,h.radius,-h.width,0,h.radius];}
  else{const angle=['radial','field'].includes(h.type)?Math.PI:h.angle;for(let n=0;n<32;n++){const a=-angle+n*angle*2/32,b=-angle+(n+1)*angle*2/32;vertices.push(0,0,0,Math.sin(a)*h.radius,0,Math.cos(a)*h.radius,Math.sin(b)*h.radius,0,Math.cos(b)*h.radius);}}
- arr.set(vertices);mesh.geometry.setDrawRange(0,vertices.length/3);mesh.geometry.attributes.position.needsUpdate=true;mesh.position.set(f.move.hitbox.type==='field'?f.field.x:f.x,.11,f.move.hitbox.type==='field'?f.field.z:f.z);mesh.rotation.y=f.angle;
+ arr.set(vertices);mesh.geometry.setDrawRange(0,vertices.length/3);mesh.geometry.attributes.position.needsUpdate=true;mesh.position.set(f.move.hitbox.type==='field'?f.field.x:f.x,f.y+.11,f.move.hitbox.type==='field'?f.field.z:f.z);mesh.rotation.y=f.angle;
 }}
 function reforgedConfiguration(config){
- config.gameMode=rf.mode;config.arena=rf.arena;config.training={dummy:$('dummyMode')?.value||'stand',unlimited:$('unlimited')?.checked||false};
+ config.gameMode=rf.mode;config.arena=rf.arena;config.arenaRules=prepareSanctuaryCombat(rf.arena);config.training={dummy:$('dummyMode')?.value||'stand',unlimited:$('unlimited')?.checked||false};
  if(['arcade','survival','training','local'].includes(rf.mode))config.mode=1;
  if(rf.mode==='local'){config.slots[0].controller='p1';config.slots[1].controller='p2';}
  if(rf.mode==='training')config.slots[1].controller='ai';
@@ -39,7 +39,7 @@ function reforgedAfterStart(){
  if(rf.mode==='survival'&&rf.stage>0&&rf.carry)match.fighters[0].hp=Math.min(match.fighters[0].stats.hp,rf.carry+24);
  sanctum.visible=rf.arena==='sanctum';setTime(sanctum.visible?2:0);
  $('trainingTools').hidden=rf.mode!=='training';$('endTraining').hidden=rf.mode!=='training';
- $('statusText').textContent=rf.mode.toUpperCase()+(rf.mode==='arcade'?' · '+(rf.stage+1)+'/10':rf.mode==='survival'?' · WAVE '+(rf.stage+1)+'/5':'')+' · '+(sanctum.visible?'MOONLIT SANCTUM':'SKYREACH RING');
+ $('statusText').textContent=rf.mode.toUpperCase()+(rf.mode==='arcade'?' · '+(rf.stage+1)+'/10':rf.mode==='survival'?' · WAVE '+(rf.stage+1)+'/5':'')+' · '+(rf.arena==='drowned-sanctuary'?'DROWNED SANCTUARY':sanctum.visible?'MOONLIT SANCTUM':'SKYREACH RING');
 }
 function reforgedEvent(e){
  vfx.event(e,match);feedback.event(e,match);
@@ -71,8 +71,9 @@ function updateReforgedHUD(){
  document.querySelectorAll('#touchControls [data-action]').forEach(b=>{const cd=a.cooldowns[b.dataset.action]||0;b.classList.toggle('cooling',cd>0||b.dataset.action==='ultimate'&&a.ultimate<100);});
 }
 function updateReforged(dt){
+ if(match.arena==='drowned-sanctuary'&&sanctuaryCombat.map){sanctuaryCombat.time+=dt;sanctuaryCombat.map.update(dt,sanctuaryCombat.time);}
  ocean.material.uniforms.time.value=worldTime;feedback.update(dt);vfx.update(dt,match,camera);updateHitboxes();
- for(let i=0;i<4;i++){const f=match.fighters[i],s=contactShadows[i];s.visible=!!f&&!f.fall;if(f)s.position.set(f.x,rf.arena==='sanctum'?.09:.025,f.z);}
+ for(let i=0;i<4;i++){const f=match.fighters[i],s=contactShadows[i];s.visible=!!f&&!f.fall;if(f)s.position.set(f.x,match.arenaRules?f.y+.04:rf.arena==='sanctum'?.09:.025,f.z);}
  ward.material.opacity=.12+feedback.shake*.5;
  if(rf.quality==='auto'&&!mobile.device){
   rf.slowFrames=fps<42?rf.slowFrames+dt:Math.max(0,rf.slowFrames-dt);
@@ -86,9 +87,9 @@ const menu=document.createElement('nav');menu.className='reforge-nav';menu.setAt
 document.querySelector('.top-links').prepend(menu);
 document.querySelector('.edition').remove();document.querySelector('.subtitle').textContent='COMBAT REFORGED';
 document.querySelector('.intro h1').innerHTML='SMALL ISLAND.<br><span>UNLIMITED RIVALRY.</span>';
-document.querySelector('.intro p').textContent='Eleven fighters. Two arenas. Every opening matters.';
+document.querySelector('.intro p').textContent='Eleven fighters. Three arenas. Every opening matters.';
 document.querySelector('.locale').innerHTML='<span>✦</span> COMBAT REFORGED <span>/</span> LOCAL · OFFLINE';
-const toolbar=document.createElement('div');toolbar.className='reforge-toolbar';toolbar.innerHTML='<label>MODE <select id="gameMode"><option value="versus">Quick match</option><option value="local">Local versus</option><option value="arcade">Arcade · 10 encounters</option><option value="survival">Survival · 5 waves</option><option value="training">Training lab</option></select></label><label>ARENA <select id="arenaMode"><option value="skyreach">Skyreach · Open ring</option><option value="sanctum">Moonlit Sanctum · Sealed</option></select></label><button id="chooseFighters">Choose fighters ↗</button><button id="galleryButton">VFX gallery</button><span id="sessionStatus">Find your opening.</span>';
+const toolbar=document.createElement('div');toolbar.className='reforge-toolbar';toolbar.innerHTML='<label>MODE <select id="gameMode"><option value="versus">Quick match</option><option value="local">Local versus</option><option value="arcade">Arcade · 10 encounters</option><option value="survival">Survival · 5 waves</option><option value="training">Training lab</option></select></label><label>ARENA <select id="arenaMode"><option value="skyreach">Skyreach · Open ring</option><option value="sanctum">Moonlit Sanctum · Sealed</option><option value="drowned-sanctuary">Drowned Sanctuary · Flooded ruins</option></select></label><button id="chooseFighters">Choose fighters ↗</button><button id="galleryButton">VFX gallery</button><span id="sessionStatus">Find your opening.</span>';
 document.querySelector('.layout').before(toolbar);
 for(let team=0;team<2;team++){
  const el=document.createElement('div');el.className='ultimate-meter';el.id='meter'+team;el.innerHTML='<i></i><span>0%</span>';$('hud'+team).append(el);

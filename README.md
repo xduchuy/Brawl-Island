@@ -1,6 +1,6 @@
 # ISLE BRAWL: COMBAT REFORGED
 
-An offline 3D arena fighter set above a living island. Eleven fighters, 1v1/2v2, two arena rulesets, two signature skills and one ultimate per fighter. Open **index.html** directly in a modern browser; the production game has no backend, install step or external asset requests.
+An offline 3D arena fighter set above a living island. Eleven fighters, 1v1/2v2, three arenas, two signature skills and one ultimate per fighter. Open **index.html** directly in a modern browser; the production game has no backend, install step or external asset requests.
 
 ![Combat Reforged](docs/screenshots/01-menu.png)
 
@@ -32,9 +32,9 @@ Mobile Controls stores joystick/button sizing, spacing, opacity, handedness, flo
 
 See [mobile implementation and device-testing limits](docs/mobile-landscape.md). Run `node tests/mobile-layout.cjs` for all five landscape sizes, both portrait sizes, simultaneous touch actions, rotation, settings and rematch resource checks. These are desktop-emulated tests; physical phone rotation and hardware FPS still require real-device review.
 
-## Drowned Sanctuary environment preview
+## Drowned Sanctuary arena
 
-Open **Arena Preview · Drowned Sanctuary** in the toolbar to explore the flooded Gothic ruins without starting a fight. Camera views, three lighting moods, quality settings, relic inspection and photo capture use the existing renderer. This environment is a preview with navigation preparation for later fighter integration.
+Choose **ARENA → Drowned Sanctuary · Flooded ruins** and start a 1v1 or 2v2 match. Fighters use the flooded courtyard, grounded spawns, solid architecture and AI routes around the monument. **Arena Preview · Drowned Sanctuary** also offers camera views, lighting moods, relic inspection and photo capture.
 
 See [source comparison, screenshots, API and validation limits](docs/drowned-sanctuary.md). Run `npm run test:sanctuary` for its navigation and browser checks.
 
@@ -72,7 +72,8 @@ Summons are synchronized attack shapes/projectiles, not independently controlled
 - **Arcade:** ten opponents, one round per encounter, increasing AI difficulty. Continue after each win; loss ends the run.
 - **Survival:** five escalating waves. Health carries forward; a victory restores up to 24 HP. Win wave five or lose to finish the run.
 - **Training:** stand/guard/attack/evade dummy, hitbox overlays (startup green, active red), frame data, combo/damage totals, unlimited resources/cooldown testing, reset and explicit finish-session controls.
-- **Skyreach:** original open ring and ring-outs. **Moonlit Sanctum:** night lighting, etched floor and a visible sealed perimeter that bounces fighters. Decorative world meshes never enter collision detection.
+- **Skyreach:** original open ring and ring-outs. **Moonlit Sanctum:** night lighting, etched floor and a visible sealed perimeter that bounces fighters. Decorative island meshes never enter collision detection.
+- **Drowned Sanctuary:** flooded courtyard with geometry-based movement limits, solid ruins, grounded team spawns and AI routes around the monument. Victory uses health or time; disconnected ruins and the balcony remain scenery.
 
 The island retains instanced villagers, birds, moving clouds, windmills, banners, lights and waterfalls, with a new animated ocean beneath it. Crowds and boundary lighting react to impacts.
 
