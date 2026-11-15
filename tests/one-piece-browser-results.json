@@ -1,0 +1,109 @@
+{
+  "records": [
+    {
+      "kind": "luffy",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 48,
+      "icon": "luffy_ultimate"
+    },
+    {
+      "kind": "zoro",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 59,
+      "icon": "zoro_ultimate"
+    },
+    {
+      "kind": "nami",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 55,
+      "icon": "nami_ultimate"
+    },
+    {
+      "kind": "usopp",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 56,
+      "icon": "usopp_ultimate"
+    },
+    {
+      "kind": "sanji",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 47,
+      "icon": "sanji_ultimate"
+    },
+    {
+      "kind": "chopper",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 39,
+      "icon": "chopper_ultimate"
+    },
+    {
+      "kind": "robin",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 50,
+      "icon": "robin_ultimate"
+    },
+    {
+      "kind": "franky",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 102,
+      "icon": "franky_ultimate"
+    },
+    {
+      "kind": "brook",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 66,
+      "icon": "brook_ultimate"
+    },
+    {
+      "kind": "jinbe",
+      "onePiece": true,
+      "bones": 18,
+      "parts": 59,
+      "icon": "jinbe_ultimate"
+    }
+  ],
+  "mobileResult": {
+    "fighters": [
+      {
+        "kind": "luffy",
+        "hp": 0,
+        "clear": true
+      },
+      {
+        "kind": "zoro",
+        "hp": 70,
+        "clear": true
+      },
+      {
+        "kind": "sanji",
+        "hp": 60,
+        "clear": true
+      },
+      {
+        "kind": "jinbe",
+        "hp": 57,
+        "clear": true
+      }
+    ],
+    "icons": [
+      "common/attack",
+      "common/heavy",
+      "luffy/special",
+      "common/dodge",
+      "common/guard",
+      "luffy/skill2",
+      "luffy/ultimate",
+      "common/dash"
+    ]
+  },
+  "errors": []
+}

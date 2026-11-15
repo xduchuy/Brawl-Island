@@ -52,6 +52,24 @@ function animateFighter(actor,f,dt,preview=false){const {g,pivot,bones,limbs}=ac
   else if(['sukuna','megumi','kenjaku','mahito'].includes(f.kind)){right=V(-.18,.25,release?.55:.3);left=V(.18,.25,release?.55:.3);bodyY-=.05;}
   else{right=sampleKeys(motionKeys.smash,t);left=V(.3,.2,.35);bodyTwist=Math.sin(t*TAU)*.35;}
  }
+ if(actor.onePiece){
+  const d=ONE_PIECE_ROSTER[f.kind],active=f.state==='attack',impact=active?Math.sin(clamp((t-.20)/.48,0,1)*Math.PI):0;
+  if(['idle','walk','attack'].includes(f.state)){right=V(-.30,.04,.29);left=V(.32,.02,.29);}
+  if(walk){right.z+=Math.sin(phase)*.09;left.z-=Math.sin(phase)*.09;}
+  if(active){
+   const sword=['zoro','brook','nami'].includes(f.kind),cast=['nami','usopp','robin','franky'].includes(f.kind)&&f.moveName!=='light';
+   right=sampleKeys(motionKeys[cast?'red':sword?(f.moveName==='heavy'?'cleave':'swing'):f.combo===2?'uppercut':'jab'],t);
+   if(f.kind==='luffy'&&f.moveName==='skill2'){left=sampleKeys(motionKeys.jab,(t+.22)%1);left.x*=-1;}
+   if(f.kind==='zoro'){left=sampleKeys(motionKeys.backhand,t);left.x*=-1;}
+   if(f.kind==='robin'){right=V(.10,.16,.40);left=V(-.10,.08,.44);}
+   if(f.kind==='sanji'){right=V(-.32,-.25,.10);left=V(.35,-.25,.10);lean=-impact*.18;bodyY+=impact*.10;}
+   bodyTwist=Math.sin(t*TAU)*.26;
+  }
+  bones.forearmR.scale.y=f.kind==='luffy'&&active&&f.moveName!=='light'?1+impact*4:1;
+  actor.bloom.visible=f.kind==='robin'&&active&&f.moveName!=='light';actor.bloom.rotation.z=t*.7;
+  actor.aura.visible=active&&f.moveName!=='light';actor.aura.rotation.z=worldTime*4;
+  actor.aura.scale.setScalar(f.moveName==='ultimate'?1.6:1);actor.offhandWeapon.rotation.x=active?Math.sin(t*Math.PI)*1.8:.35;actor.trail.material.color.set(d.color);
+ }
  if(f.state==='block'){left=V(.12,.05,.54);right=V(-.33,-.03,.42);bodyY-=.07;lean=.08;}
  if(f.state==='dodge'){roll=-Math.PI*2*clamp(f.frame/32,0,1);jump=Math.sin(clamp(f.frame/32,0,1)*Math.PI)*.25;right=V(-.23,-.15,.2);left=V(.23,-.15,.2);bodyY-=.25;}
  if(['down','ko','fall'].includes(f.state)){roll=-Math.min(1,f.frame/14)*Math.PI*.48;bodyY=.5;right=V(-.55,.1,.1);left=V(.55,.1,.1);if(f.state==='fall')roll+=f.frame*.04;}
@@ -65,7 +83,7 @@ function animateFighter(actor,f,dt,preview=false){const {g,pivot,bones,limbs}=ac
  actor.weapon.quaternion.slerp(new THREE.Quaternion().setFromEuler(new THREE.Euler(weaponAngle,0,f.state==='attack'?-.4:0)),Math.min(1,dt*28));actor.shield.rotation.y=lerp(actor.shield.rotation.y,f.state==='block'?-.3:0,Math.min(1,dt*20));
  let target=match?.fighters.find(e=>e.id===f.target);let look=target?angleDelta(f.angle,Math.atan2(target.x-f.x,target.z-f.z)):0;actor.head.rotation.y=clamp(look,-.5,.5)*.5;actor.head.rotation.z=Math.sin(worldTime*1.5+f.id)*.02;
  // Stance feet remain at world anchors. Swing endpoints advance with measured travel.
- for(let j=0;j<2;j++){let side=j===0?-1:1,key=j===0?'R':'L',foot=actor.feet[j],p=((f.distance/actor.scale/.85+j*.5)%1+1)%1;let neutral=V(side*.18*actor.scale,.045,0).applyAxisAngle(V(0,1,0),f.angle).add(V(f.x,0,f.z));if(!foot.anchor)foot.anchor=neutral.clone();let dest=foot.anchor.clone();if(walk){let swing=p>.58;if(swing){if(!foot.swing){foot.start=foot.anchor.clone();let dx=f.x-f.previousX,dz=f.z-f.previousZ,len=Math.hypot(dx,dz)||1;foot.end=neutral.clone().add(V(dx/len,0,dz/len).multiplyScalar(.3*actor.scale));}let u=(p-.58)/.42;dest=foot.start.clone().lerp(foot.end,u);dest.y+=Math.sin(u*Math.PI)*.12*actor.scale;foot.anchor.copy(dest);}foot.swing=swing;}else{foot.swing=false;foot.anchor.lerp(neutral,Math.min(1,dt*12));dest.copy(foot.anchor);}dest.sub(V(f.x,0,f.z)).applyAxisAngle(V(0,1,0),-f.angle).multiplyScalar(1/actor.scale);dest.y-=bodyY;if(jump||roll){dest=V(side*.18,-.7,Math.sin(phase+j*Math.PI)*.08);if(jump)dest.z=.15;}solveIK(limbs['leg'+key],dest,V(0,0,1));}
+ for(let j=0;j<2;j++){let side=j===0?-1:1,key=j===0?'R':'L',foot=actor.feet[j],p=((f.distance/actor.scale/.85+j*.5)%1+1)%1;let neutral=V(side*.18*actor.scale,.045,0).applyAxisAngle(V(0,1,0),f.angle).add(V(f.x,0,f.z));if(!foot.anchor)foot.anchor=neutral.clone();let dest=foot.anchor.clone();if(walk){let swing=p>.58;if(swing){if(!foot.swing){foot.start=foot.anchor.clone();let dx=f.x-f.previousX,dz=f.z-f.previousZ,len=Math.hypot(dx,dz)||1;foot.end=neutral.clone().add(V(dx/len,0,dz/len).multiplyScalar(.3*actor.scale));}let u=(p-.58)/.42;dest=foot.start.clone().lerp(foot.end,u);dest.y+=Math.sin(u*Math.PI)*.12*actor.scale;foot.anchor.copy(dest);}foot.swing=swing;}else{foot.swing=false;foot.anchor.lerp(neutral,Math.min(1,dt*12));dest.copy(foot.anchor);}dest.sub(V(f.x,0,f.z)).applyAxisAngle(V(0,1,0),-f.angle).multiplyScalar(1/actor.scale);dest.y-=bodyY;if(jump||roll){dest=V(side*.18,-.7,Math.sin(phase+j*Math.PI)*.08);if(jump)dest.z=.15;}if(actor.onePiece&&f.kind==='sanji'&&f.state==='attack'&&j===0){const kick=Math.sin(clamp((t-.18)/.55,0,1)*Math.PI);dest=V(-.18,-.72+kick*.68,.05+kick*.64);foot.anchor.copy(neutral);foot.swing=false;}solveIK(limbs['leg'+key],dest,V(0,0,1));}
  g.updateMatrixWorld(true);for(const b of actor.renderBatches){b.parts.forEach((o,i)=>b.mesh.setMatrixAt(i,o.matrixWorld));b.mesh.instanceMatrix.needsUpdate=true;b.mesh.material.emissive.setRGB(f.flinch*.4*feedback.settings.flashes,f.flinch*.28*feedback.settings.flashes,f.flinch*.13*feedback.settings.flashes);}if(f.state==='attack'&&f.frame>f.move.start-3&&f.frame<f.move.end+4){let tip=actor.unarmed?actor.strikeHand.localToWorld(V(0,-.12,.17)):actor.weapon.localToWorld(V(0,f.kind==='nobara'?.60:f.kind==='toji'?.85:f.kind==='geto'?.92:1.15,0)),base=actor.unarmed?actor.strikeHand.localToWorld(V(0,-.02,-.03)):actor.weapon.localToWorld(V(0,.4,0));actor.trailPoints.push([base,tip]);if(actor.trailPoints.length>12)actor.trailPoints.shift();let arr=actor.trail.geometry.attributes.position.array;arr.fill(0);for(let i=0;i<actor.trailPoints.length-1;i++){let [a,b]=actor.trailPoints[i],[c,d]=actor.trailPoints[i+1];[a,b,c,b,d,c].forEach((v,j)=>v.toArray(arr,(i*6+j)*3));}actor.trail.geometry.setDrawRange(0,(actor.trailPoints.length-1)*6);actor.trail.geometry.attributes.position.needsUpdate=true;actor.trail.visible=true;}else{actor.trail.visible=false;actor.trailPoints.length=0;}actor.disc.visible=!f.dead&&!actor.statue;
 
 }

@@ -1,5 +1,5 @@
 {
-  "matches": 1750,
+  "matches": 2250,
   "stuck": 0,
   "specialsHit": true,
   "rows": [
@@ -214,6 +214,66 @@
       "wins": 5
     },
     {
+      "kind": "sukuna",
+      "enemy": "luffy",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "zoro",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "nami",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "usopp",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "sanji",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "chopper",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "robin",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "franky",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "brook",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "sukuna",
+      "enemy": "jinbe",
+      "matches": 10,
+      "wins": 2
+    },
+    {
       "kind": "kenjaku",
       "enemy": "goblin",
       "matches": 10,
@@ -424,6 +484,66 @@
       "wins": 7
     },
     {
+      "kind": "kenjaku",
+      "enemy": "luffy",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "zoro",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "nami",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "usopp",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "sanji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "chopper",
+      "matches": 10,
+      "wins": 9
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "robin",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "franky",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "brook",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "kenjaku",
+      "enemy": "jinbe",
+      "matches": 10,
+      "wins": 5
+    },
+    {
       "kind": "geto",
       "enemy": "goblin",
       "matches": 10,
@@ -632,6 +752,66 @@
       "enemy": "kaigaku",
       "matches": 10,
       "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "luffy",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "zoro",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "geto",
+      "enemy": "nami",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "usopp",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "sanji",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "geto",
+      "enemy": "chopper",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "geto",
+      "enemy": "robin",
+      "matches": 10,
+      "wins": 10
+    },
+    {
+      "kind": "geto",
+      "enemy": "franky",
+      "matches": 10,
+      "wins": 7
+    },
+    {
+      "kind": "geto",
+      "enemy": "brook",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "geto",
+      "enemy": "jinbe",
+      "matches": 10,
+      "wins": 7
     },
     {
       "kind": "mahito",
@@ -844,6 +1024,66 @@
       "wins": 5
     },
     {
+      "kind": "mahito",
+      "enemy": "luffy",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "zoro",
+      "matches": 10,
+      "wins": 1
+    },
+    {
+      "kind": "mahito",
+      "enemy": "nami",
+      "matches": 10,
+      "wins": 2
+    },
+    {
+      "kind": "mahito",
+      "enemy": "usopp",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "sanji",
+      "matches": 10,
+      "wins": 1
+    },
+    {
+      "kind": "mahito",
+      "enemy": "chopper",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "robin",
+      "matches": 10,
+      "wins": 4
+    },
+    {
+      "kind": "mahito",
+      "enemy": "franky",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "mahito",
+      "enemy": "brook",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "mahito",
+      "enemy": "jinbe",
+      "matches": 10,
+      "wins": 4
+    },
+    {
       "kind": "toji",
       "enemy": "goblin",
       "matches": 10,
@@ -1052,6 +1292,66 @@
       "enemy": "kaigaku",
       "matches": 10,
       "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "luffy",
+      "matches": 10,
+      "wins": 3
+    },
+    {
+      "kind": "toji",
+      "enemy": "zoro",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "nami",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "usopp",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "sanji",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "chopper",
+      "matches": 10,
+      "wins": 8
+    },
+    {
+      "kind": "toji",
+      "enemy": "robin",
+      "matches": 10,
+      "wins": 5
+    },
+    {
+      "kind": "toji",
+      "enemy": "franky",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "brook",
+      "matches": 10,
+      "wins": 6
+    },
+    {
+      "kind": "toji",
+      "enemy": "jinbe",
+      "matches": 10,
+      "wins": 3
     }
   ]
 }
