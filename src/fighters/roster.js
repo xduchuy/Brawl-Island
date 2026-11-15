@@ -433,3 +433,35 @@ for(const [kind,d] of Object.entries(KIMETSU_ROSTER)){
  const ranged=['gun','ice','pot','compass'].includes(d.style);
  IB_CHARACTER_MOVES[kind]={light:makeCombo(fast?[27,30,43]:heavy?[32,36,49]:[29,33,46],heavy?[14,16,23]:[12,15,21]),heavy:{length:heavy?64:58,start:heavy?26:23,end:heavy?35:32,damage:heavy?30:27,cost:28,push:5.5,lunge:.65,down:true,label:d.weapon==='fists'?'HEAVY PALM':'HEAVY CUT'},special:{label:d.skills[0],length:64,start:23,end:32,damage:25,cost:31,push:4.6,lunge:ranged?0:['thunder','darkthunder','beast'].includes(d.style)?2:.8,break:true,cooldown:220,type:ranged?'projectile':'arc',radius:ranged?.32:2,range:7,speed:11,arc:1.8}};
 }
+
+// The ten Straw Hat crew members aboard the Thousand Sunny; no guest passengers.
+const ONE_PIECE_ROSTER = {
+ luffy:{name:'Monkey D. Luffy',role:'CAPTAIN',style:'rubber',color:'#ff6752',hair:'#22242c',coat:'#c93c40',height:1.74,hp:110,speed:4.45,reach:1.7,weapon:'fists',skills:['Gum-Gum Pistol','Gum-Gum Gatling','King Kong Gun']},
+ zoro:{name:'Roronoa Zoro',role:'SWORDSMAN',style:'three-sword',color:'#88d77b',hair:'#6b9460',coat:'#315f4c',height:1.81,hp:112,speed:4.15,reach:1.95,weapon:'three-swords',skills:['Oni Giri','1080 Pound Phoenix','Three Thousand Worlds']},
+ nami:{name:'Nami',role:'NAVIGATOR',style:'weather',color:'#ffc567',hair:'#e48b3f',coat:'#65b9ad',height:1.70,hp:98,speed:4.5,reach:1.8,weapon:'staff',skills:['Thunderbolt Tempo','Thunder Lance Tempo','Zeus Thundercloud']},
+ usopp:{name:'Usopp',role:'SNIPER',style:'slingshot',color:'#9edb66',hair:'#30272a',coat:'#c3a454',height:1.75,hp:100,speed:4.45,reach:1.6,weapon:'slingshot',skills:['Green Star: Skull Bombgrass','Green Star: Sargasso','Firebird Star']},
+ sanji:{name:'Vinsmoke Sanji',role:'COOK',style:'kick',color:'#ffad52',hair:'#e2c567',coat:'#272e42',height:1.80,hp:104,speed:4.75,reach:1.75,weapon:'kick',skills:['Diable Jambe','Collier Strike','Ifrit Jambe']},
+ chopper:{name:'Tony Tony Chopper',role:'DOCTOR',style:'hoof',color:'#f694bc',hair:'#a77b52',coat:'#c2496d',height:1.18,hp:102,speed:4.55,reach:1.5,weapon:'hooves',skills:['Heavy Gong','Cloven Palm','Monster Point Slam']},
+ robin:{name:'Nico Robin',role:'ARCHAEOLOGIST',style:'bloom',color:'#c29aef',hair:'#222334',coat:'#6957a0',height:1.86,hp:102,speed:4.15,reach:1.65,weapon:'hands',skills:['Treinta Fleur: Clutch','Mil Fleur: Gigantesco Mano','Demonio Fleur']},
+ franky:{name:'Franky',role:'SHIPWRIGHT',style:'cyborg',color:'#7cd9ed',hair:'#55c1d4',coat:'#c54b48',height:2.10,hp:118,speed:3.75,reach:1.9,weapon:'cannon',skills:['Weapons Left','Strong Right','Radical Beam']},
+ brook:{name:'Brook',role:'MUSICIAN',style:'soul-music',color:'#91e4ef',hair:'#242633',coat:'#313a4e',height:2.13,hp:98,speed:4.65,reach:1.95,weapon:'cane',skills:['Soul Solid','Soul Parade','Soul King Requiem']},
+ jinbe:{name:'Jinbe',role:'HELMSMAN',style:'fishman',color:'#62b6f3',hair:'#273744',coat:'#db9d4b',height:2.04,hp:118,speed:3.85,reach:1.85,weapon:'palms',skills:['Five Thousand Brick Fist','Water Shot','Vagabond Drill']}
+};
+// Hitboxes and resources use the established deterministic combat system.
+const ONE_PIECE_TECHNIQUES = {
+ luffy:[{type:'line',radius:3.8,width:.45,lunge:.35},{type:'arc',radius:2.5,damage:9,pulses:[16,24,32],start:16,end:33,length:65,lunge:.7},{type:'line',radius:5.4,width:1.25,damage:48,lunge:1.4}],
+ zoro:[{type:'arc',radius:2.4,arc:2.1,lunge:1.5},{type:'projectile',radius:.46,range:8,speed:12,damage:24},{type:'arc',radius:3.0,arc:2.8,lunge:2.9,start:36,end:49,length:99}],
+ nami:[{type:'projectile',radius:.3,range:8,speed:13,lunge:0},{type:'field',radius:2.4,offset:1.5,start:30,end:39,length:71,lunge:0},{type:'radial',radius:4.6,damage:43,lunge:0}],
+ usopp:[{type:'projectile',radius:.34,range:9,speed:12,lunge:0},{type:'field',radius:2.6,offset:1.7,down:true,lunge:0},{type:'line',radius:8.5,width:1.1,damage:45,lunge:0}],
+ sanji:[{type:'arc',radius:2.2,lunge:1.7},{type:'line',radius:3.1,width:.6,start:17,end:26,length:56,lunge:1},{type:'arc',radius:2.8,arc:2.3,lunge:3.1,start:34,end:47,length:96}],
+ chopper:[{type:'arc',radius:2.0,damage:26,down:true,lunge:1},{type:'line',radius:2.9,width:.7,damage:24,down:true},{type:'radial',radius:4,damage:47,lunge:0}],
+ robin:[{type:'field',radius:2.2,offset:1.4,lunge:0},{type:'line',radius:4,width:.8,damage:25,down:true,lunge:0},{type:'radial',radius:4.4,damage:43,lunge:0}],
+ franky:[{type:'projectile',radius:.43,range:8,speed:10,lunge:0},{type:'line',radius:4.2,width:.65,damage:27,down:true,lunge:.2},{type:'line',radius:9,width:1,damage:49,lunge:0}],
+ brook:[{type:'line',radius:3.1,width:.4,lunge:1.3},{type:'field',radius:2.5,offset:1.1,down:true,lunge:0},{type:'radial',radius:4.5,damage:43,lunge:0}],
+ jinbe:[{type:'line',radius:2.8,width:.75,damage:28,down:true,lunge:.6},{type:'projectile',radius:.55,range:7,speed:11,damage:25,lunge:0},{type:'line',radius:6,width:1.3,damage:48,lunge:.7}]
+};
+for(const [kind,d] of Object.entries(ONE_PIECE_ROSTER)){
+ IB_STATS[kind]={name:d.name,hp:d.hp,height:d.height,speed:d.speed,reach:d.reach,guard:['franky','jinbe','zoro'].includes(kind)?.8:.95};
+ const fast=['sanji','brook','chopper'].includes(kind),heavy=['franky','jinbe'].includes(kind);
+ IB_CHARACTER_MOVES[kind]={light:makeCombo(fast?[27,31,44]:heavy?[33,36,49]:[30,33,46],heavy?[14,16,23]:[12,15,21]),heavy:{length:heavy?65:58,start:heavy?27:23,end:heavy?36:32,damage:heavy?30:27,cost:28,push:5.6,lunge:.7,down:true,label:kind==='sanji'?'HEAVY KICK':'HEAVY STRIKE'},special:{label:d.skills[0],length:65,start:24,end:33,damage:25,cost:32,push:4.5,lunge:.6,break:true,cooldown:220,...ONE_PIECE_TECHNIQUES[kind][0]}};
+}

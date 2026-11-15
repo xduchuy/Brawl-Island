@@ -5,9 +5,9 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots');f
  const context=await b.newContext({viewport:{width:1440,height:1100},offline:true});const p=await context.newPage(),errors=[],network=[];
  p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});p.on('request',r=>{if(/^https?:/.test(r.url()))network.push(r.url());});
  await p.setContent(fs.readFileSync(path.join(root,'index.html'),'utf8'));await p.waitForFunction(()=>window.__ib);await p.evaluate(()=>__ib.vfx.ready);
- assert.equal(await p.evaluate(()=>__ib.vfx.loaded),124);assert.deepEqual(await p.evaluate(()=>__ib.vfx.failed),[]);
+ assert.equal(await p.evaluate(()=>__ib.vfx.loaded),154);assert.deepEqual(await p.evaluate(()=>__ib.vfx.failed),[]);
  await p.screenshot({path:path.join(out,'01-menu.png'),fullPage:true});
- await p.click('#chooseFighters');assert.equal(await p.locator('[data-fighter]').count(),36);await p.locator('#panel').screenshot({path:path.join(out,'02-fighter-select.png')});
+ await p.click('#chooseFighters');assert.equal(await p.locator('[data-fighter]').count(),46);await p.locator('#panel').screenshot({path:path.join(out,'02-fighter-select.png')});
  // All registered model factories and all signature attack/ultimate poses, with stable IK.
  const kinds=await p.evaluate(()=>{__ib.setManualClock(true);return Object.keys(__ib.profiles);});
  for(const kind of kinds){
@@ -68,5 +68,5 @@ const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/screenshots');f
  assert(await p.evaluate(()=>document.documentElement.scrollWidth===innerWidth));assert.equal(await p.locator('#touchControls button').count(),8);await p.screenshot({path:path.join(out,'09-mobile-combat.png'),fullPage:true});
  await p.click('#chooseFighters');assert(await p.evaluate(()=>document.documentElement.scrollWidth===innerWidth));
  assert.deepEqual(errors,[]);assert.deepEqual(network,[]);
- const report={fighters:36,poses:180,textures:124,modes,team,offline:true,externalRequests:network,errors,mobileWidth:390,screenshots:9};fs.writeFileSync(path.join(__dirname,'reforged-browser-results.json'),JSON.stringify(report,null,2));console.log(report);await b.close();
+ const report={fighters:46,poses:230,textures:154,modes,team,offline:true,externalRequests:network,errors,mobileWidth:390,screenshots:9};fs.writeFileSync(path.join(__dirname,'reforged-browser-results.json'),JSON.stringify(report,null,2));console.log(report);await b.close();
 })().catch(e=>{console.error(e);process.exit(1)});

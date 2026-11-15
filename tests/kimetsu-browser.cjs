@@ -6,7 +6,7 @@ const ids=Object.keys(c.pack),out='docs/screenshots/kimetsu';fs.mkdirSync(out+'/
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});try{
  const page=await browser.newPage({viewport:{width:420,height:620}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
  await page.setContent(fs.readFileSync('index.html','utf8'));await page.waitForFunction(()=>window.__ib);await page.evaluate(()=>Promise.all([__ib.vfx.ready,__ib.iconAtlas.ready]));
- assert.equal(await page.locator('[data-fighter]').count(),36);
+ assert.equal(await page.locator('[data-fighter]').count(),46);
  for(const id of ids)assert.equal(await page.locator('.fighter-select option[value="'+id+'"]').count(),4,id+' selectable in every slot');
  await page.click('#chooseFighters');
  await page.selectOption('#fighterGroup','Hashira');assert.equal(await page.locator('.fighter-tile:not([hidden])').count(),9);

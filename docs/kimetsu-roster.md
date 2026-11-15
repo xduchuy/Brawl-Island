@@ -1,6 +1,6 @@
 # Kimetsu no Yaiba roster
 
-25 additional playable fighters bring the roster to 36. Open **Fighters / Choose fighters**, set the collection to **Kimetsu no Yaiba**, then select a team slot and a character. Search accepts full or partial names. Hashira and Upper Moons also have separate filters. All four native team selectors contain the same roster.
+The Kimetsu pack contains 25 playable fighters; the full roster now has 46 including the Straw Hat crew. Open **Fighters / Choose fighters**, set the collection to **Kimetsu no Yaiba**, then select a team slot and a character. Search accepts full or partial names. Hashira and Upper Moons also have separate filters. All four native team selectors contain the same roster.
 
 ## Included fighters and abilities
 
@@ -40,16 +40,16 @@ The models are original procedural interpretations on the shared 18-bone rig. Si
 
 Each fighter uses the established light combo, heavy charge, guard/parry, dodge, dash, two skills and ultimate system. Skills use tuned arc, line, projectile, ground-field, radial and rush attacks with distinct labels, palettes and illustrated effect motifs. These are arena-game adaptations: named abilities do not introduce new terrain manipulation, persistent independent summons or cinematic transformations. Stats are gameplay tuning, not canonical power rankings.
 
-The asset bundle contains 113 UI icons, 124 VFX flipbooks and bindings for 252 registered moves. The 25 new fighters contribute 75 icons and 75 flipbooks. All are embedded in the offline HTML. Arcade reads the roster size and now runs 35 encounters.
+The asset bundle contains 143 UI icons, 154 VFX flipbooks and bindings for 322 registered moves. The 25 new fighters contribute 75 icons and 75 flipbooks. All are embedded in the offline HTML. Arcade reads the roster size and now runs 45 encounters.
 
 ## Verification
 
-- `npm test`: registry timing/contact, resource gates, deterministic replay and 1,750 seeded matches with no stuck matches.
+- `npm test`: registry timing/contact, resource gates, deterministic replay and 2,250 seeded matches with no stuck matches.
 - `node tests/moba.cjs`, `python3 tests/skill-assets.py`, `python3 tests/vfx-assets.py`: icon uniqueness, binding resolution, alpha/gutters and frame metadata.
 - `npm run test:kimetsu`: exact 25 IDs, all four slots, Hashira/Upper Moon filters, search/selection, 125 attack poses across the new rigs, and four new fighters in mobile Drowned Sanctuary combat.
-- `npm run test:browser`: 36 rigs/180 poses, offline loading, mode progression including 35 Arcade stages, keyboard and mobile overflow.
-- `node tests/moba-browser.cjs`: 108 signature button releases, drag aim, multi-touch, cancellation, preview and HUD state.
-- `node tests/deployment.cjs`: isolated dependency-free Vercel build, HTTP 200, 36 roster tiles, all 124 textures, no external runtime asset requests.
+- `npm run test:browser`: 46 rigs/230 poses, offline loading, mode progression including 45 Arcade stages, keyboard and mobile overflow.
+- `node tests/moba-browser.cjs`: 138 signature button releases, drag aim, multi-touch, cancellation, preview and HUD state.
+- `node tests/deployment.cjs`: isolated dependency-free Vercel build, HTTP 200, 46 roster tiles, all 154 textures, no external runtime asset requests.
 
 Browser tests use desktop Chromium with SwiftShader. Real-phone frame rates and competitive matchup balance have not been established. Procedural accessories can overlap during extreme poses.
 

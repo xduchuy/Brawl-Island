@@ -13,6 +13,11 @@ KIMETSU=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
 for kind,d in KIMETSU.items():
     PALETTES[kind]=d['color'].lstrip('#')
     MOTIFS[kind]=[kind+'_'+str(i) for i in range(3)]
+code="const fs=require('fs'),vm=require('vm'),c={};vm.createContext(c);vm.runInContext(fs.readFileSync('src/fighters/roster.js','utf8')+';this.p=ONE_PIECE_ROSTER;',c);console.log(JSON.stringify(c.p));"
+ONE_PIECE=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
+for kind,d in ONE_PIECE.items():
+    PALETTES[kind]=d['color'].lstrip('#')
+    MOTIFS[kind]=[kind+'_'+str(i) for i in range(3)]
 def rgb(h):return tuple(bytes.fromhex(h))
 def motif(kind,index,size=384):
     c=rgb(PALETTES[kind]); light=tuple(int(v*.3+178) for v in c); dark=tuple(int(v*.26) for v in c); white=(255,247,222)
@@ -202,6 +207,62 @@ def motif(kind,index,size=384):
                 x=17+j*13;y=24+j*14;poly([(x,y),(x+49,y-8),(x+49,y+30),(x,y+38)],dark,c,2)
                 for k in range(3):line([(x+12+k*12,y-2),(x+12+k*12,y+31)],light,1)
         # Each form has a distinct number and placement of small orbiting accents.
+        for j in range(3+index*2):
+            a=j*math.tau/(3+index*2)+index*.25;oval((62+math.cos(a)*51,62+math.sin(a)*51,66+math.cos(a)*51,66+math.sin(a)*51),white)
+    elif kind in ONE_PIECE:
+        if kind=='luffy':
+            for j in range(1+index):
+                x=-15+j*15;line([(26+x,105),(40+x,88),(30+x,73),(50+x,56)],light,4)
+                fist(x,-index*7,.58 if index==1 else .78+index*.08)
+        elif kind=='zoro':
+            for j in range(3):
+                x=15+j*25;poly([(x,107-index*4),(x+34,29+index*4),(x+48,17),(x+41,43),(x+8,111-index*4)],c,light,2)
+                line([(x-3,91),(x+19,100)],white,3)
+            if index==2:spiral(.65,3)
+        elif kind=='nami':
+            for j in range(3):oval((23+j*22,24+index*3,62+j*22,55+index*3),light,c,2)
+            for j in range(index+1):
+                x=40+j*20;poly([(x+14,45),(x-3,77),(x+9,74),(x+1,107),(x+27,66),(x+13,68)],c,white,1)
+        elif kind=='usopp':
+            line([(61,108),(61,63),(31,32)],dark,12);line([(61,108),(61,63),(31,32)],c,7)
+            line([(61,63),(93,30)],c,7);line([(31,32),(61,53),(93,30)],light,2)
+            for j in range(index+1):
+                x=37+j*22;oval((x-7,14,x+7,28),light,c,2)
+            if index==1:
+                for j in range(4):poly([(61,67),(16+j*25,56),(28+j*22,81)],c,light,1)
+            if index==2:poly([(16,48),(46,54),(64,35),(82,54),(112,48),(89,76),(64,89),(40,76)],(244,145,60),light,2)
+        elif kind=='sanji':
+            poly([(54,19),(76,22),(71,67),(103,82),(110,95),(92,107),(52,84)],dark,light,2)
+            for j in range(3+index):
+                x=26+j*15;poly([(x,101),(x-8,82),(x+3,57-index*7),(x+12,86),(x+9,103)],c,light,1)
+        elif kind=='chopper':
+            oval((31,35,97,103),c,light,3)
+            for j in range(4):oval((30+j*17,22-index*3,47+j*17,48),light,dark,2)
+            line([(64,65),(64,103)],dark,4)
+            if index==2:
+                for j in range(6):
+                    a=j*math.tau/6;line([(64+math.cos(a)*41,64+math.sin(a)*41),(64+math.cos(a)*54,64+math.sin(a)*54)],white,3)
+        elif kind=='robin':
+            for j in range(3+index):
+                a=j*math.tau/(3+index);hand(math.cos(a)*28,math.sin(a)*27,.4)
+            oval((52,52,76,76),light,c,2)
+            if index==2:poly([(20,57),(12,24),(44,39),(64,27),(84,39),(116,24),(108,57),(84,66),(64,95),(44,66)],None,c,3)
+        elif kind=='franky':
+            poly([(23,102),(30,42),(45,24),(85,24),(102,42),(107,102)],dark,c,3)
+            oval((38,32,91,85),c,light,3);oval((51,45,78,72),dark,white,2)
+            if index==2:poly([(58,62),(52,16),(78,16),(72,62)],white,c,2)
+            else:
+                for j in range(1+index):line([(42+j*30,93),(36+j*30,110)],light,4)
+        elif kind=='brook':
+            for j in range(2+index):
+                x=22+j*22;y=82-j*12;oval((x-6,y,x+8,y+11),c,light,2);line([(x+7,y+5),(x+7,y-35),(x+19,y-29)],light,3)
+            if index==0:blade()
+            else:oval((44,37,82,72),dark,light,2);oval((51,46,60,55),white);oval((66,46,75,55),white);line([(55,64),(73,64)],c,3)
+        elif kind=='jinbe':
+            for j in range(2+index):
+                pts=[(16+i*2,40+j*18+math.sin(i*.19+j)*12) for i in range(49)]
+                line(pts,dark,7);line(pts,c,4);line(pts[12:35],light,2)
+            fist(0,-8,.60+index*.07)
         for j in range(3+index*2):
             a=j*math.tau/(3+index*2)+index*.25;oval((62+math.cos(a)*51,62+math.sin(a)*51,66+math.cos(a)*51,66+math.sin(a)*51),white)
     # Paint volume into each opaque illustration layer, preserving the ink edges.

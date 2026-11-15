@@ -1240,6 +1240,306 @@
       "shape": "lightning",
       "color": "#8b9bdb",
       "blend": "normal"
+    },
+    "luffy/special": {
+      "path": "assets/vfx/luffy/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "line",
+      "color": "#ff6752",
+      "blend": "additive"
+    },
+    "luffy/skill2": {
+      "path": "assets/vfx/luffy/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "echo",
+      "color": "#ff6752",
+      "blend": "normal"
+    },
+    "luffy/ultimate": {
+      "path": "assets/vfx/luffy/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#ff6752",
+      "blend": "additive"
+    },
+    "zoro/special": {
+      "path": "assets/vfx/zoro/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "slash",
+      "color": "#88d77b",
+      "blend": "normal"
+    },
+    "zoro/skill2": {
+      "path": "assets/vfx/zoro/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "blade",
+      "color": "#88d77b",
+      "blend": "normal"
+    },
+    "zoro/ultimate": {
+      "path": "assets/vfx/zoro/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "slash",
+      "color": "#88d77b",
+      "blend": "normal"
+    },
+    "nami/special": {
+      "path": "assets/vfx/nami/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#ffc567",
+      "blend": "normal"
+    },
+    "nami/skill2": {
+      "path": "assets/vfx/nami/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#ffc567",
+      "blend": "normal"
+    },
+    "nami/ultimate": {
+      "path": "assets/vfx/nami/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#ffc567",
+      "blend": "additive"
+    },
+    "usopp/special": {
+      "path": "assets/vfx/usopp/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spirit",
+      "color": "#9edb66",
+      "blend": "normal"
+    },
+    "usopp/skill2": {
+      "path": "assets/vfx/usopp/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#9edb66",
+      "blend": "additive"
+    },
+    "usopp/ultimate": {
+      "path": "assets/vfx/usopp/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "beam",
+      "color": "#9edb66",
+      "blend": "normal"
+    },
+    "sanji/special": {
+      "path": "assets/vfx/sanji/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "trail",
+      "color": "#ffad52",
+      "blend": "additive"
+    },
+    "sanji/skill2": {
+      "path": "assets/vfx/sanji/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#ffad52",
+      "blend": "additive"
+    },
+    "sanji/ultimate": {
+      "path": "assets/vfx/sanji/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "lightning",
+      "color": "#ffad52",
+      "blend": "normal"
+    },
+    "chopper/special": {
+      "path": "assets/vfx/chopper/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "spark",
+      "color": "#f694bc",
+      "blend": "additive"
+    },
+    "chopper/skill2": {
+      "path": "assets/vfx/chopper/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "line",
+      "color": "#f694bc",
+      "blend": "additive"
+    },
+    "chopper/ultimate": {
+      "path": "assets/vfx/chopper/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "explosion",
+      "color": "#f694bc",
+      "blend": "additive"
+    },
+    "robin/special": {
+      "path": "assets/vfx/robin/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "soul",
+      "color": "#c29aef",
+      "blend": "normal"
+    },
+    "robin/skill2": {
+      "path": "assets/vfx/robin/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "soul",
+      "color": "#c29aef",
+      "blend": "normal"
+    },
+    "robin/ultimate": {
+      "path": "assets/vfx/robin/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#c29aef",
+      "blend": "additive"
+    },
+    "franky/special": {
+      "path": "assets/vfx/franky/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "nail",
+      "color": "#7cd9ed",
+      "blend": "additive"
+    },
+    "franky/skill2": {
+      "path": "assets/vfx/franky/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "line",
+      "color": "#7cd9ed",
+      "blend": "additive"
+    },
+    "franky/ultimate": {
+      "path": "assets/vfx/franky/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "beam",
+      "color": "#7cd9ed",
+      "blend": "normal"
+    },
+    "brook/special": {
+      "path": "assets/vfx/brook/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "blade",
+      "color": "#91e4ef",
+      "blend": "normal"
+    },
+    "brook/skill2": {
+      "path": "assets/vfx/brook/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "soul",
+      "color": "#91e4ef",
+      "blend": "normal"
+    },
+    "brook/ultimate": {
+      "path": "assets/vfx/brook/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "domain",
+      "color": "#91e4ef",
+      "blend": "additive"
+    },
+    "jinbe/special": {
+      "path": "assets/vfx/jinbe/special.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "ring",
+      "color": "#62b6f3",
+      "blend": "additive"
+    },
+    "jinbe/skill2": {
+      "path": "assets/vfx/jinbe/skill2.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "line",
+      "color": "#62b6f3",
+      "blend": "additive"
+    },
+    "jinbe/ultimate": {
+      "path": "assets/vfx/jinbe/ultimate.png",
+      "frames": 8,
+      "columns": 8,
+      "fps": 18,
+      "tileSize": 96,
+      "shape": "beam",
+      "color": "#62b6f3",
+      "blend": "normal"
     }
   },
   "skills": {
@@ -3759,6 +4059,706 @@
       "impact": "kaigaku/ultimate",
       "recovery": "kaigaku/ultimate",
       "recoveryDuration": 0.8333333333333334,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "luffy_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.25,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.23333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.35,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_special": {
+      "asset": "luffy/special",
+      "startup": "luffy/special",
+      "impact": "luffy/special",
+      "recovery": "luffy/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_skill2": {
+      "asset": "luffy/skill2",
+      "startup": "luffy/skill2",
+      "impact": "luffy/skill2",
+      "recovery": "luffy/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "luffy_ultimate": {
+      "asset": "luffy/ultimate",
+      "startup": "luffy/ultimate",
+      "impact": "luffy/ultimate",
+      "recovery": "luffy/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "zoro_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.25,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.23333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.35,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_special": {
+      "asset": "zoro/special",
+      "startup": "zoro/special",
+      "impact": "zoro/special",
+      "recovery": "zoro/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_skill2": {
+      "asset": "zoro/skill2",
+      "startup": "zoro/skill2",
+      "impact": "zoro/skill2",
+      "recovery": "zoro/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "zoro_ultimate": {
+      "asset": "zoro/ultimate",
+      "startup": "zoro/ultimate",
+      "impact": "zoro/ultimate",
+      "recovery": "zoro/ultimate",
+      "recoveryDuration": 0.8333333333333334,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "nami_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.25,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nami_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.23333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nami_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.35,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nami_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nami_special": {
+      "asset": "nami/special",
+      "startup": "nami/special",
+      "impact": "nami/special",
+      "recovery": "nami/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "nami_skill2": {
+      "asset": "nami/skill2",
+      "startup": "nami/skill2",
+      "impact": "nami/skill2",
+      "recovery": "nami/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "nami_ultimate": {
+      "asset": "nami/ultimate",
+      "startup": "nami/ultimate",
+      "impact": "nami/ultimate",
+      "recovery": "nami/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "usopp_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.25,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "usopp_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.23333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "usopp_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.35,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "usopp_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "usopp_special": {
+      "asset": "usopp/special",
+      "startup": "usopp/special",
+      "impact": "usopp/special",
+      "recovery": "usopp/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "usopp_skill2": {
+      "asset": "usopp/skill2",
+      "startup": "usopp/skill2",
+      "impact": "usopp/skill2",
+      "recovery": "usopp/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "usopp_ultimate": {
+      "asset": "usopp/ultimate",
+      "startup": "usopp/ultimate",
+      "impact": "usopp/ultimate",
+      "recovery": "usopp/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "sanji_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.31666666666666665,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_special": {
+      "asset": "sanji/special",
+      "startup": "sanji/special",
+      "impact": "sanji/special",
+      "recovery": "sanji/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_skill2": {
+      "asset": "sanji/skill2",
+      "startup": "sanji/skill2",
+      "impact": "sanji/skill2",
+      "recovery": "sanji/skill2",
+      "recoveryDuration": 0.5,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "sanji_ultimate": {
+      "asset": "sanji/ultimate",
+      "startup": "sanji/ultimate",
+      "impact": "sanji/ultimate",
+      "recovery": "sanji/ultimate",
+      "recoveryDuration": 0.8166666666666667,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "chopper_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.31666666666666665,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_special": {
+      "asset": "chopper/special",
+      "startup": "chopper/special",
+      "impact": "chopper/special",
+      "recovery": "chopper/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_skill2": {
+      "asset": "chopper/skill2",
+      "startup": "chopper/skill2",
+      "impact": "chopper/skill2",
+      "recovery": "chopper/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "chopper_ultimate": {
+      "asset": "chopper/ultimate",
+      "startup": "chopper/ultimate",
+      "impact": "chopper/ultimate",
+      "recovery": "chopper/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "robin_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.25,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "robin_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.23333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "robin_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.35,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "robin_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "robin_special": {
+      "asset": "robin/special",
+      "startup": "robin/special",
+      "impact": "robin/special",
+      "recovery": "robin/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "robin_skill2": {
+      "asset": "robin/skill2",
+      "startup": "robin/skill2",
+      "impact": "robin/skill2",
+      "recovery": "robin/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "robin_ultimate": {
+      "asset": "robin/ultimate",
+      "startup": "robin/ultimate",
+      "impact": "robin/ultimate",
+      "recovery": "robin/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "franky_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.3,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2833333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.4,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.48333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_special": {
+      "asset": "franky/special",
+      "startup": "franky/special",
+      "impact": "franky/special",
+      "recovery": "franky/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_skill2": {
+      "asset": "franky/skill2",
+      "startup": "franky/skill2",
+      "impact": "franky/skill2",
+      "recovery": "franky/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "franky_ultimate": {
+      "asset": "franky/ultimate",
+      "startup": "franky/ultimate",
+      "impact": "franky/ultimate",
+      "recovery": "franky/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": false,
+      "duration": 1.3
+    },
+    "brook_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "brook_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "brook_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.31666666666666665,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "brook_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.43333333333333335,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "brook_special": {
+      "asset": "brook/special",
+      "startup": "brook/special",
+      "impact": "brook/special",
+      "recovery": "brook/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "brook_skill2": {
+      "asset": "brook/skill2",
+      "startup": "brook/skill2",
+      "impact": "brook/skill2",
+      "recovery": "brook/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": true,
+      "duration": 0.6
+    },
+    "brook_ultimate": {
+      "asset": "brook/ultimate",
+      "startup": "brook/ultimate",
+      "impact": "brook/ultimate",
+      "recovery": "brook/ultimate",
+      "recoveryDuration": 0.8666666666666667,
+      "scale": 4,
+      "ground": true,
+      "duration": 1.3
+    },
+    "jinbe_light_0": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.3,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_light_1": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.2833333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_light_2": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.4,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_heavy": {
+      "asset": "common/slash_arc",
+      "startup": "common/aura",
+      "impact": "common/hit_spark",
+      "recovery": "common/slash_arc",
+      "recoveryDuration": 0.48333333333333334,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_special": {
+      "asset": "jinbe/special",
+      "startup": "jinbe/special",
+      "impact": "jinbe/special",
+      "recovery": "jinbe/special",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_skill2": {
+      "asset": "jinbe/skill2",
+      "startup": "jinbe/skill2",
+      "impact": "jinbe/skill2",
+      "recovery": "jinbe/skill2",
+      "recoveryDuration": 0.5333333333333333,
+      "scale": 2,
+      "ground": false,
+      "duration": 0.6
+    },
+    "jinbe_ultimate": {
+      "asset": "jinbe/ultimate",
+      "startup": "jinbe/ultimate",
+      "impact": "jinbe/ultimate",
+      "recovery": "jinbe/ultimate",
+      "recoveryDuration": 0.8666666666666667,
       "scale": 4,
       "ground": false,
       "duration": 1.3
