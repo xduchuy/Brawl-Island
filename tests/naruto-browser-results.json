@@ -1,0 +1,179 @@
+{
+  "records": [
+    {
+      "kind": "naruto",
+      "ninja": true,
+      "bones": 18,
+      "parts": 69,
+      "icon": "naruto_ultimate"
+    },
+    {
+      "kind": "sasuke",
+      "ninja": true,
+      "bones": 18,
+      "parts": 67,
+      "icon": "sasuke_ultimate"
+    },
+    {
+      "kind": "sakura",
+      "ninja": true,
+      "bones": 18,
+      "parts": 56,
+      "icon": "sakura_ultimate"
+    },
+    {
+      "kind": "kakashi",
+      "ninja": true,
+      "bones": 18,
+      "parts": 70,
+      "icon": "kakashi_ultimate"
+    },
+    {
+      "kind": "hinata",
+      "ninja": true,
+      "bones": 18,
+      "parts": 48,
+      "icon": "hinata_ultimate"
+    },
+    {
+      "kind": "rocklee",
+      "ninja": true,
+      "bones": 18,
+      "parts": 57,
+      "icon": "rocklee_ultimate"
+    },
+    {
+      "kind": "neji",
+      "ninja": true,
+      "bones": 18,
+      "parts": 61,
+      "icon": "neji_ultimate"
+    },
+    {
+      "kind": "shikamaru",
+      "ninja": true,
+      "bones": 18,
+      "parts": 67,
+      "icon": "shikamaru_ultimate"
+    },
+    {
+      "kind": "mightguy",
+      "ninja": true,
+      "bones": 18,
+      "parts": 57,
+      "icon": "mightguy_ultimate"
+    },
+    {
+      "kind": "gaara",
+      "ninja": true,
+      "bones": 18,
+      "parts": 60,
+      "icon": "gaara_ultimate"
+    },
+    {
+      "kind": "jiraiya",
+      "ninja": true,
+      "bones": 18,
+      "parts": 69,
+      "icon": "jiraiya_ultimate"
+    },
+    {
+      "kind": "tsunade",
+      "ninja": true,
+      "bones": 18,
+      "parts": 54,
+      "icon": "tsunade_ultimate"
+    },
+    {
+      "kind": "orochimaru",
+      "ninja": true,
+      "bones": 18,
+      "parts": 55,
+      "icon": "orochimaru_ultimate"
+    },
+    {
+      "kind": "minato",
+      "ninja": true,
+      "bones": 18,
+      "parts": 81,
+      "icon": "minato_ultimate"
+    },
+    {
+      "kind": "hashirama",
+      "ninja": true,
+      "bones": 18,
+      "parts": 73,
+      "icon": "hashirama_ultimate"
+    },
+    {
+      "kind": "tobirama",
+      "ninja": true,
+      "bones": 18,
+      "parts": 85,
+      "icon": "tobirama_ultimate"
+    },
+    {
+      "kind": "madara",
+      "ninja": true,
+      "bones": 18,
+      "parts": 77,
+      "icon": "madara_ultimate"
+    },
+    {
+      "kind": "itachi",
+      "ninja": true,
+      "bones": 18,
+      "parts": 78,
+      "icon": "itachi_ultimate"
+    },
+    {
+      "kind": "pain",
+      "ninja": true,
+      "bones": 18,
+      "parts": 89,
+      "icon": "pain_ultimate"
+    },
+    {
+      "kind": "obito",
+      "ninja": true,
+      "bones": 18,
+      "parts": 87,
+      "icon": "obito_ultimate"
+    }
+  ],
+  "mobileResult": {
+    "fighters": [
+      {
+        "kind": "naruto",
+        "hp": 17,
+        "clear": true
+      },
+      {
+        "kind": "sasuke",
+        "hp": 26,
+        "clear": true
+      },
+      {
+        "kind": "sakura",
+        "hp": 0,
+        "clear": true
+      },
+      {
+        "kind": "kakashi",
+        "hp": 31,
+        "clear": true
+      }
+    ],
+    "icons": [
+      "common/attack",
+      "common/heavy",
+      "naruto/special",
+      "common/dodge",
+      "common/guard",
+      "naruto/skill2",
+      "naruto/ultimate",
+      "common/dash"
+    ]
+  },
+  "errors": []
+}

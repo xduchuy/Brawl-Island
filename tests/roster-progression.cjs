@@ -15,7 +15,7 @@ const {chromium}=require('playwright'),fs=require('fs'),assert=require('assert/s
    }
    return{count,enemies,finished:__ib.reforged.finished,fixture:'forced round victories'};
   });
-  assert.equal(report.count,45);assert.equal(new Set(report.enemies).size,45);assert(!report.enemies.includes('luffy'));assert(report.finished);assert.deepEqual(errors,[]);
-  fs.writeFileSync('tests/roster-progression-results.json',JSON.stringify({...report,errors},null,2));console.log('Arcade: all 45 distinct opponents, no self-match, correct terminal state');
+  assert.equal(report.count,65);assert.equal(new Set(report.enemies).size,65);assert(!report.enemies.includes('luffy'));assert(report.finished);assert.deepEqual(errors,[]);
+  fs.writeFileSync('tests/roster-progression-results.json',JSON.stringify({...report,errors},null,2));console.log('Arcade: all 65 distinct opponents, no self-match, correct terminal state');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

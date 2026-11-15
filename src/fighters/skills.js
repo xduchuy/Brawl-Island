@@ -15,6 +15,7 @@ const FIGHTER_PROFILES = {
 };
 for(const [kind,d] of Object.entries(KIMETSU_ROSTER))FIGHTER_PROFILES[kind]=[d.style.toUpperCase(),d.color,d.group+' · '+d.skills[0]+' opens pressure; '+d.skills[1]+' controls space.',d.skills[1],d.skills[2],'arc','burst'];
 for(const [kind,d] of Object.entries(ONE_PIECE_ROSTER))FIGHTER_PROFILES[kind]=[d.role,d.color,'Straw Hat crew · '+d.skills[0]+' / '+d.skills[1]+'.',d.skills[1],d.skills[2],'arc','burst'];
+for(const [kind,d] of Object.entries(NARUTO_ROSTER))FIGHTER_PROFILES[kind]=[d.style.toUpperCase(),d.color,d.group+' · '+d.skills[0]+' / '+d.skills[1]+'.',d.skills[1],d.skills[2],'arc','burst'];
 const SKILLS = {}, FIGHTER_SKILLS = {};
 function registerSkill(kind, slot, move, index=0) {
  const id = kind+'_'+slot+(slot==='light'?'_'+index:'');
@@ -52,6 +53,7 @@ function configureFighter(kind) {
   Object.assign(ultimate,{type:rush?'arc':beam?'line':'radial',radius:rush?2.3:beam?7:4.2,width:1.05,lunge:rush?3.2:0,start:rush?34:48,end:rush?46:60,length:rush?96:112,damage:44+i%5});
  }
  if(ONE_PIECE_ROSTER[kind]){Object.assign(second,ONE_PIECE_TECHNIQUES[kind][1]);Object.assign(ultimate,ONE_PIECE_TECHNIQUES[kind][2]);}
+ if(NARUTO_ROSTER[kind]){Object.assign(second,NARUTO_TECHNIQUES[kind][1]);Object.assign(ultimate,NARUTO_TECHNIQUES[kind][2]);}
  FIGHTER_SKILLS[kind]={light:base.light.map((m,i)=>registerSkill(kind,'light',m,i)),heavy:registerSkill(kind,'heavy',base.heavy),special:registerSkill(kind,'special',base.special),skill2:registerSkill(kind,'skill2',second),ultimate:registerSkill(kind,'ultimate',ultimate)};
 }
 // Yuji and Gojo form the initial vertical slice. Remaining fighters share validated rules.
