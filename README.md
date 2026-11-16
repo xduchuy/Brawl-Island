@@ -1,6 +1,6 @@
 # ISLE BRAWL: COMBAT REFORGED
 
-An offline 3D arena fighter set above a living island. Forty-six fighters, 1v1/2v2, three arenas, two signature skills and one ultimate per fighter. Open **index.html** directly in a modern browser; the production game has no backend, install step or external asset requests.
+An offline 3D arena fighter set above a living island. Sixty-six fighters, 1v1/2v2, three arenas, two signature skills and one ultimate per fighter. Open **index.html** directly in a modern browser; the production game has no backend, install step or external asset requests.
 
 ![Combat Reforged](docs/screenshots/01-menu.png)
 
@@ -38,6 +38,14 @@ Choose **ARENA → Drowned Sanctuary · Flooded ruins** and start a 1v1 or 2v2 m
 
 See [source comparison, screenshots, API and validation limits](docs/drowned-sanctuary.md). Run `npm run test:sanctuary` for its navigation and browser checks.
 
+## Naruto · Shinobi
+
+Choose **Fighters → Naruto · Shinobi** for 20 fighters: Naruto, Sasuke, Sakura, Kakashi, Hinata, Rock Lee, Neji, Shikamaru, Might Guy, Gaara, Jiraiya, Tsunade, Orochimaru, Minato, Hashirama, Tobirama, Madara, Itachi, Pain and Obito.
+
+The pack adds original procedural models and portraits, 60 signature skill icons and 60 effect flipbooks. Cast poses, chakra spheres, Naruto's clone visuals, martial-arts kicks and temporary Susanoo ribs use the established combat rig. All four slots and the existing arenas support the pack. See [the complete shinobi roster, abilities and checks](docs/naruto-roster.md).
+
+![Naruto roster](docs/screenshots/naruto/roster-contact-sheet.png)
+
 ## One Piece · Thousand Sunny crew
 
 Choose **Fighters → One Piece · Straw Hats** for the ten crew members: **Luffy, Zoro, Nami, Usopp, Sanji, Chopper, Robin, Franky, Brook and Jinbe**. All four slots support them in 1v1, 2v2, Training and Drowned Sanctuary, with keyboard, controller or mobile controls.
@@ -62,7 +70,7 @@ Each has a procedural 18-bone model, portrait, light combo, heavy attack, two si
 ## Combat rules
 
 - Simulation remains deterministic at **60 Hz**, independent of textures, particles, camera, audio and rendering frame rate.
-- Every registered attack has startup, active and recovery frames, a geometric hitbox, cost, damage, knockback, animation, event names and cooldown. There are **322 entries**: three light stages, heavy, two skills and ultimate for each fighter.
+- Every registered attack has startup, active and recovery frames, a geometric hitbox, cost, damage, knockback, animation, event names and cooldown. There are **462 entries**: three light stages, heavy, two skills and ultimate for each fighter.
 - Hold heavy for up to 45 charge frames. Releasing begins the attack's startup; maximum charge adds 55% damage. You remain vulnerable while charging.
 - Guard during the five frames before contact to parry a non-ultimate attack. A successful parry costs 12 stamina, staggers the attacker and gives a 40-frame counter window with 15% bonus damage on the next attack.
 - A confirmed light hit may cancel recovery into either signature skill, or into a dodge for 30 stamina. Whiffs cannot use this cancel. Light chains retain their defined input windows; inputs buffer for 12 frames.
@@ -90,7 +98,7 @@ Summons are synchronized attack shapes/projectiles, not independently controlled
 
 - **Quick Match:** 1v1 or 2v2, AI/controller selection, difficulty and round count.
 - **Local Versus:** two local players in a duel; keyboard or two gamepads.
-- **Arcade:** 45 opponents, one round per encounter, increasing AI difficulty. Continue after each win; loss ends the run.
+- **Arcade:** 65 opponents, one round per encounter, increasing AI difficulty. Continue after each win; loss ends the run.
 - **Survival:** five escalating waves. Health carries forward; a victory restores up to 24 HP. Win wave five or lose to finish the run.
 - **Training:** stand/guard/attack/evade dummy, hitbox overlays (startup green, active red), frame data, combo/damage totals, unlimited resources/cooldown testing, reset and explicit finish-session controls.
 - **Skyreach:** original open ring and ring-outs. **Moonlit Sanctum:** night lighting, etched floor and a visible sealed perimeter that bounces fighters. Decorative island meshes never enter collision detection.
@@ -124,7 +132,7 @@ src/vfx/        manifest loader, sprite animator, fixed-capacity pool,
 src/audio/      feedback and procedural audio mix
 src/game/       island, renderer, input, mode flows and presentation integration
 src/ui/         shell and responsive styling
-assets/vfx/    154 original RGBA flipbooks and 322 skill bindings
+assets/vfx/    214 original RGBA flipbooks and 462 skill bindings
 vendor/        bundled Three.js r128, MIT license retained
 ```
 
@@ -147,23 +155,24 @@ The deterministic generator draws eight-frame, 96px RGBA tiles with four-pixel t
 ## Verification
 
 ```sh
-npm test                         # mechanics + Reforged + 2,250 roster matches
+npm test                         # mechanics + Reforged + 3,250 roster matches
 python3 tests/vfx-assets.py       # PNG dimensions, alpha and every frame gutter
 npm install                      # Playwright is development-only
 npm run test:browser              # offline Chromium, no server required
 npm run test:kimetsu              # 25 models, filters, four slots, mobile sanctuary
-npm run test:one-piece            # 10 models, 50 poses, mobile 2v2, 45 Arcade stages
-npm run test:moba                 # icons, touch aiming and 138 signature releases
+npm run test:one-piece            # 10 models, 50 poses, mobile 2v2, roster progression
+npm run test:naruto               # 20 models, 100 poses, mobile 2v2, 65 Arcade stages
+npm run test:moba                 # icons, touch aiming and 198 signature releases
 node tests/mobile-layout.cjs      # touch actions and wrapped navigation geometry
 ```
 
-Set `CHROMIUM_PATH` if Chromium is not `/usr/bin/chromium`. Additional retained regressions: `tests/sorcerers.cjs`, `new-pair.cjs`, `balance.cjs`, `matchups.cjs`; legacy browser tests use the local server on port 3180 and write to ignored `test-results/legacy/`. Legacy roster assertions were updated to 46 while preserving their original fighter-specific checks.
+Set `CHROMIUM_PATH` if Chromium is not `/usr/bin/chromium`. Additional retained regressions: `tests/sorcerers.cjs`, `new-pair.cjs`, `balance.cjs`, `matchups.cjs`; legacy browser tests use the local server on port 3180 and write to ignored `test-results/legacy/`. Legacy roster assertions were updated to 66 while preserving their original fighter-specific checks.
 
-Current executed simulation checks: all 322 attacks, charge, parry, confirmed-hit cancels, stamina/cooldown gates, ultimate anti-refund, combo scaling, projectile timing, beam shape, wall interactions, training reset, deterministic replay and asset resolution. The expanded-roster suite completed **2,250 seeded AI matches** without a stuck match. Earlier reports, including `docs/baseline.md`, cover the previous roster and do not establish current balance guarantees.
+Current executed simulation checks: all 462 attacks, charge, parry, confirmed-hit cancels, stamina/cooldown gates, ultimate anti-refund, combo scaling, projectile timing, beam shape, wall interactions, training reset, deterministic replay and asset resolution. The expanded-roster suite completed **3,250 seeded AI matches** without a stuck match. Earlier reports, including `docs/baseline.md`, cover the previous roster and do not establish current balance guarantees.
 
-The One Piece checks exercise ten new rigs and 50 attack poses, exact crew membership, collection filtering, four team slots, animation reset, and mobile 2v2 combat in Drowned Sanctuary. Results and portraits live in `tests/one-piece-browser-results.json` and `docs/screenshots/one-piece/`. The touch suite checks 138 signature releases across all 46 fighters. Arcade progression checks 45 distinct opponents and the terminal state using forced-victory fixtures, separate from AI combat tests.
+The Naruto checks exercise 20 new rigs and 100 attack poses, exact pack membership, collection filtering, all four team slots, cast-visual reset and mobile 2v2 combat in Drowned Sanctuary. Results and portraits live in `tests/naruto-browser-results.json` and `docs/screenshots/naruto/`. The touch suite checks 198 signature releases across all 66 fighters. Arcade progression checks 65 distinct opponents and the terminal state using forced-victory fixtures, separate from AI combat tests.
 
-The retained full browser suite can exercise all 46 rigs/230 poses and mode transitions. Its last committed full-run report covers the previous 36-fighter build; the current release additionally runs the focused One Piece, touch, asset and deployment suites.
+The retained full browser suite can exercise all 66 rigs/330 poses and mode transitions. Its last committed full-run report covers the earlier 36-fighter build; the One Piece and Naruto releases additionally run focused pack, touch, progression, asset and deployment suites.
 
 ## Known limits
 
@@ -178,4 +187,4 @@ See [implementation audit and plan](docs/implementation-plan.md) for the baselin
 
 ### MOBA skill controls
 
-Mobile signature abilities now support hold/drag/release aiming and drag-to-cancel, with 143 original illustrated icons and a packed offline atlas. Open **Explore abilities** from Fighter Selection or **Fighter abilities** in Training for live 3D previews. See [control semantics, assets and validation](docs/moba-skill-interface.md). Run `npm run assets` to regenerate artwork and `npm run test:moba` for the new asset/input checks.
+Mobile signature abilities now support hold/drag/release aiming and drag-to-cancel, with 203 original illustrated icons and a packed offline atlas. Open **Explore abilities** from Fighter Selection or **Fighter abilities** in Training for live 3D previews. See [control semantics, assets and validation](docs/moba-skill-interface.md). Run `npm run assets` to regenerate artwork and `npm run test:moba` for the new asset/input checks.

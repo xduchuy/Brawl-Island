@@ -465,3 +465,54 @@ for(const [kind,d] of Object.entries(ONE_PIECE_ROSTER)){
  const fast=['sanji','brook','chopper'].includes(kind),heavy=['franky','jinbe'].includes(kind);
  IB_CHARACTER_MOVES[kind]={light:makeCombo(fast?[27,31,44]:heavy?[33,36,49]:[30,33,46],heavy?[14,16,23]:[12,15,21]),heavy:{length:heavy?65:58,start:heavy?27:23,end:heavy?36:32,damage:heavy?30:27,cost:28,push:5.6,lunge:.7,down:true,label:kind==='sanji'?'HEAVY KICK':'HEAVY STRIKE'},special:{label:d.skills[0],length:65,start:24,end:33,damage:25,cost:32,push:4.5,lunge:.6,break:true,cooldown:220,...ONE_PIECE_TECHNIQUES[kind][0]}};
 }
+
+// Naruto / Shippuden ensemble: each named fighter is one roster slot.
+const NARUTO_ROSTER = {
+ naruto:{name:'Naruto Uzumaki',group:'Leaf shinobi',style:'rasengan',color:'#68c9ff',hair:'#ebc451',coat:'#d87835',height:1.68,weapon:'kunai',skills:['Rasengan','Shadow Clone Barrage','Wind Style: Rasenshuriken']},
+ sasuke:{name:'Sasuke Uchiha',group:'Leaf shinobi',style:'lightning',color:'#a3a0ff',hair:'#252835',coat:'#b7b5c2',height:1.77,weapon:'sword',skills:['Chidori','Fire Style: Fireball','Kirin']},
+ sakura:{name:'Sakura Haruno',group:'Leaf shinobi',style:'impact',color:'#f49bb9',hair:'#d692a3',coat:'#9e394d',height:1.65,weapon:'fists',skills:['Cherry Blossom Impact','Ground Fracture','Strength of a Hundred']},
+ kakashi:{name:'Kakashi Hatake',group:'Leaf shinobi',style:'lightning',color:'#8adcea',hair:'#b7c6ce',coat:'#638375',height:1.81,weapon:'kunai',skills:['Lightning Blade','Lightning Hound','Kamui']},
+ hinata:{name:'Hinata Hyuga',group:'Leaf shinobi',style:'gentle-fist',color:'#a9b9f1',hair:'#34324d',coat:'#b1a9d1',height:1.63,weapon:'palms',skills:['Twin Lion Fists','Eight Trigrams Air Palm','Eight Trigrams Sixty-Four Palms']},
+ rocklee:{name:'Rock Lee',group:'Leaf shinobi',style:'taijutsu',color:'#9ed773',hair:'#252d2c',coat:'#527953',height:1.72,weapon:'kick',skills:['Leaf Hurricane','Primary Lotus','Hidden Lotus']},
+ neji:{name:'Neji Hyuga',group:'Leaf shinobi',style:'gentle-fist',color:'#c4dcec',hair:'#524139',coat:'#d7d1bd',height:1.72,weapon:'palms',skills:['Eight Trigrams Air Palm','Eight Trigrams Rotation','Eight Trigrams Sixty-Four Palms']},
+ shikamaru:{name:'Shikamaru Nara',group:'Leaf shinobi',style:'shadow',color:'#b3a2cc',hair:'#2c3031',coat:'#6f8566',height:1.70,weapon:'kunai',skills:['Shadow Possession','Shadow Strangle','Shadow Stitching']},
+ mightguy:{name:'Might Guy',group:'Leaf shinobi',style:'taijutsu',color:'#f1876a',hair:'#28302d',coat:'#44715a',height:1.84,weapon:'kick',skills:['Dynamic Entry','Daytime Tiger','Night Guy']},
+ gaara:{name:'Gaara',group:'Sand shinobi',style:'sand',color:'#e1be79',hair:'#984d46',coat:'#763e47',height:1.66,weapon:'sand',skills:['Sand Coffin','Sand Shower','Imperial Sand Burial']},
+ jiraiya:{name:'Jiraiya',group:'Sannin',style:'sage',color:'#e68a67',hair:'#dfdfd3',coat:'#a84742',height:1.91,weapon:'fists',skills:['Rasengan','Fire Style: Flame Bomb','Sage Art: Goemon']},
+ tsunade:{name:'Tsunade',group:'Sannin',style:'impact',color:'#84dbb3',hair:'#d5bd79',coat:'#588b77',height:1.66,weapon:'fists',skills:['Heavenly Foot of Pain','Heavenly Spear Kick','Hundred Healings Strike']},
+ orochimaru:{name:'Orochimaru',group:'Sannin',style:'snake',color:'#ba91da',hair:'#262532',coat:'#c7b99c',height:1.80,weapon:'sword',skills:['Striking Shadow Snake','Wind Style: Great Breakthrough','Eight Branches']},
+ minato:{name:'Minato Namikaze',group:'Legends',style:'flash',color:'#f1d66f',hair:'#e2c765',coat:'#e5dfca',height:1.80,weapon:'kunai',skills:['Flying Raijin Strike','Rasengan','Yellow Flash Barrage']},
+ hashirama:{name:'Hashirama Senju',group:'Legends',style:'wood',color:'#8dc18a',hair:'#332e2b',coat:'#8f4949',height:1.85,weapon:'fists',skills:['Wood Dragon','Deep Forest Emergence','True Several Thousand Hands']},
+ tobirama:{name:'Tobirama Senju',group:'Legends',style:'water',color:'#7acbe8',hair:'#d7dfdf',coat:'#426387',height:1.82,weapon:'sword',skills:['Water Dragon','Water Severing Wave','Tandem Explosive Tags']},
+ madara:{name:'Madara Uchiha',group:'Legends',style:'susanoo',color:'#769df1',hair:'#292935',coat:'#9e494d',height:1.85,weapon:'fan',skills:['Fire Style: Majestic Flame','Uchiha Reflection','Perfect Susanoo']},
+ itachi:{name:'Itachi Uchiha',group:'Akatsuki',style:'crow',color:'#e88b94',hair:'#292b35',coat:'#282b37',height:1.78,weapon:'kunai',skills:['Fire Style: Fireball','Amaterasu','Totsuka Blade']},
+ pain:{name:'Pain',group:'Akatsuki',style:'gravity',color:'#cc9eee',hair:'#d18b4e',coat:'#292b38',height:1.76,weapon:'rods',skills:['Almighty Push','Universal Pull','Planetary Devastation']},
+ obito:{name:'Obito Uchiha',group:'Akatsuki',style:'vortex',color:'#db9569',hair:'#30323a',coat:'#2e2d39',height:1.82,weapon:'chain',skills:['Kamui Strike','Fire Style: Bomb Blast Dance','Kamui Vortex']}
+};
+const NARUTO_TECHNIQUES = {
+ naruto:[{type:'line',radius:3,width:.65,lunge:1},{type:'arc',radius:2.5,start:16,end:33,length:66,pulses:[16,24,32],damage:9,lunge:.8},{type:'projectile',radius:.75,range:9,speed:11,damage:47,lunge:0}],
+ sasuke:[{type:'line',radius:3.4,width:.45,lunge:1.3},{type:'projectile',radius:.5,range:8,speed:10,lunge:0},{type:'field',radius:4.3,offset:1.5,damage:46,lunge:0}],
+ sakura:[{type:'arc',radius:2.3,damage:28,down:true,lunge:.8},{type:'field',radius:2.7,offset:1,down:true,lunge:0},{type:'radial',radius:4.2,damage:48,lunge:0}],
+ kakashi:[{type:'line',radius:3.1,width:.5,lunge:1.1},{type:'projectile',radius:.4,range:8,speed:12,lunge:0},{type:'field',radius:4,offset:1.6,lunge:0}],
+ hinata:[{type:'arc',radius:2.2,lunge:1.1},{type:'projectile',radius:.4,range:7,speed:12,lunge:0},{type:'arc',radius:2.6,start:40,end:57,length:110,pulses:[40,48,56],damage:15,lunge:1.8}],
+ rocklee:[{type:'arc',radius:2.2,arc:2.4,lunge:1.4},{type:'line',radius:2.8,width:.65,down:true,lunge:1},{type:'arc',radius:2.6,start:34,end:48,length:96,lunge:3.1,damage:46}],
+ neji:[{type:'projectile',radius:.38,range:7,speed:12,lunge:0},{type:'radial',radius:2.8,damage:23,lunge:0},{type:'arc',radius:2.7,start:40,end:57,length:110,pulses:[40,48,56],damage:15,lunge:1.6}],
+ shikamaru:[{type:'field',radius:2.2,offset:1.5,down:true,lunge:0},{type:'line',radius:4,width:.55,down:true,lunge:0},{type:'field',radius:4.1,offset:1.3,lunge:0}],
+ mightguy:[{type:'line',radius:2.8,width:.6,lunge:1.6},{type:'projectile',radius:.55,range:7,speed:12,lunge:0},{type:'line',radius:6,width:1.1,start:36,end:49,length:100,lunge:2.2,damage:49}],
+ gaara:[{type:'field',radius:2.3,offset:1.3,down:true,lunge:0},{type:'projectile',radius:.48,range:8,speed:9,lunge:0},{type:'radial',radius:4.6,lunge:0}],
+ jiraiya:[{type:'line',radius:3,width:.7,lunge:.8},{type:'projectile',radius:.55,range:8,speed:10,lunge:0},{type:'field',radius:4.3,offset:1.3,lunge:0}],
+ tsunade:[{type:'arc',radius:2.4,damage:29,down:true,lunge:.6},{type:'line',radius:3,width:.7,down:true,lunge:.9},{type:'radial',radius:4.1,damage:49,lunge:0}],
+ orochimaru:[{type:'line',radius:3.8,width:.55,lunge:.3},{type:'projectile',radius:.5,range:8,speed:11,lunge:0},{type:'radial',radius:4.6,damage:44,lunge:0}],
+ minato:[{type:'line',radius:3.5,width:.45,lunge:2.1,start:18,end:27,length:58},{type:'arc',radius:2.5,damage:26,lunge:1},{type:'arc',radius:2.6,start:34,end:51,length:100,pulses:[34,42,50],damage:15,lunge:3.2}],
+ hashirama:[{type:'projectile',radius:.6,range:7,speed:9,lunge:0},{type:'field',radius:3,offset:1.1,down:true,lunge:0},{type:'radial',radius:4.8,damage:45,lunge:0}],
+ tobirama:[{type:'projectile',radius:.5,range:8,speed:11,lunge:0},{type:'line',radius:4.6,width:.4,lunge:0},{type:'field',radius:4.2,offset:1.5,lunge:0}],
+ madara:[{type:'projectile',radius:.65,range:8,speed:10,lunge:0},{type:'radial',radius:2.8,push:5.5,lunge:0},{type:'line',radius:6,width:1.3,damage:48,lunge:0}],
+ itachi:[{type:'projectile',radius:.5,range:8,speed:10,lunge:0},{type:'field',radius:2.6,offset:1.7,lunge:0},{type:'line',radius:6,width:.85,damage:47,lunge:.3}],
+ pain:[{type:'radial',radius:2.8,push:6,lunge:0},{type:'radial',radius:3.4,pull:true,push:4.5,damage:20,lunge:0},{type:'radial',radius:4.8,damage:44,lunge:0}],
+ obito:[{type:'line',radius:3.2,width:.55,lunge:1.4},{type:'projectile',radius:.55,range:8,speed:10,lunge:0},{type:'field',radius:4.1,offset:1.5,lunge:0}]
+};
+for(const [kind,d] of Object.entries(NARUTO_ROSTER)){
+ const fast=['minato','rocklee','mightguy','sasuke'].includes(kind),heavy=['tsunade','hashirama','madara','pain'].includes(kind);
+ IB_STATS[kind]={name:d.name,height:d.height,hp:heavy?116:fast?102:106,speed:fast?4.75:heavy?3.95:4.35,reach:d.weapon==='sword'||d.weapon==='fan'?1.9:1.65,guard:heavy?.8:.95};
+ IB_CHARACTER_MOVES[kind]={light:makeCombo(fast?[27,30,44]:heavy?[32,36,49]:[29,33,46],heavy?[14,16,23]:[12,15,21]),heavy:{length:heavy?64:58,start:heavy?26:23,end:heavy?35:32,damage:heavy?30:27,cost:28,push:5.6,lunge:.7,down:true,label:d.weapon==='kick'?'HEAVY KICK':'HEAVY STRIKE'},special:{label:d.skills[0],length:65,start:24,end:33,damage:25,cost:32,push:4.6,lunge:.6,break:true,cooldown:220,...NARUTO_TECHNIQUES[kind][0]}};
+}

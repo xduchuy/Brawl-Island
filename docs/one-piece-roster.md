@@ -1,6 +1,6 @@
 # One Piece · Thousand Sunny crew
 
-The pack adds the ten Straw Hat crew members to the existing 36 fighters, for 46 total. It includes Jinbe and excludes temporary passengers, allies, rival pirates and alternate-form roster duplicates.
+The pack introduced ten Straw Hat crew members after the first 36 fighters. The full roster now has 66 with the Naruto pack. It includes Jinbe and excludes temporary passengers, allies, rival pirates and alternate-form roster duplicates.
 
 Open **Fighters → One Piece · Straw Hats**, choose the team slot, then pick a character. Search accepts full or partial names. All four native team dropdowns also have a One Piece group; keyboard, controller and mobile play use the existing controls.
 
@@ -23,7 +23,7 @@ The ten original procedural models use the shared 18-bone IK rig and instanced b
 
 Luffy's arm extends during signature attacks and returns to normal afterward. Sanji's attacks animate the kicking foot and its trail; Robin's extra hands appear only during signature attacks. These visual elements do not independently apply damage. Each fighter has a three-stage light combo, heavy attack, two signature skills and an ultimate with deterministic costs, cooldowns and hit timing. Abilities use the established projectile, arc, line, field and radial mechanics. Named transformations are arena ability adaptations, not separate form-switching systems. Visual heights and stats are tuned for the arena rather than canonical size/power comparisons.
 
-The pack adds 30 original icon illustrations and 30 eight-frame RGBA effect flipbooks. The complete offline build embeds 143 icons, 154 VFX sheets and bindings for 322 moves; there are no runtime art downloads. Arcade derives its length from the roster and now has 45 opponents.
+The pack adds 30 original icon illustrations and 30 eight-frame RGBA effect flipbooks. The complete offline build embeds 203 icons, 214 VFX sheets and bindings for 462 moves; there are no runtime art downloads. Arcade derives its length from the roster and now has 65 opponents.
 
 ## Validation
 

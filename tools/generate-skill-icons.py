@@ -18,6 +18,11 @@ ONE_PIECE=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
 for kind,d in ONE_PIECE.items():
     PALETTES[kind]=d['color'].lstrip('#')
     MOTIFS[kind]=[kind+'_'+str(i) for i in range(3)]
+code="const fs=require('fs'),vm=require('vm'),c={};vm.createContext(c);vm.runInContext(fs.readFileSync('src/fighters/roster.js','utf8')+';this.p=NARUTO_ROSTER;',c);console.log(JSON.stringify(c.p));"
+NARUTO=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
+for kind,d in NARUTO.items():
+    PALETTES[kind]=d['color'].lstrip('#')
+    MOTIFS[kind]=[kind+'_'+str(i) for i in range(3)]
 def rgb(h):return tuple(bytes.fromhex(h))
 def motif(kind,index,size=384):
     c=rgb(PALETTES[kind]); light=tuple(int(v*.3+178) for v in c); dark=tuple(int(v*.26) for v in c); white=(255,247,222)
@@ -263,6 +268,72 @@ def motif(kind,index,size=384):
                 pts=[(16+i*2,40+j*18+math.sin(i*.19+j)*12) for i in range(49)]
                 line(pts,dark,7);line(pts,c,4);line(pts[12:35],light,2)
             fist(0,-8,.60+index*.07)
+        for j in range(3+index*2):
+            a=j*math.tau/(3+index*2)+index*.25;oval((62+math.cos(a)*51,62+math.sin(a)*51,66+math.cos(a)*51,66+math.sin(a)*51),white)
+    elif kind in NARUTO:
+        style=NARUTO[kind]['style']
+        if style in ['rasengan','sage','flash']:
+            spiral(1.5+index*.4,3+index)
+            oval((45,45,83,83),c,white,2)
+            for j in range(3+index):
+                a=j*math.tau/(3+index);line([(64,64),(64+math.cos(a)*26,64+math.sin(a)*26)],white,2)
+            if style=='flash':blade()
+            if style=='rasengan' and index==1:
+                for x in [30,86]:oval((x-7,28,x+7,42),light,c,2);poly([(x-9,44),(x+9,44),(x+13,75),(x-13,75)],c,white,1)
+        elif style=='lightning':
+            for j in range(index+2):
+                x=26+j*24;poly([(x+11,17),(x-5,64),(x+9,59),(x-1,109),(x+31,49),(x+15,52)],c,light,2)
+            if index==0:hand(0,10,.65)
+        elif style=='impact':
+            for j in range(5+index):
+                a=j*math.tau/(5+index);line([(64+math.cos(a)*23,72+math.sin(a)*15),(64+math.cos(a)*47,72+math.sin(a)*30),(64+math.cos(a+.2)*56,72+math.sin(a+.2)*35)],light,3)
+            fist(0,-9,.75+index*.06)
+        elif style=='gentle-fist':
+            for r in [37,48]:oval((64-r,64-r,64+r,64+r),None,c,2)
+            for j in range(8):
+                a=j*math.tau/8+index*.12;line([(64+math.cos(a)*39,64+math.sin(a)*39),(64+math.cos(a)*49,64+math.sin(a)*49)],white,3)
+            hand(-index*6,0,.68);hand(15,12,.4) if index==2 else None
+        elif style=='taijutsu':
+            poly([(46,19),(67,18),(71,62),(102,82),(107,96),(90,108),(57,85),(42,49)],dark,light,2)
+            for j in range(index+2):
+                a=j*.55;line([(18+j*9,82),(24+j*8,52),(41+j*7,29)],c,4)
+            if index==2:spiral(.45,5)
+        elif style=='shadow':
+            oval((17,81,113,111),dark,c,2)
+            for j in range(3+index):
+                x=27+j*17;line([(64,96),(x,79),(x+7,59),(x-6,30)],c,5)
+            hand(0,-5,.65)
+        elif style=='sand':
+            oval((42,18,85,51),light,c,2);oval((31,47,96,101),c,light,2);line([(34,65),(94,65)],dark,5)
+            for j in range(8+index*4):
+                a=j*2.4;r=37+j%3*5;x=64+math.cos(a)*r;y=64+math.sin(a)*r;oval((x-2,y-2,x+2,y+2),white)
+        elif style=='snake':
+            for j in range(1+index):
+                pts=[(24+i*1.1,65+math.sin(i*.1+j)*26+j*8-index*7) for i in range(65)]
+                line(pts,dark,12);line(pts,c,8);line(pts,light,2)
+            poly([(89,46),(108,50),(111,61),(94,68),(84,59)],c,light,2);oval((97,53,102,58),white)
+        elif style=='wood':
+            for j in range(3+index):
+                x=23+j*18;line([(x,108),(x+7,76),(x-2,44),(x+6,18)],c,8);line([(x+3,62),(x+17,40),(x+20,27)],light,3)
+            if index==2:hand(0,-3,.65)
+        elif style=='water':
+            for j in range(3+index):
+                pts=[(15+i*1.5,35+j*14+math.sin(i*.15+j)*10) for i in range(66)]
+                line(pts,dark,8);line(pts,c,5);line(pts[15:45],light,2)
+        elif style=='susanoo':
+            poly([(30,29),(47,18),(64,30),(82,18),(101,29),(95,61),(80,76),(76,104),(50,104),(47,76),(34,61)],dark,c,3)
+            poly([(42,42),(60,48),(54,54)],white);poly([(69,48),(89,42),(78,54)],white)
+            for j in range(3+index):line([(43,69+j*6),(64,76+j*6),(85,69+j*6)],light,2)
+            if index==2:blade()
+        elif style=='crow':
+            for j in range(1+index):
+                y=38+j*25;poly([(18,y-17),(46,y),(64,y-6),(82,y),(110,y-17),(91,y+17),(64,y+13),(37,y+17)],c,light,2)
+            oval((52,48,76,72),dark,white,2);oval((60,55,69,65),c)
+        elif style in ['gravity','vortex']:
+            spiral(2+index*.3,3 if style=='gravity' else 2)
+            oval((48,48,80,80),dark,light,2)
+            for j in range(5+index):
+                a=j*math.tau/(5+index);x=64+math.cos(a)*44;y=64+math.sin(a)*44;poly([(x-5,y-7),(x+6,y-5),(x+8,y+4),(x-3,y+7)],c,white,1)
         for j in range(3+index*2):
             a=j*math.tau/(3+index*2)+index*.25;oval((62+math.cos(a)*51,62+math.sin(a)*51,66+math.cos(a)*51,66+math.sin(a)*51),white)
     # Paint volume into each opaque illustration layer, preserving the ink edges.
